@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reklama Centr — Вариант 2 «Жидкий свет» (прототип)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=Sofia+Sans+Extra+Condensed:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root { --ink:#060607; --paper:#F3F1EC; --red:#E4142F; --red2:#FF2D48; --mist:#9a9aa3; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { background: var(--ink); color: var(--paper); font-family: Onest, system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  body { overflow-x: clip; }
+  a { color: inherit; text-decoration: none; }
+  .d { font-family: "Sofia Sans Extra Condensed", Impact, sans-serif; text-transform: uppercase; font-weight: 900; letter-spacing: -0.01em; line-height: .82; }
+  .eyebrow { font-size: 11px; letter-spacing: .32em; text-transform: uppercase; font-weight: 600; color: var(--red); }
+  .wrap { width: min(1600px, 100%); margin: 0 auto; padding: 0 clamp(20px, 4vw, 64px); }
+
+  /* ---------- Интро ---------- */
+  #intro { position: fixed; inset: 0; z-index: 100; background: var(--ink); display: grid; place-items: center; transition: clip-path 1.1s cubic-bezier(.77,0,.18,1); clip-path: inset(0 0 0 0); }
+  #intro.out { clip-path: inset(0 0 100% 0); }
+  #intro .num { font-size: clamp(90px, 22vw, 320px); color: transparent; -webkit-text-stroke: 1.5px rgba(243,241,236,.35); }
+  #intro .num b { color: var(--red); -webkit-text-stroke: 0; }
+  #intro .cap { position: absolute; bottom: 40px; left: 0; right: 0; text-align: center; }
+
+  /* ---------- Навигация ---------- */
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 50; mix-blend-mode: difference; }
+  nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 84px; }
+  nav .logo { font-size: 26px; }
+  nav .logo small { display: block; font-family: Onest; font-size: 9px; letter-spacing: .3em; font-weight: 600; margin-top: 5px; }
+  nav .links { display: flex; gap: 34px; font-size: 12px; letter-spacing: .2em; text-transform: uppercase; font-weight: 600; }
+  @media (max-width: 800px) { nav .links { display: none; } }
+
+  /* ---------- Hero ---------- */
+  #hero { position: relative; height: 100svh; min-height: 640px; overflow: hidden; }
+  #gl { position: absolute; inset: 0; width: 100%; height: 100%; }
+  #hero .veil { position: absolute; inset: 0; background: radial-gradient(120% 90% at 50% 40%, transparent 30%, rgba(6,6,7,.75) 100%); pointer-events: none; }
+  #hero .content { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; padding-bottom: clamp(36px, 7vh, 90px); }
+  .mega { font-size: clamp(88px, 19.5vw, 380px); display: block; white-space: nowrap; }
+  .mega .ch { display: inline-block; transform: translateY(110%) rotate(8deg); opacity: 0; transition: transform 1.2s cubic-bezier(.16,1,.3,1), opacity 1.2s; will-change: transform; }
+  .ready .mega .ch { transform: none; opacity: 1; }
+  .mega.outline { color: transparent; -webkit-text-stroke: 2px var(--paper); }
+  .mega.red { color: var(--red); text-shadow: 0 0 60px rgba(228,20,47,.45); }
+  .hero-row { display: flex; justify-content: space-between; align-items: flex-end; gap: 30px; margin-top: 26px; flex-wrap: wrap; }
+  .hero-row p { max-width: 430px; color: #cfcfd4; font-size: 16px; line-height: 1.6; }
+  .btn { display: inline-flex; align-items: center; gap: 12px; padding: 18px 30px; border-radius: 999px; background: var(--red); color: #fff; font-weight: 600; font-size: 15px; transition: background .3s, box-shadow .3s; will-change: transform; }
+  .btn:hover { background: var(--red2); box-shadow: 0 20px 60px -12px rgba(228,20,47,.8); }
+  .btn.ghost { background: transparent; border: 1px solid rgba(243,241,236,.35); }
+  .scrollcue { position: absolute; right: clamp(20px,4vw,64px); top: 50%; writing-mode: vertical-rl; font-size: 11px; letter-spacing: .4em; color: var(--mist); }
+
+  /* ---------- Манифест: текст «заливается» при прокрутке ---------- */
+  #manifest { padding: 22vh 0; }
+  #manifest p { font-size: clamp(34px, 5.4vw, 92px); line-height: 1.02; font-weight: 800; }
+  #manifest .w { color: rgba(243,241,236,.12); transition: color .25s; }
+  #manifest .w.on { color: var(--paper); }
+  #manifest .w.hot.on { color: var(--red); }
+
+  /* ---------- Сборка буквы (закреплённая сцена) ---------- */
+  #build { height: 360vh; position: relative; }
+  #build .stage { position: sticky; top: 0; height: 100vh; display: grid; grid-template-columns: 1fr 1fr; align-items: center; overflow: hidden; }
+  @media (max-width: 900px) { #build .stage { grid-template-columns: 1fr; grid-template-rows: 1fr auto; } }
+  .scene { perspective: 1400px; display: grid; place-items: center; height: 100%; }
+  .letter { position: relative; transform-style: preserve-3d; font-size: clamp(260px, 38vw, 620px); line-height: .8; }
+  .letter span { position: absolute; left: 0; top: 0; transform-style: preserve-3d; }
+  .letter .ghost { position: relative; visibility: hidden; }
+  .letter .side { color: #1c1c21; -webkit-text-stroke: 1px #2c2c33; }
+  .letter .frame { display: none; }
+  .letter .face { color: #f7f5f0; transition: color .6s, text-shadow .6s; }
+  .letter.lit .face { color: #fff4f5; text-shadow: 0 0 20px #ff2d48, 0 0 60px #e4142f, 0 0 140px rgba(228,20,47,.7); }
+  .led { position: absolute; width: 7px; height: 7px; border-radius: 2px; background: #3a3a40; transition: background .3s, box-shadow .3s; }
+  .led.on { background: #fff; box-shadow: 0 0 12px #ff2d48, 0 0 30px #e4142f; }
+  .steps { padding: 0 clamp(20px,5vw,90px); }
+  .step { padding: 22px 0; border-top: 1px solid rgba(243,241,236,.12); opacity: .25; transition: opacity .4s; }
+  .step.on { opacity: 1; }
+  .step .n { font-size: 14px; color: var(--red); font-weight: 600; letter-spacing: .2em; }
+  .step h3 { font-size: clamp(38px, 4.6vw, 76px); margin-top: 6px; }
+  .step p { color: var(--mist); margin-top: 8px; max-width: 460px; line-height: 1.55; }
+
+  /* ---------- Горизонтальная галерея ---------- */
+  #works { height: 420vh; position: relative; }
+  #works .stage { position: sticky; top: 0; height: 100vh; overflow: hidden; display: flex; flex-direction: column; justify-content: center; }
+  #works .head { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 36px; }
+  #works h2 { font-size: clamp(70px, 11vw, 190px); }
+  .track { display: flex; gap: 28px; padding-left: clamp(20px,4vw,64px); will-change: transform; }
+  .card { flex: 0 0 auto; width: clamp(280px, 34vw, 560px); transition: transform .5s cubic-bezier(.16,1,.3,1); }
+  .card .img { position: relative; aspect-ratio: 4/5; overflow: hidden; border-radius: 6px; background: #111; }
+  .card img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.15); transition: transform 1.2s cubic-bezier(.16,1,.3,1); }
+  .card:hover img { transform: scale(1.02); }
+  .card .meta { display: flex; justify-content: space-between; margin-top: 16px; gap: 16px; }
+  .card h4 { font-size: 30px; }
+  .card small { color: var(--mist); font-size: 13px; }
+  .count { font-size: 14px; color: var(--mist); letter-spacing: .2em; }
+
+  /* ---------- Направления: строки с «плавающим» фото ---------- */
+  #dirs { padding: 20vh 0; position: relative; }
+  .row { display: flex; align-items: baseline; justify-content: space-between; gap: 20px; padding: 18px 0; border-top: 1px solid rgba(243,241,236,.12); cursor: pointer; transition: padding .5s cubic-bezier(.16,1,.3,1); }
+  .row:last-child { border-bottom: 1px solid rgba(243,241,236,.12); }
+  .row h3 { font-size: clamp(46px, 8vw, 140px); transition: color .3s, transform .5s cubic-bezier(.16,1,.3,1); }
+  .row .i { font-size: 14px; color: var(--mist); letter-spacing: .2em; }
+  .row:hover { padding-left: 2vw; }
+  .row:hover h3 { color: var(--red); }
+  #float { position: fixed; left: 0; top: 0; width: 340px; aspect-ratio: 4/5; pointer-events: none; z-index: 40; border-radius: 8px; overflow: hidden; opacity: 0; transform: translate(-50%,-50%) scale(.6) rotate(-6deg); transition: opacity .35s, transform .5s cubic-bezier(.16,1,.3,1); }
+  #float.on { opacity: 1; transform: translate(-50%,-50%) scale(1) rotate(-3deg); }
+  #float img { width: 100%; height: 100%; object-fit: cover; }
+  @media (hover: none) { #float { display: none; } }
+
+  /* ---------- Кейс: видео раскрывается кругом ---------- */
+  #case { height: 260vh; position: relative; }
+  #case .stage { position: sticky; top: 0; height: 100vh; overflow: hidden; display: grid; place-items: center; }
+  #case video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; clip-path: circle(12% at 50% 50%); }
+  #case .over { position: relative; text-align: center; pointer-events: none; }
+  #case .over h2 { font-size: clamp(80px, 16vw, 300px); mix-blend-mode: difference; }
+  #case .facts { position: absolute; left: 0; right: 0; bottom: 5vh; display: flex; justify-content: center; gap: clamp(24px, 6vw, 110px); flex-wrap: wrap; opacity: 0; transition: opacity .6s; }
+  #case .facts.on { opacity: 1; }
+  #case .facts b { display: block; font-size: clamp(44px, 5vw, 86px); color: var(--red); }
+  #case .facts span { font-size: 13px; color: #e5e5ea; }
+
+  /* ---------- Финал ---------- */
+  #cta { padding: 24vh 0 8vh; text-align: center; overflow: hidden; }
+  #cta h2 { font-size: clamp(90px, 20vw, 400px); }
+  #cta h2 .red { color: var(--red); }
+  #cta .btn { margin-top: 50px; font-size: 18px; padding: 24px 44px; }
+  footer { border-top: 1px solid rgba(243,241,236,.1); padding: 30px 0 40px; color: var(--mist); font-size: 13px; }
+  footer .wrap { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+
+  /* Курсор */
+  #cur { position: fixed; left: 0; top: 0; width: 14px; height: 14px; margin: -7px 0 0 -7px; border-radius: 50%; background: var(--red); z-index: 90; pointer-events: none; mix-blend-mode: difference; transition: width .3s, height .3s, margin .3s, background .3s; }
+  #cur.big { width: 90px; height: 90px; margin: -45px 0 0 -45px; background: #fff; }
+  @media (hover: none) { #cur { display: none; } }
+  .proto { position: fixed; left: 16px; bottom: 16px; z-index: 95; background: rgba(228,20,47,.95); color: #fff; font-size: 11px; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; padding: 8px 12px; border-radius: 99px; }
+
+  @media (prefers-reduced-motion: reduce) { .mega .ch { transition: none; transform: none; opacity: 1; } }
+</style>
+</head>
+<body>
+<div id="intro"><div class="num d"><span id="pct">00</span><b>%</b></div><div class="cap eyebrow">Reklama Centr · WBB · Строим бренды</div></div>
+<div id="cur"></div>
+<div class="proto">Прототип · Вариант 2 «Жидкий свет»</div>
+
+<nav><div class="wrap">
+  <a class="logo" href="#"><svg viewBox="0 0 503.2 135.25" style="height:34px;width:auto;display:block;fill:currentColor" role="img" aria-label="Reklama Centr"><path transform="matrix(1,0,0,-1,1,134.2522)" d="M80.7486 31.6295 67.1 51.1965 65.0166 51.1444H50.6741V31.1312H35.6037V102.1221H65.0166C68.0525 102.1221 70.9087 101.8684 73.5806 101.3632 76.2585 100.8567 78.745 100.0933 81.0369 99.0746 83.3428 98.0493 85.3832 96.7978 87.1537 95.3274 88.9381 93.8432 90.455 92.1339 91.6937 90.2083 92.9358 88.2765 93.8684 86.1619 94.4872 83.8735 95.1026 81.6001 95.4108 79.1529 95.4108 76.5354 95.4108 73.8507 95.0794 71.3409 94.4212 69.012 93.7585 66.6666 92.7609 64.5092 91.434 62.545 90.1097 60.5835 88.4897 58.8651 86.5814 57.3982 85.0414 56.2139 83.3139 55.1942 81.4008 54.3402L97.6482 31.1312H81.095ZM80.2409 76.5354C80.2409 78.5724 79.9118 80.3602 79.2573 81.8955 78.6141 83.4018 77.6432 84.687 76.35 85.7449 75.0336 86.8212 73.3986 87.6336 71.4532 88.1759 69.4534 88.7343 67.1091 89.0135 64.4278 89.0135H50.6741V63.9587H64.4278C67.1046 63.9587 69.4463 64.2438 71.4475 64.8094 73.3963 65.3596 75.0302 66.1836 76.3452 67.2738 77.6407 68.3478 78.6129 69.647 79.2573 71.1635 79.9129 72.7058 80.2409 74.4985 80.2409 76.5354" />
+      <path transform="matrix(1,0,0,-1,1,134.2522)" d="M66.6261 133.2522C79.3474 133.2522 91.237 129.6845 101.3491 123.497 96.5509 120.0671 93.1374 114.8275 92.1073 108.7741 84.6743 113.2781 75.9526 115.8715 66.6261 115.8715 53.0274 115.8715 40.7149 110.3581 31.8044 101.4477 22.8937 92.5373 17.3806 80.2247 17.3806 66.6261 17.3806 53.0274 22.8937 40.7149 31.8044 31.8044 40.7149 22.894 53.0274 17.3806 66.6261 17.3806 80.2247 17.3806 92.5373 22.894 101.4477 31.8044 110.3581 40.7149 115.8712 53.0274 115.8712 66.6261 115.8712 72.0408 114.9976 77.2515 113.3824 82.1239 113.7869 82.1018 114.1946 82.0902 114.605 82.0902 120.4367 82.0902 125.7562 84.2769 129.7911 87.8757 132.0355 81.2015 133.2522 74.0557 133.2522 66.6261 133.2522 48.2292 125.7945 31.5714 113.737 19.5151 101.6807 7.4588 85.0229 0 66.6261 0 48.2292 0 31.5714 7.4588 19.5151 19.5151 7.4585 31.5714 0 48.2292 0 66.6261 0 85.0229 7.4585 101.6807 19.5151 113.737 31.5714 125.7945 48.2292 133.2522 66.6261 133.2522" />
+      <path transform="matrix(1,0,0,-1,1,134.2522)" d="M114.605 125.3055C120.2258 125.3055 125.3183 123.0231 129.0135 119.3338L129.024 119.3233C132.7133 115.628 134.996 110.5356 134.996 104.9145 134.996 99.2937 132.7122 94.199 129.0192 90.5003 125.3344 86.8073 120.2363 84.5235 114.605 84.5235 108.9746 84.5235 103.8753 86.8073 100.1857 90.4955 96.4976 94.1848 94.2137 99.2843 94.2137 104.9145 94.2137 110.5461 96.4976 115.6442 100.1857 119.3338 103.8892 123.0219 108.9839 125.3055 114.605 125.3055ZM114.3638 117.7948C116.0972 117.7948 117.7577 117.4462 119.2791 116.8169 120.8608 116.1635 122.2801 115.2062 123.4633 114.0222L124.3196 113.1659 120.534 109.3802 119.6813 110.2331C118.9882 110.9307 118.1611 111.488 117.2443 111.867 116.3662 112.2307 115.3928 112.4311 114.3638 112.4311 113.3362 112.4311 112.3605 112.2307 111.4809 111.867 110.5645 111.488 109.7371 110.9307 109.0488 110.2414 108.3535 109.5426 107.7928 108.7118 107.4127 107.7939 107.0501 106.9123 106.8471 105.9401 106.8471 104.9145 106.8471 103.8903 107.0501 102.9206 107.4127 102.0399 107.7939 101.1246 108.3535 100.2937 109.0488 99.5995 109.7453 98.9033 110.5761 98.3412 111.4869 97.9634 112.3673 97.5997 113.3396 97.3981 114.3638 97.3981 115.3871 97.3981 116.358 97.5997 117.2375 97.9622 118.1585 98.3458 118.9882 98.9056 119.6776 99.5939L120.5283 100.4465 124.3137 96.6634 123.4678 95.8153C122.2812 94.6276 120.8619 93.6658 119.2907 93.0135 117.7705 92.3831 116.1043 92.0344 114.3638 92.0344 112.6259 92.0344 110.9585 92.3831 109.4383 93.0135 107.8634 93.6669 106.4441 94.6253 105.2609 95.8071 104.0746 96.9959 103.1151 98.4166 102.4617 99.9947 101.8324 101.5172 101.4837 103.1811 101.4837 104.9145 101.4837 106.6504 101.8335 108.3155 102.4617 109.8346 103.1151 111.4126 104.0746 112.8334 105.2563 114.0174 106.4486 115.2051 107.8693 116.1635 109.4474 116.8169 110.9687 117.4462 112.6315 117.7948 114.3638 117.7948ZM125.3764 115.6986C122.6279 118.4485 118.8179 120.1504 114.605 120.1504 110.3919 120.1504 106.5818 118.4485 103.8334 115.6986 101.0769 112.9317 99.3691 109.1197 99.3691 104.9145 99.3691 100.7096 101.0769 96.8975 103.8334 94.1431 106.5878 91.3867 110.3998 89.6786 114.605 89.6786 118.8099 89.6786 122.622 91.3867 125.3764 94.1431 128.1387 96.8916 129.8407 100.7016 129.8407 104.9145 129.8407 109.1276 128.1387 112.9377 125.3891 115.6861Z" />
+      <path transform="matrix(1,0,0,-1,1,134.2522)" d="M188.9147 72.2296 179.8651 85.2026C179.5127 85.1854 179.0952 85.1769 178.613 85.1769H169.2944V71.7729H158.6268V119.8922H178.613C180.663 119.8922 182.5929 119.721 184.4011 119.3788 186.211 119.0364 187.8962 118.5182 189.455 117.8257 191.0251 117.1278 192.4146 116.2769 193.6216 115.2737 194.8416 114.26 195.8749 113.0953 196.7202 111.7806 197.5683 110.4608 198.2047 109.0193 198.6273 107.4572 199.046 105.9089 199.256 104.2455 199.256 102.4688 199.256 100.6449 199.0312 98.9393 198.5822 97.3528 198.1287 95.7518 197.4489 94.28 196.5436 92.939 195.6387 91.5993 194.5338 90.4275 193.231 89.4254 192.2669 88.6836 191.1957 88.0373 190.0185 87.4865L201.018 71.7729H189.2333ZM188.5226 102.4688C188.5226 103.7954 188.3106 104.955 187.8871 105.9466 187.475 106.9115 186.8528 107.7347 186.0219 108.4144 185.1704 109.1112 184.1119 109.6362 182.8477 109.9888 181.5344 110.3553 179.9906 110.5387 178.2187 110.5387H169.2944V94.333H178.2187C179.9867 94.333 181.5287 94.5193 182.8434 94.8912 184.1091 95.2492 185.1676 95.7815 186.0177 96.4865 186.8499 97.1768 187.4733 98.0093 187.8871 98.983 188.3106 99.9791 188.5226 101.1416 188.5226 102.4688ZM243.2781 79.9977V71.7729H206.657V119.8922H242.3582V110.6045H217.3246V100.7722H239.5329V91.6157H217.3246V81.0607H243.2781ZM267.5203 90.5094 261.347 84.1694V71.7729H250.6793V119.8922H261.347V97.8718L282.57 119.8922H295.0639L274.6984 98.2106 296.0121 71.7729H283.3152ZM299.641 119.8922H309.2457V81.1264H333.2937V71.7729H298.578V119.8922ZM373.3869 82.417H351.7877L347.2537 71.7729H336.1076L357.7615 119.8922H367.5413C374.7847 103.8538 382.0232 87.8128 389.2637 71.7729H377.9861ZM369.644 91.245 362.5889 107.5997 355.5876 91.245ZM434.6569 72.8359 434.5994 99.5068 421.1362 77.0292H416.1325L402.6779 99.142V71.7729H392.4043V119.8922H401.0958L418.7557 90.4173 436.0978 119.8922H444.7885L444.8574 71.7729H434.6592ZM485.3477 82.417H463.7486L459.2146 71.7729H448.0685L469.7223 119.8922H479.5021C486.7455 103.8538 493.9841 87.8128 501.2246 71.7729H489.947ZM481.6049 91.245 474.5497 107.5997 467.5484 91.245ZM182.2924 13.3614C179.896 13.3614 177.603 13.6273 175.4152 14.1585 173.2294 14.6889 171.1582 15.4862 169.2034 16.5495 167.2461 17.6139 165.4991 18.8827 163.965 20.3542 162.4269 21.829 161.102 23.506 159.9919 25.3831 158.8819 27.2599 158.0474 29.2626 157.4901 31.3894 156.9342 33.5103 156.6558 35.7401 156.6558 38.0781 156.6558 42.781 157.7803 47.0143 160.0291 50.7776 161.1519 52.6564 162.485 54.3334 164.0268 55.8062 165.564 57.2749 167.3121 58.5422 169.2692 59.6066 171.2239 60.6699 173.2952 61.467 175.481 61.998 177.6688 62.5289 179.9617 62.7948 182.3581 62.7948 184.3019 62.7948 186.1702 62.6236 187.9614 62.2814 189.7464 61.9404 191.4545 61.4254 193.0847 60.7365 194.7217 60.0449 196.2275 59.2007 197.6 58.2055 198.9788 57.206 200.2337 56.0483 201.3639 54.7339L202.0235 53.9668 194.9876 47.3494 194.2628 48.1311C192.6969 49.8209 190.9579 51.0851 189.0471 51.9228 187.1385 52.7598 185.04 53.1785 182.7524 53.1785 181.2512 53.1785 179.8393 53.0167 178.5172 52.6944 177.2016 52.3732 175.9575 51.8885 174.7871 51.2419 173.6232 50.5987 172.5885 49.8322 171.6851 48.9441 170.784 48.0577 170.0053 47.0412 169.3505 45.8955 168.6974 44.7528 168.2076 43.5334 167.8816 42.2393 167.5536 40.9368 167.3892 39.5493 167.3892 38.0781 167.3892 36.6069 167.5536 35.2196 167.8816 33.9168 168.2076 32.6228 168.6977 31.4036 169.3505 30.261 170.0053 29.1152 170.784 28.0984 171.6851 27.212 172.5883 26.3239 173.6229 25.5577 174.7871 24.9146 175.9578 24.2677 177.2016 23.783 178.5172 23.4618 179.839 23.1392 181.2512 22.9776 182.7524 22.9776 187.3069 22.9776 191.1427 24.6796 194.2586 28.0826L194.989 28.8805 202.0192 22.1848 201.3639 21.4226C200.2377 20.1127 198.9785 18.9547 197.5878 17.9507 196.1952 16.9449 194.6826 16.0999 193.0518 15.4157 191.4245 14.7328 189.707 14.2191 187.8999 13.875 186.1027 13.5329 184.2335 13.3614 182.2924 13.3614ZM244.3294 22.2432V14.0185H207.7084V62.1377H243.4096V52.85H218.376V43.0177H240.5843V33.8613H218.376V23.3062H244.3294ZM294.7252 61.0747V14.0185H286.1308L262.3329 43.2422V14.0185H251.7307V62.1377H260.3248L284.1233 32.9139V62.1377H294.7252ZM314.282 52.7842H299.0384V62.1377H340.1932V52.7842H324.9496V14.0185H314.282ZM374.794 14.4751 365.7444 27.4482C365.3921 27.4309 364.9745 27.4224 364.4923 27.4224H355.1737V14.0185H344.5061V62.1377H364.4923C366.5424 62.1377 368.4722 61.9662 370.2804 61.6243 372.0903 61.2819 373.7758 60.7637 375.3343 60.0712 376.9044 59.3734 378.294 58.5224 379.5009 57.5192 380.721 56.5055 381.7542 55.3408 382.5995 54.0261 383.4479 52.7066 384.084 51.2646 384.5066 49.7027 384.9256 48.1544 385.1354 46.491 385.1354 44.7143 385.1354 42.8905 384.9106 41.1849 384.4616 39.5983 384.0086 37.997 383.3286 36.525 382.4229 35.1845 381.5178 33.8445 380.4131 32.673 379.1106 31.6709 378.1466 30.9294 377.0753 30.2831 375.8978 29.732L386.8971 14.0185H375.1123ZM374.402 44.7143C374.402 46.0412 374.19 47.2005 373.7665 48.1921 373.3543 49.157 372.7321 49.9802 371.9013 50.6599 371.05 51.3564 369.9913 51.8817 368.7273 52.2343 367.4137 52.6008 365.8703 52.7842 364.098 52.7842H355.1737V36.5786H364.098C365.866 36.5786 367.4081 36.7648 368.7231 37.1367 369.9935 37.4961 371.0523 38.0268 371.897 38.7278V38.732C372.7293 39.4223 373.3526 40.2548 373.7665 41.2285 374.19 42.2246 374.402 43.3871 374.402 44.7143" /></svg><small>WBB · Строим бренды</small></a>
+  <div class="links"><a href="#works">Работы</a><a href="#dirs">Услуги</a><a href="#case">Проекты</a><a href="#cta">Контакты</a></div>
+</div></nav>
+
+<section id="hero">
+  <canvas id="gl"></canvas>
+  <div class="veil"></div>
+  <div class="content wrap">
+    <div class="eyebrow">Рекламно-производственная компания · Ташкент</div>
+    <span class="mega d outline" data-split>Строим</span>
+    <span class="mega d red" data-split>бренды</span>
+    <div class="hero-row">
+      <p>Металл, свет, пластик, ткань и бумага. Собственное производство, девять направлений и монтаж на любой высоте — от визитки до крышной установки.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn mag" href="#cta">Рассчитать проект →</a><a class="btn ghost mag" href="#works">Смотреть работы</a></div>
+    </div>
+  </div>
+  <div class="scrollcue">Листайте ↓</div>
+</section>
+
+<section id="manifest"><div class="wrap"><p data-words>Мы не агентство. Мы <em class="hot">производство.</em> Своя техника, свои бригады и свой свет — от эскиза до монтажа <em class="hot">на высоте 108 метров.</em> Один партнёр на весь заказ.</p></div></section>
+
+<section id="build"><div class="stage">
+  <div class="scene"><div class="letter d" id="letter"></div></div>
+  <div class="steps">
+    <div class="eyebrow" style="margin-bottom:22px">Как рождается вывеска</div>
+    <div class="step" data-at="0"><div class="n">01</div><h3 class="d">Корпус</h3><p>Задняя панель и борт: режем, гнём и красим на своём производстве.</p></div>
+    <div class="step" data-at=".34"><div class="n">02</div><h3 class="d">Свет</h3><p>Ставим светодиодные модули — каждая буква светится ровно, без пятен.</p></div>
+    <div class="step" data-at=".67"><div class="n">03</div><h3 class="d">Включение</h3><p>Ставим лицевую панель, монтируем и обслуживаем весь срок гарантии.</p></div>
+  </div>
+</div></section>
+
+<section id="works"><div class="stage">
+  <div class="wrap head"><h2 class="d">Работы</h2><div class="count"><span id="wcount">01</span> / 08</div></div>
+  <div class="track" id="track">
+    <a class="card" href="#"><div class="img"><img src="/works/infinity-letter.webp" alt=""></div><div class="meta"><h4 class="d">Буквы INFINITY</h4><small>Golden House</small></div></a>
+    <a class="card" href="#"><div class="img"><img src="/works/tmz-stele-night.webp" alt=""></div><div class="meta"><h4 class="d">Навигация завода</h4><small>ТМЗ</small></div></a>
+    <a class="card" href="#"><div class="img"><img src="/works/vw-caddy-front34.webp" alt=""></div><div class="meta"><h4 class="d">Автопарк «103»</h4><small>Volkswagen</small></div></a>
+    <a class="card" href="#"><div class="img"><img src="/works/octobank-set-macro.webp" alt=""></div><div class="meta"><h4 class="d">Подарочные наборы</h4><small>Octobank</small></div></a>
+    <a class="card" href="#"><div class="img"><img src="/works/lavazza-point-2.webp" alt=""></div><div class="meta"><h4 class="d">Кофепоинты</h4><small>Lavazza</small></div></a>
+    <a class="card" href="#"><div class="img"><img src="/works/eriell-lobby.webp" alt=""></div><div class="meta"><h4 class="d">Холл и навигация</h4><small>ERIELL</small></div></a>
+    <a class="card" href="#"><div class="img"><img src="/works/oz-makon-night.webp" alt=""></div><div class="meta"><h4 class="d">Входная стела</h4><small>O‘Z MAKON</small></div></a>
+    <a class="card" href="#"><div class="img"><img src="/works/octobank-expo-wide.webp" alt=""></div><div class="meta"><h4 class="d">Выставочный стенд</h4><small>Octobank</small></div></a>
+  </div>
+</div></section>
+
+<section id="dirs"><div class="wrap">
+  <div class="eyebrow" style="margin-bottom:28px">Девять направлений</div>
+  <div class="row" data-img="/works/octobank-pavilion.webp"><h3 class="d">Наружная реклама</h3><span class="i">01</span></div>
+  <div class="row" data-img="/works/tmz-hall.webp"><h3 class="d">Интерьеры</h3><span class="i">02</span></div>
+  <div class="row" data-img="/works/octobank-expo.webp"><h3 class="d">Стенды</h3><span class="i">03</span></div>
+  <div class="row" data-img="/works/lavazza-point.webp"><h3 class="d">POS и оборудование</h3><span class="i">04</span></div>
+  <div class="row" data-img="/works/octobank-set-top.webp"><h3 class="d">Сувениры</h3><span class="i">05</span></div>
+  <div class="row" data-img="/works/dilbar-tags.webp"><h3 class="d">Типография</h3><span class="i">06</span></div>
+  <div class="row" data-img="/works/samsung-plaid.webp"><h3 class="d">Текстиль</h3><span class="i">07</span></div>
+  <div class="row" data-img="/works/heraldry-star.webp"><h3 class="d">Геральдика</h3><span class="i">08</span></div>
+  <div class="row" data-img="/works/infinity-rooftop.webp"><h3 class="d">Нестандарт</h3><span class="i">09</span></div>
+</div></section>
+<div id="float"><img alt=""></div>
+
+<section id="case"><div class="stage">
+  <video id="cv" src="/video/infinity-story.mp4" poster="/works/infinity-result.webp" muted loop playsinline preload="none"></video>
+  <div class="over"><div class="eyebrow">Флагманский проект</div><h2 class="d">Infinity</h2></div>
+  <div class="facts" id="facts"><div><b class="d">3,5 м+</b><span>высота букв</span></div><div><b class="d">200 т</b><span>самоходный кран</span></div><div><b class="d">108 м</b><span>высота стрелы</span></div></div>
+</div></section>
+
+<section id="cta"><div class="wrap">
+  <div class="eyebrow">Следующий — ваш</div>
+  <h2 class="d">Зажжём<br><span class="red">ваш бренд</span></h2>
+  <a class="btn mag" href="#">Рассчитать стоимость →</a>
+</div></section>
+<footer><div class="wrap"><span>© Reklama Centr · Ташкент</span><span>+998 90 177 66 99</span><span>WBB · Строим бренды</span></div></footer>
+
+<script>
+(() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
+  const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+
+  // ---------- Интро: счётчик 0→100 и шторка ----------
+  const pct = document.getElementById('pct'), intro = document.getElementById('intro');
+  let p = 0; const t0 = performance.now();
+  const tick = (t) => { p = Math.min(100, Math.round(((t - t0) / 1100) ** 0.7 * 100)); pct.textContent = String(p).padStart(2, '0');
+    if (p < 100) requestAnimationFrame(tick); else { intro.classList.add('out'); setTimeout(() => document.body.classList.add('ready'), 250); setTimeout(() => intro.remove(), 1300); } };
+  requestAnimationFrame(tick);
+
+  // ---------- Разбивка заголовков на буквы ----------
+  document.querySelectorAll('[data-split]').forEach((el, k) => {
+    el.innerHTML = [...el.textContent].map((c, i) => `<span class="ch" style="transition-delay:${(k * 0.12 + i * 0.045).toFixed(3)}s">${c}</span>`).join('');
+  });
+  document.querySelectorAll('[data-words]').forEach((el) => {
+    const html = el.innerHTML.replace(/<em class="hot">(.*?)<\/em>/g, (m, s) => s.split(' ').map((w) => `<span class="w hot">${w}</span>`).join(' '));
+    el.innerHTML = html.split(/(<span[^>]*>.*?<\/span>|\s+)/).map((w) => (!w.trim() || w.startsWith('<span')) ? w : `<span class="w">${w}</span>`).join('');
+  });
+
+  // ---------- WebGL: «жидкий металл» с красными прожилками, линза вокруг курсора ----------
+  const cv = document.getElementById('gl'), gl = cv.getContext('webgl', { antialias: false, powerPreference: 'high-performance' });
+  let mx = innerWidth * .62, my = innerHeight * .4, tmx = mx, tmy = my, heroOn = true;
+  if (gl) {
+    const vs = 'attribute vec2 p;void main(){gl_Position=vec4(p,0.,1.);}';
+    const fs = `precision highp float;uniform vec2 r;uniform float t;uniform vec2 m;
+      float h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
+      float n(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(h(i),h(i+vec2(1,0)),f.x),mix(h(i+vec2(0,1)),h(i+1.),f.x),f.y);}
+      float fbm(vec2 p){float v=0.,a=.5;for(int i=0;i<5;i++){v+=a*n(p);p=p*2.03+vec2(1.7,9.2);a*=.5;}return v;}
+      void main(){vec2 uv=(gl_FragCoord.xy-.5*r)/r.y;vec2 mm=(m-.5*r)/r.y;float d=length(uv-mm);
+        uv+=(uv-mm)*.35*exp(-d*3.5);
+        vec2 q=vec2(fbm(uv*1.4+t*.045),fbm(uv*1.4+vec2(5.2,1.3)-t*.035));
+        vec2 w=vec2(fbm(uv*1.4+3.6*q+vec2(1.7,9.2)+t*.06),fbm(uv*1.4+3.6*q+vec2(8.3,2.8)));
+        float f=fbm(uv*1.4+3.8*w);
+        float band=pow(.5+.5*sin(f*22.+t*.7),7.);
+        vec3 base=mix(vec3(.018,.018,.024),vec3(.2,.2,.23),smoothstep(.2,.9,f));
+        vec3 chrome=vec3(.88,.9,1.)*pow(f,3.2)*1.15;
+        vec3 red=vec3(1.,.07,.17)*band*smoothstep(.3,.8,w.y);
+        vec3 col=base+chrome*.55+red*1.4+vec3(1.,.18,.28)*.28*exp(-d*3.2);
+        col*=smoothstep(1.7,.25,length(uv*vec2(.75,1.)));
+        gl_FragColor=vec4(pow(col,vec3(.92)),1.);}`;
+    const sh = (type, src) => { const s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s); return s; };
+    const pr = gl.createProgram(); gl.attachShader(pr, sh(gl.VERTEX_SHADER, vs)); gl.attachShader(pr, sh(gl.FRAGMENT_SHADER, fs)); gl.linkProgram(pr); gl.useProgram(pr);
+    gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer()); gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1,3,-1,-1,3]), gl.STATIC_DRAW);
+    const loc = gl.getAttribLocation(pr, 'p'); gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+    const uR = gl.getUniformLocation(pr, 'r'), uT = gl.getUniformLocation(pr, 't'), uM = gl.getUniformLocation(pr, 'm');
+    const scale = innerWidth < 800 ? .5 : .6; // рисуем в меньшем разрешении — плавно даже на ноутбуках
+    const size = () => { cv.width = Math.round(cv.clientWidth * scale); cv.height = Math.round(cv.clientHeight * scale); gl.viewport(0, 0, cv.width, cv.height); };
+    size(); addEventListener('resize', size);
+    new IntersectionObserver(([e]) => { heroOn = e.isIntersecting; }).observe(cv);
+    const start = performance.now();
+    const frame = (now) => {
+      requestAnimationFrame(frame);
+      if (!heroOn || document.hidden) return;
+      if (!fine) { const s = now / 1000; tmx = innerWidth * (.5 + .3 * Math.sin(s * .4)); tmy = innerHeight * (.45 + .2 * Math.cos(s * .5)); }
+      mx += (tmx - mx) * .06; my += (tmy - my) * .06;
+      gl.uniform2f(uR, cv.width, cv.height); gl.uniform1f(uT, reduce ? 0 : (now - start) / 1000); gl.uniform2f(uM, mx * scale, (cv.clientHeight - my) * scale);
+      gl.drawArrays(gl.TRIANGLES, 0, 3);
+    };
+    requestAnimationFrame(frame);
+  }
+
+  // ---------- Курсор и магнитные кнопки ----------
+  const cur = document.getElementById('cur'); let cx = 0, cy = 0, kx = 0, ky = 0;
+  addEventListener('pointermove', (e) => { tmx = e.clientX; tmy = e.clientY; kx = e.clientX; ky = e.clientY;
+    cur.classList.toggle('big', !!e.target.closest('.card,.row'));
+    const b = e.target.closest('.mag');
+    document.querySelectorAll('.mag').forEach((m) => { if (m !== b) m.style.transform = ''; });
+    if (b) { const r = b.getBoundingClientRect(); b.style.transform = `translate(${(e.clientX - r.left - r.width / 2) * .3}px,${(e.clientY - r.top - r.height / 2) * .4}px)`; }
+  }, { passive: true });
+  const curLoop = () => { cx += (kx - cx) * .22; cy += (ky - cy) * .22; cur.style.transform = `translate(${cx}px,${cy}px)`; requestAnimationFrame(curLoop); };
+  if (fine) curLoop();
+
+  // ---------- 3D-буква из слоёв + LED-модули ----------
+  const L = document.getElementById('letter'), CH = 'R', DEPTH = 22;
+  let html = `<span class="ghost">${CH}</span>`;
+  for (let i = DEPTH; i > 0; i--) html += `<span class="side" style="transform:translateZ(${-i * 3}px)">${CH}</span>`;
+  html += `<span class="frame" style="transform:translateZ(0px)">${CH}</span><span class="face" style="transform:translateZ(2px)">${CH}</span>`;
+  L.innerHTML = html;
+  const face = L.querySelector('.face');
+
+  // Ровная сетка диодов внутри формы буквы: рисуем букву тем же шрифтом на скрытом canvas и оставляем
+  // только те узлы сетки, вокруг которых со всех сторон «металл» буквы (отступ от края — как у реальных модулей).
+  let leds = [];
+  const buildLeds = () => {
+    L.querySelectorAll('.led').forEach((n) => n.remove());
+    const W = L.clientWidth, H = L.clientHeight; if (!W || !H) return;
+    const fsz = parseFloat(getComputedStyle(L).fontSize);
+    const cv0 = document.createElement('canvas'); cv0.width = Math.ceil(W); cv0.height = Math.ceil(H);
+    const g0 = cv0.getContext('2d'); g0.font = '900 ' + fsz + 'px "Sofia Sans Extra Condensed"'; g0.textBaseline = 'alphabetic';
+    const mt = g0.measureText(CH); const asc = mt.fontBoundingBoxAscent || fsz * .8, desc = mt.fontBoundingBoxDescent || fsz * .2;
+    g0.fillText(CH, 0, (H - (asc + desc)) / 2 + asc);
+    const px0 = g0.getImageData(0, 0, cv0.width, cv0.height).data;
+    const inside = (x, y) => { const xi = Math.round(x), yi = Math.round(y); return xi >= 0 && yi >= 0 && xi < cv0.width && yi < cv0.height && px0[(yi * cv0.width + xi) * 4 + 3] > 140; };
+    const step = fsz * .082, mg = step * .5, pts = [];
+    for (let y = step * .5; y < H; y += step) for (let x = step * .5; x < W; x += step) {
+      let ok = inside(x, y);
+      for (let a = 0; ok && a < 12; a++) ok = inside(x + Math.cos(a * Math.PI / 6) * mg, y + Math.sin(a * Math.PI / 6) * mg);
+      if (ok) pts.push([x, y]);
+    }
+    const sz = Math.max(6, fsz * .022);
+    leds = pts.map(([x, y]) => { const d = document.createElement('i'); d.className = 'led'; d.style.cssText = 'left:' + (x - sz / 2).toFixed(1) + 'px;top:' + (y - sz / 2).toFixed(1) + 'px;width:' + sz.toFixed(1) + 'px;height:' + sz.toFixed(1) + 'px;transform:translateZ(-30px)'; L.appendChild(d); return d; });
+    if (typeof dirty !== 'undefined') dirty = true;
+  };
+  (document.fonts ? document.fonts.ready : Promise.resolve()).then(buildLeds);
+  let ledT = 0; addEventListener('resize', () => { clearTimeout(ledT); ledT = setTimeout(buildLeds, 200); });
+  const steps = [...document.querySelectorAll('.step')];
+
+  // ---------- Прокрутка: все сцены одним обработчиком ----------
+  const build = document.getElementById('build'), works = document.getElementById('works'), track = document.getElementById('track');
+  const cas = document.getElementById('case'), vid = document.getElementById('cv'), facts = document.getElementById('facts');
+  const words = [...document.querySelectorAll('#manifest .w')], wcount = document.getElementById('wcount');
+  const prog = (el) => { const r = el.getBoundingClientRect(); return clamp(-r.top / (r.height - innerHeight)); };
+  let lastY = scrollY, vel = 0;
+  const onScroll = () => {
+    vel += (scrollY - lastY) * .3; lastY = scrollY;
+    // манифест: слова зажигаются по мере прокрутки
+    const mr = document.getElementById('manifest').getBoundingClientRect();
+    const mp = clamp((innerHeight * .85 - mr.top) / (mr.height * .75));
+    words.forEach((w, i) => w.classList.toggle('on', i / words.length < mp));
+    // буква: вращается, собирается, загорается
+    const b = prog(build);
+    L.style.transform = `rotateY(${-38 + b * 58}deg) rotateX(${10 - b * 10}deg)`;
+    face.style.opacity = clamp((b - .55) * 4);
+    L.querySelector('.frame').style.opacity = clamp(b * 3);
+    leds.forEach((d, i) => d.classList.toggle('on', b > .3 + (i / Math.max(1, leds.length)) * .3));
+    L.classList.toggle('lit', b > .75);
+    steps.forEach((s, i) => s.classList.toggle('on', b >= +s.dataset.at && (i === steps.length - 1 || b < +steps[i + 1].dataset.at)));
+    // галерея: горизонтальный проезд
+    const w = prog(works), max = track.scrollWidth - innerWidth + 80;
+    track.style.transform = `translateX(${-w * max}px)`;
+    wcount.textContent = String(Math.min(8, 1 + Math.floor(w * 8))).padStart(2, '0');
+    // кейс: видео раскрывается кругом
+    const c = prog(cas);
+    vid.style.clipPath = `circle(${12 + c * 110}% at 50% 50%)`;
+    facts.classList.toggle('on', c > .55);
+  };
+  addEventListener('scroll', onScroll, { passive: true }); onScroll();
+  // наклон карточек от скорости прокрутки
+  const skew = () => { vel *= .9; document.querySelectorAll('.card').forEach((c) => c.style.transform = `skewX(${clamp(vel * -.08, -8, 8)}deg)`); requestAnimationFrame(skew); };
+  if (!reduce) skew();
+  new IntersectionObserver(([e]) => { if (e.isIntersecting) vid.play().catch(() => {}); else vid.pause(); }).observe(cas);
+
+  // ---------- Направления: фото «плывёт» за курсором ----------
+  const fl = document.getElementById('float'), fi = fl.querySelector('img'); let fx = 0, fy = 0, ftx = 0, fty = 0;
+  document.querySelectorAll('.row').forEach((r) => {
+    r.addEventListener('pointerenter', () => { fi.src = r.dataset.img; fl.classList.add('on'); });
+    r.addEventListener('pointerleave', () => fl.classList.remove('on'));
+  });
+  addEventListener('pointermove', (e) => { ftx = e.clientX; fty = e.clientY; }, { passive: true });
+  const fLoop = () => { fx += (ftx - fx) * .12; fy += (fty - fy) * .12; fl.style.left = fx + 'px'; fl.style.top = fy + 'px'; requestAnimationFrame(fLoop); };
+  if (fine) fLoop();
+})();
+</script>
+</body>
+</html>

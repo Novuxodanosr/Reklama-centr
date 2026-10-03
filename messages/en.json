@@ -1,0 +1,984 @@
+{
+  "meta": {
+    "title": "Reklama Centr — full-cycle advertising production in Tashkent",
+    "description": "Full-cycle advertising production in Tashkent: print, promo products, textiles, POS and retail fixtures, exhibition stands, heraldry, outdoor advertising, interior branding. Warranty up to 5 years."
+  },
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "works": "Works",
+    "about": "About",
+    "contacts": "Contacts",
+    "cta": "Get a quote",
+    "menu": "Menu",
+    "close": "Close",
+    "skip": "Skip to content",
+    "call": "Call"
+  },
+  "hero": {
+    "eyebrow": "Advertising production company · Tashkent",
+    "title": "We make advertising. From a business card to a rooftop sign.",
+    "subtitle": "In-house production in Tashkent and direct sourcing from China, Russia, Europe, the USA and Dubai. Fast quotes, warranty up to 5 years.",
+    "primary": "Get a quote",
+    "secondary": "See our work",
+    "scroll": "Scroll",
+    "trust": [
+      "Warranty up to 5 years",
+      "Fast quotes",
+      "In-house production",
+      "Installation and service",
+      "Rush orders"
+    ],
+    "rotate": {
+      "before": "We make",
+      "after": "",
+      "generalCaption": "Own production in Tashkent",
+      "slidesLabel": "Slides",
+      "slide": "Slide {n}: {name}",
+      "words": {
+        "general": "advertising",
+        "outdoor": "signs",
+        "interior": "décor",
+        "exhibition": "stands",
+        "promo": "promo gifts",
+        "print": "print",
+        "textile": "apparel",
+        "pos": "POS displays",
+        "heraldry": "awards",
+        "custom": "art objects"
+      }
+    },
+    "tagline": "From a business card to a rooftop sign."
+  },
+  "stats": {
+    "line": {
+      "value": "In-house line",
+      "label": "of production — no middlemen, no extra markups"
+    },
+    "warranty": {
+      "value": "up to 5 yrs",
+      "label": "warranty on products, installation and service"
+    },
+    "sample": {
+      "value": "Sample",
+      "label": "before the run — no surprises in the finished batch"
+    },
+    "scale": {
+      "value": "Any scale",
+      "label": "from business cards and badges to exhibition stands and rooftop signs"
+    }
+  },
+  "services": {
+    "eyebrow": "What we make",
+    "title": "Everything your brand needs",
+    "intro": "One contractor instead of ten. Our own equipment lines, direct import of products and consumables, partners in Uzbekistan, China, Russia, Europe, the USA and Dubai. No middlemen — shorter lead times and lower prices.",
+    "all": "All services",
+    "more": "Learn more",
+    "productsTitle": "What we produce",
+    "items": {
+      "print": {
+        "title": "Print shop",
+        "tagline": "Paper · tradition · craft",
+        "short": "Full-cycle printing: from business cards to catalogues and packaging. Express printing available.",
+        "body": [
+          "For over ten years our full-cycle print shop has produced high-quality printed materials at affordable prices: leaflets and business cards (including custom die-cut shapes), flyers and brochures, catalogues, posters and banners of any complexity and for any budget.",
+          "Corporate print — we outfit your company to the highest standard: brand identity, letterheads, folders, diaries. Advertising print — vivid imagery for brands. Packaging print — our technical designers develop the dieline and offer the best option for price and quality.",
+          "No time to wait? Express printing: top quality in the shortest possible time."
+        ],
+        "products": [
+          "Brochures",
+          "Catalogues",
+          "Magazines",
+          "Letterheads",
+          "Booklets and leaflets",
+          "Folders",
+          "Menus",
+          "Business cards",
+          "Notepads and cubes",
+          "Calendars",
+          "Diaries",
+          "Books",
+          "Stickers",
+          "Badges",
+          "Tags",
+          "Packaging"
+        ]
+      },
+      "promo": {
+        "title": "Promotional products",
+        "tagline": "The personality and style of your brand",
+        "short": "Branded merchandise in wholesale quantities: pens, mugs, USB drives, umbrellas, gift sets. Direct import.",
+        "body": [
+          "We produce and sell promotional and office products in wholesale quantities. Pens, notebooks, mugs, USB drives, umbrellas, key rings and much more with your company logo — made from quality materials built to last.",
+          "Our wide range of in-house equipment lets us apply your logo to almost any surface: UV printing, laser engraving, heat transfer, gold foil stamping.",
+          "Direct sourcing: you're not limited to the local market. If the product you need isn't available in Uzbekistan, we'll bring it from China, Russia, Europe, the USA or Dubai — or suggest unique alternatives."
+        ],
+        "products": [
+          "Pens",
+          "Notebooks",
+          "Mugs",
+          "USB drives",
+          "Power banks",
+          "Branded thermoses",
+          "Umbrellas",
+          "Key rings",
+          "Calendars",
+          "Desk flags",
+          "Stickers",
+          "Badges and lanyards",
+          "Pins and medals",
+          "Gift sets"
+        ]
+      },
+      "textile": {
+        "title": "Textiles",
+        "tagline": "Your brand on every garment",
+        "short": "T-shirts, hoodies, workwear, gowns, bags. DTF printing, embroidery, screen printing.",
+        "body": [
+          "Our own textile workshop sews and brands corporate and promo apparel — T-shirts, polos, hoodies, jackets, vests, workwear — as well as gowns, aprons, towels, blankets and bags.",
+          "Any decoration method: DTF printing gives vivid full-colour artwork that withstands washing; we also offer screen printing, embroidery and heat transfer. Runs from a small batch to outfitting an entire chain's staff."
+        ],
+        "products": [
+          "T-shirts and polos",
+          "Hoodies and sweatshirts",
+          "Jackets and vests",
+          "Workwear",
+          "Gowns and aprons",
+          "Towels and blankets",
+          "Bags and totes",
+          "Caps",
+          "DTF printing",
+          "Embroidery",
+          "Screen printing"
+        ]
+      },
+      "pos": {
+        "title": "POS and retail fixtures",
+        "tagline": "From shelf talker to showcase",
+        "short": "Stands, displays, dispensers, counters, showcases, shelving and reception desks with your brand.",
+        "body": [
+          "We design and manufacture everything that works at the point of sale: from paper and plastic POS materials to retail furniture and structures. One manufacturer, one quality standard, one look across every store in the chain.",
+          "POS materials: floor and counter stands, displays, dispensers, shelf talkers, wobblers, price tag holders, wire and mesh products, sheet plastic items with full-colour printing.",
+          "Retail fixtures: counters, showcases, shelving, island units, reception desks, trade stands. Metal, laminated board, MDF, acrylic, glass; powder coating and lighting in-house. We draw it up, make a sample, produce the batch and install it on site. Warranty from 1 to 5 years."
+        ],
+        "products": [
+          "Floor and counter stands",
+          "Displays",
+          "Dispensers",
+          "Shelf talkers and wobblers",
+          "Price tag holders",
+          "Baskets, shelves, hooks",
+          "Counters and showcases",
+          "Shelving",
+          "Island units",
+          "Reception desks",
+          "Steel structures",
+          "Fixture lighting"
+        ]
+      },
+      "exhibition": {
+        "title": "Exhibition stands",
+        "tagline": "Turnkey stands for trade shows and forums",
+        "short": "Design, fabrication, installation and dismantling of exhibition stands of any complexity.",
+        "body": [
+          "We design and build exhibition stands turnkey: from sketch and 3D visualisation to on-site installation and dismantling after the event. Mobile, modular and custom-built structures to fit the brief and the budget.",
+          "Everything is made in-house: steel and timber frames, panels, lighting, full-colour print, branding, furniture and multimedia. The stand arrives at the show ready, so your team only takes care of the visitors.",
+          "We work with trade shows, forums and presentations in Tashkent and the regions, and we always make the opening date."
+        ],
+        "products": [
+          "Custom-built stands",
+          "Mobile and modular stands",
+          "Counters and reception desks",
+          "Podiums and hanging structures",
+          "Light panels",
+          "Venue branding",
+          "Furniture and multimedia",
+          "Installation and dismantling"
+        ]
+      },
+      "heraldry": {
+        "title": "Heraldry",
+        "tagline": "Pins, medals and awards",
+        "short": "Medals, orders, lapel pins, coins — including gold and silver.",
+        "body": [
+          "A dedicated division with a full production cycle for award and souvenir items of any complexity — from pins to state decorations in precious metals (gold, silver).",
+          "We'll develop an exclusive turnkey design or refine your existing sketch of an order, medal, lapel badge or corporate award. We also make souvenir coins, key rings and statuettes.",
+          "Ordered for honouring distinguished citizens and long-serving employees, company anniversary gifts, sports competition awards, celebrations and events, and souvenir retail."
+        ],
+        "products": [
+          "Ribbon medals",
+          "Table medals",
+          "Orders",
+          "Lapel badges",
+          "Miniature medals",
+          "Coins",
+          "Pins",
+          "Key rings",
+          "Statuettes",
+          "Gold and silver items"
+        ]
+      },
+      "outdoor": {
+        "title": "Outdoor advertising",
+        "tagline": "3 to 5 year warranty",
+        "short": "Channel letters, lightboxes, rooftop installations, signs, LED panel installation.",
+        "body": [
+          "A modern production facility equipped with every type of machine used for outdoor advertising. Full cycle: engineering, design, manufacturing, installation and maintenance.",
+          "We make channel and illuminated letters, lightboxes, rooftop installations, signs, pylons and totems, and install LED panels and media screens. Warranty up to 5 years."
+        ],
+        "products": [
+          "Channel letters",
+          "Lightboxes",
+          "Rooftop installations",
+          "Signs",
+          "Pylons and totems",
+          "LED panels and media screens",
+          "UV printing roll / flatbed",
+          "Vehicle wraps",
+          "Installation and maintenance"
+        ]
+      },
+      "interior": {
+        "title": "Interior branding",
+        "tagline": "Sales offices and retail points",
+        "short": "Turnkey fit-out of sales offices, retail points and showrooms: signs, wayfinding, wall branding.",
+        "body": [
+          "We fit out sales offices, retail points, showrooms and corporate spaces turnkey: from design concept to installation.",
+          "Interior signs and logos, wall and window branding, lighting elements, wayfinding, reception areas, photo zones and interior printing — all made in-house. For chains — one standard of fit-out in every branch."
+        ],
+        "products": [
+          "Interior signs",
+          "Wall and window branding",
+          "Interior wayfinding",
+          "Lighting elements",
+          "Reception areas",
+          "Photo zones",
+          "Interior printing",
+          "Chain roll-outs"
+        ]
+      },
+      "custom": {
+        "title": "Custom projects",
+        "tagline": "Engineering and development",
+        "short": "Products built to your idea: from sketch and drawings to sample, batch and installation.",
+        "body": [
+          "If the product you need isn't in any catalogue, we'll engineer and make it. Our designers and technologists draw it up, select materials and technology, and produce a sample for approval.",
+          "Art objects, installations, exhibition structures, custom packaging, executive gifts — of any complexity, with installation and warranty."
+        ],
+        "products": [
+          "Engineering and drawings",
+          "Sample production",
+          "Art objects and installations",
+          "Exhibition structures",
+          "Custom packaging",
+          "Executive gifts",
+          "Small-batch production"
+        ]
+      }
+    },
+    "photoSoon": "Photo coming soon",
+    "quote": "Get a quote"
+  },
+  "advantages": {
+    "eyebrow": "Working with us means",
+    "title": "Product quality, on-time delivery, reliable partnership",
+    "items": [
+      {
+        "title": "In-house production and direct sourcing",
+        "text": "Products and materials come straight from our partners in Uzbekistan, China, Russia, Europe, the USA and Dubai — no middlemen. You're not limited to the local market."
+      },
+      {
+        "title": "3 to 5 year warranty",
+        "text": "We guarantee a refund or replacement for defects and offer an unprecedented warranty on our products."
+      },
+      {
+        "title": "Resident card",
+        "text": "For regular clients: orders with no prepayment and no queue, flexible discounts and bonuses."
+      },
+      {
+        "title": "Urgent orders",
+        "text": "Our managers prepare a proposal in the shortest time, and step in on urgent orders."
+      },
+      {
+        "title": "Custom solutions",
+        "text": "Projects of any complexity and import of any product on request."
+      },
+      {
+        "title": "Over 10 years of experience",
+        "text": "Consistently satisfied clients — proof of reliability and a responsible approach."
+      }
+    ]
+  },
+  "process": {
+    "eyebrow": "How we work",
+    "title": "Your order in 7 steps!",
+    "steps": [
+      {
+        "title": "Quote",
+        "text": "A specialist will quickly price your project and answer all your questions."
+      },
+      {
+        "title": "Design",
+        "text": "A designer with 30 years of experience develops the artwork to your requirements."
+      },
+      {
+        "title": "Engineering",
+        "text": "Our technologist selects materials, fixings and lighting for your design and sets it all down in a spec for the workshop."
+      },
+      {
+        "title": "Contract and prepayment",
+        "text": "The prepayment depends on the project: its scope, complexity and deadline."
+      },
+      {
+        "title": "3D approval",
+        "text": "See the finished item not as a flat mock-up but as a three-dimensional render."
+      },
+      {
+        "title": "Production",
+        "text": "We keep you informed of the stage your order is at."
+      },
+      {
+        "title": "Delivery & installation",
+        "text": "We deliver and install it ourselves, take on the transport risk and make it in time for your opening or event."
+      }
+    ],
+    "approved": "Approved"
+  },
+  "works": {
+    "eyebrow": "Portfolio",
+    "title": "Our work",
+    "intro": "A selection of completed projects. The full catalogue with photos and lead times is available on request.",
+    "all": "All works",
+    "filterAll": "All",
+    "items": {
+      "octobank-pavilion": {
+        "title": "24/7 ATM pavilion",
+        "client": "Octobank"
+      },
+      "golden-house": {
+        "title": "Golden House interior branding",
+        "client": "Golden House"
+      },
+      "octobank-expo": {
+        "title": "Octobank exhibition stand",
+        "client": "Octobank"
+      },
+      "tmz-pylon": {
+        "title": "Illuminated pylon with ornament",
+        "client": "Tashkent Metallurgical Plant"
+      },
+      "dilbar-tags": {
+        "title": "Gold-foil hang tags",
+        "client": "Dilbar Collection"
+      },
+      "oz-makon-night": {
+        "title": "Illuminated entrance stele O‘Z MAKON",
+        "client": "O‘Z MAKON"
+      },
+      "ambulance-103": {
+        "title": "Fleet branding for 103 ambulances",
+        "client": "Volkswagen plant in Uzbekistan"
+      },
+      "eriell-wayfinding": {
+        "title": "Floor wayfinding: signs and glass graphics",
+        "client": "ERIELL"
+      },
+      "octobank-facade": {
+        "title": "Façade lightbox sign",
+        "client": "Octobank"
+      },
+      "rooftop-letters": {
+        "title": "Rooftop letters installation",
+        "client": "Business centre"
+      },
+      "paynet-letters": {
+        "title": "PAYNET illuminated letters",
+        "client": "PAYNET"
+      },
+      "gift-set": {
+        "title": "Premium corporate gift set",
+        "client": "Corporate gift"
+      },
+      "savdo-center": {
+        "title": "Outdoor signage for a sales office",
+        "client": "Tashkent Metallurgical Plant"
+      },
+      "crystal-award": {
+        "title": "Engraved crystal award",
+        "client": "Corporate award"
+      },
+      "ipotekabank-counter": {
+        "title": "Exhibition promo counter",
+        "client": "Ipoteka Bank"
+      },
+      "mexxi-stand": {
+        "title": "Mexxi Fruits exhibition stand",
+        "client": "Mexxi Fruits"
+      },
+      "tmz-reception": {
+        "title": "Reception and info zone",
+        "client": "Tashkent Metallurgical Plant"
+      },
+      "clinic-nav": {
+        "title": "Wayfinding for a medical center",
+        "client": "Endocrinology center"
+      },
+      "xalqbank-cap": {
+        "title": "Embroidered caps",
+        "client": "Xalq Banki"
+      },
+      "zarqand-backpack": {
+        "title": "Branded backpacks for Zarqand",
+        "client": "Zarqand"
+      },
+      "gold-cards": {
+        "title": "Gold-foil business cards",
+        "client": "Premium print"
+      },
+      "navruz-coasters": {
+        "title": "UV print on wood for Navruz",
+        "client": "Golden House"
+      },
+      "bilim-ziyo-mug": {
+        "title": "Branded mugs",
+        "client": "Bilim Ziyo"
+      },
+      "tmz-clock": {
+        "title": "Branded wall clock",
+        "client": "Tashkent Metallurgical Plant"
+      },
+      "octobank-thermos": {
+        "title": "Branded thermoses for Octobank",
+        "client": "Octobank"
+      },
+      "dr-reddys": {
+        "title": "Leather accessories for Dr. Reddy’s",
+        "client": "Dr. Reddy’s"
+      },
+      "josera-display": {
+        "title": "Josera retail display",
+        "client": "Josera"
+      },
+      "office-map-wall": {
+        "title": "Lobby: illuminated world map and 75″ UHD display",
+        "client": "ERIELL"
+      },
+      "event-badges": {
+        "title": "Festival badges",
+        "client": "One Power Fest"
+      },
+      "vero-catalog": {
+        "title": "Catalog and folder for Vero",
+        "client": "Vero"
+      },
+      "followme-van": {
+        "title": "Airport Follow Me vehicle",
+        "client": "Airport"
+      },
+      "golden-house-facade": {
+        "title": "Golden House façade sign",
+        "client": "Golden House"
+      },
+      "zarqand-tote": {
+        "title": "Welcome pack",
+        "client": "Zarqand"
+      },
+      "gov-stand": {
+        "title": "Exhibition stand with living greenery",
+        "client": "Government exposition"
+      },
+      "uv-printer": {
+        "title": "UV printing of plates on a flatbed printer",
+        "client": "In-house production"
+      },
+      "hospital-lightbox": {
+        "title": "Outdoor lightbox sign",
+        "client": "Hospital"
+      },
+      "alfabank-set": {
+        "title": "Branded gift set",
+        "client": "Alfa-Bank"
+      },
+      "newyear-set": {
+        "title": "New Year corporate gift set",
+        "client": "Corporate gift"
+      },
+      "leading-set": {
+        "title": "Business set in brand colours",
+        "client": "Leading"
+      },
+      "gov-set": {
+        "title": "Executive gift set",
+        "client": "Government body"
+      },
+      "samsung-plaid": {
+        "title": "Branded blankets",
+        "client": "Samsung"
+      },
+      "heraldry-star": {
+        "title": "Award badge on a ribbon bar",
+        "client": "Awards"
+      },
+      "heraldry-medal": {
+        "title": "Medal in a presentation case",
+        "client": "Corporate award"
+      },
+      "heraldry-pin": {
+        "title": "Lapel pin in a velvet box",
+        "client": "Awards"
+      },
+      "akfa-showroom": {
+        "title": "Turnkey showroom branding",
+        "client": "AKFA"
+      },
+      "tmz-hall": {
+        "title": "Plant lobby: illuminated map and panels",
+        "client": "Tashkent Metallurgical Plant"
+      },
+      "infinity-letters": {
+        "title": "Dynamic illuminated rooftop letters",
+        "client": "INFINITY residence · Golden House"
+      },
+      "infinity-stele": {
+        "title": "Roadside illuminated stele",
+        "client": "INFINITY residence · Golden House"
+      },
+      "tmz-navigation": {
+        "title": "Illuminated site wayfinding: stele and site plan",
+        "client": "Tashkent Metallurgical Plant"
+      },
+      "octobank-giftset": {
+        "title": "Gift sets in a case with a fitted insert",
+        "client": "Octobank"
+      },
+      "lavazza-point": {
+        "title": "Turnkey coffee points for retail chains",
+        "client": "Lavazza"
+      },
+      "lavazza-island": {
+        "title": "Promo island with a giant cup",
+        "client": "Lavazza"
+      },
+      "powerbank-uv": {
+        "title": "UV printing on power banks, 400+ units",
+        "client": "Tashkent International Film Festival"
+      },
+      "tmz-meeting": {
+        "title": "Meeting room: logo, wall art and flag",
+        "client": "Tashkent Metallurgical Plant"
+      },
+      "tmz-facade": {
+        "title": "Illuminated logos on plant buildings",
+        "client": "Tashkent Metallurgical Plant"
+      },
+      "italica-sign": {
+        "title": "Shopfront in a shopping mall",
+        "client": "ITALICA"
+      },
+      "tmz-place-card": {
+        "title": "Stainless-steel desk name plates",
+        "client": "Tashkent Metallurgical Plant"
+      },
+      "octobank-lightbox": {
+        "title": "Illuminated lightbox letters",
+        "client": "Octobank"
+      },
+      "ipoteka-pins": {
+        "title": "Branded enamel pins",
+        "client": "Ipoteka Bank"
+      },
+      "ipoteka-scarves": {
+        "title": "Corporate scarves with a logo clip",
+        "client": "Ipoteka Bank"
+      },
+      "ipoteka-badges": {
+        "title": "Staff badges and lanyards",
+        "client": "Ipoteka Bank"
+      },
+      "oqtepa-badges": {
+        "title": "Badges for chain staff",
+        "client": "Oqtepa Lavash"
+      },
+      "ipoteka-rollup": {
+        "title": "Roll-up banners for branches",
+        "client": "Ipoteka Bank"
+      },
+      "ipoteka-chargers": {
+        "title": "Branded wireless chargers",
+        "client": "Ipoteka Bank"
+      },
+      "ipoteka-set": {
+        "title": "Branded kit: bag, calendar, accessories",
+        "client": "Ipoteka Bank"
+      },
+      "octobank-ikat": {
+        "title": "Tote bags with ikat pattern",
+        "client": "Octobank"
+      },
+      "paynet-merch": {
+        "title": "Branded gadgets and accessories",
+        "client": "Paynet"
+      },
+      "best-partner": {
+        "title": "“Best Partner” award",
+        "client": "Corporate award"
+      },
+      "tmz-pin": {
+        "title": "Pin in a gift box",
+        "client": "Tashkent Metallurgical Plant"
+      },
+      "uzbek-gift": {
+        "title": "Gift set in national style",
+        "client": "Corporate gift"
+      },
+      "turizm-letters": {
+        "title": "“TURIZM” 3D letters",
+        "client": "Tourism"
+      },
+      "letters-case": {
+        "title": "3D elements in a carry case",
+        "client": "Custom order"
+      },
+      "gold-folders": {
+        "title": "Folders with gold foil stamping",
+        "client": "Corporate order"
+      }
+    },
+    "open": "View",
+    "lightbox": {
+      "close": "Close",
+      "prev": "Previous",
+      "next": "Next"
+    },
+    "filterIndustry": "Industry",
+    "empty": "No works match this combination of filters yet.",
+    "reset": "Reset filters",
+    "video": "video",
+    "photos": "photos"
+  },
+  "about": {
+    "eyebrow": "About",
+    "title": "A full-cycle production company",
+    "lead": "Reklama Centr is an advertising production company in Tashkent. We do one thing: make high-quality advertising products at the best possible price — from a business card to a rooftop sign.",
+    "body": [
+      "Our own equipment and specialists let us serve corporate clients of any scale. In-house equipment lines, direct import of products and consumables, and a wide circle of partners in Uzbekistan, China, Russia, Europe, the USA and Dubai mean we work without middlemen — clients get results faster and at better prices.",
+      "Our specialists are experienced professionals with a high level of education who will help create artwork, design and projects of any complexity. Our managers quickly prepare the best offer for your business.",
+      "We guarantee a refund or replacement for defects and offer an unprecedented 3–5 year warranty on our products. Regular clients enjoy flexible discounts, bonuses and a 'get it now, pay later' credit line."
+    ],
+    "valuesTitle": "Working with us means",
+    "values": [
+      {
+        "title": "Product quality",
+        "text": "We control every stage in our own facility and select raw materials and consumables ourselves."
+      },
+      {
+        "title": "On-time delivery",
+        "text": "No middlemen — from the quote to express printing and installation."
+      },
+      {
+        "title": "Reliable partnership",
+        "text": "Over 10 years on the market, a 3–5 year warranty, always on the client's side."
+      }
+    ]
+  },
+  "contacts": {
+    "eyebrow": "Contacts",
+    "title": "We'll price your project fast",
+    "lead": "Send us dimensions, quantities, a sketch or just a description — a specialist will price it and answer all your questions.",
+    "phone": "Phone",
+    "email": "Email",
+    "address": "Address",
+    "hours": "Mon–Sat, 9:00–19:00",
+    "messengers": "Messengers",
+    "managersTitle": "Our managers",
+    "managers": {
+      "javohir": {
+        "name": "Javohir Kamalovich",
+        "role": "Manager"
+      },
+      "raksana": {
+        "name": "Raksana Ramizovna",
+        "role": "Manager"
+      },
+      "shahina": {
+        "name": "Shahina Kadyrovna",
+        "role": "Design Manager"
+      },
+      "tatyana": {
+        "name": "Tatyana Vasilyevna",
+        "role": "General Manager"
+      }
+    },
+    "mapTitle": "Map: Reklama Centr, 71 Beshyog‘och St, Tashkent",
+    "route": "Directions",
+    "openYandex": "Route in Yandex Maps",
+    "openGoogle": "Google navigation",
+    "openTaxi": "Yandex Go taxi"
+  },
+  "form": {
+    "title": "Send a request",
+    "name": "Your name",
+    "phone": "Phone",
+    "service": "What do you need",
+    "servicePlaceholder": "Choose a service",
+    "message": "Project details",
+    "messagePlaceholder": "Quantity, dimensions, deadlines — anything you know",
+    "submit": "Send",
+    "sending": "Sending…",
+    "success": "Thank you! We've received your request and will reply within one business day.",
+    "error": "Couldn't send online. Please call us — we'll answer right away.",
+    "consent": "By clicking \"Send\" you agree to the processing of your personal data.",
+    "steps": {
+      "what": "What you need",
+      "details": "Details",
+      "contact": "Contact"
+    },
+    "step": "Step {n} of {total}",
+    "next": "Next",
+    "back": "Back",
+    "attach": "Attach a sketch or file",
+    "attachHint": "PDF, JPG, PNG, AI, CDR — up to 10 MB",
+    "fileTooBig": "File is larger than 10 MB",
+    "chooseService": "Choose a direction",
+    "successTitle": "Request sent",
+    "another": "Send another",
+    "fileType": "This format is not supported. Please use PDF, JPG, PNG, AI, CDR, EPS or SVG",
+    "messageRequired": "Describe the task in a few words"
+  },
+  "cta": {
+    "title": "Send us the task — we'll come back with a price and a date",
+    "text": "Dimensions, quantity, a sketch or just a description. Free advice on materials and technologies.",
+    "button": "Get a quote",
+    "eyebrow": "Fast quotes"
+  },
+  "footer": {
+    "tagline": "Full-cycle advertising production: print, promo products, textiles, POS and retail fixtures, exhibition stands, heraldry, outdoor advertising, interiors. Tashkent.",
+    "nav": "Sections",
+    "services": "Services",
+    "contacts": "Contacts",
+    "rights": "All rights reserved.",
+    "big": "Let’s talk about your project",
+    "top": "Back to top"
+  },
+  "lang": {
+    "ru": "Русский",
+    "en": "English",
+    "uz": "O‘zbekcha",
+    "label": "Language"
+  },
+  "production": {
+    "eyebrow": "In-house production",
+    "title": "We make everything in-house",
+    "text": "One partner for the whole order — one set of terms, one standard of quality and one party responsible for the result.",
+    "equipment": [
+      "UV printing: roll and flatbed",
+      "Laser cutting and engraving",
+      "CNC routing of plastic, metal and wood",
+      "DTF printing and heat transfer on textiles",
+      "Foil stamping",
+      "Digital and offset printing",
+      "Metal welding and powder coating",
+      "Vinyl plotter cutting and wrapping"
+    ],
+    "facts": [
+      {
+        "title": "No middlemen",
+        "text": "Materials and components come straight from partners in Uzbekistan, China, Russia, Europe, the USA and Dubai."
+      },
+      {
+        "title": "In-house engineers",
+        "text": "We draw up plans and specs and approve a 3D visual before production starts."
+      },
+      {
+        "title": "Installation and service",
+        "text": "Installation crews under our supervision. We maintain installed structures for the whole warranty period."
+      },
+      {
+        "title": "Rush orders",
+        "text": "Advertising is needed by a date. We dedicate a separate shift to urgent jobs."
+      }
+    ],
+    "techTitle": "Technologies and equipment",
+    "service": {
+      "title": "Service",
+      "items": [
+        "Design and artwork",
+        "Engineering and drawings",
+        "3D visualisation",
+        "Prototypes",
+        "Delivery",
+        "Installation and dismantling",
+        "Maintenance",
+        "Rush orders"
+      ]
+    },
+    "catalog": "What we make",
+    "more": "Full list",
+    "highlights": [
+      {
+        "title": "Unlimited production",
+        "text": "Any runs, sizes and materials"
+      },
+      {
+        "title": "In-house machinery",
+        "text": "UV printing, laser, CNC milling, metal welding and coating"
+      },
+      {
+        "title": "Sample before the run",
+        "text": "You approve the item before the batch starts"
+      }
+    ]
+  },
+  "clients": {
+    "eyebrow": "Brands",
+    "title": "Clients",
+    "note": "Brands and organisations we have completed orders for"
+  },
+  "notFound": {
+    "eyebrow": "Error 404",
+    "title": "This page doesn’t exist",
+    "text": "The link may be outdated or the address mistyped. Go to the home page or see what we make.",
+    "home": "Go to home page",
+    "services": "See our services"
+  },
+  "faq": {
+    "eyebrow": "Q&A",
+    "title": "Frequently asked questions",
+    "intro": "Didn't find the answer? Write to us — a manager will advise on materials, lead times and pricing.",
+    "ask": "Ask a question",
+    "items": [
+      {
+        "q": "How fast will you quote?",
+        "a": "It depends on the job. Standard items are priced fast — as soon as we have the dimensions, quantity or a description. Complex objects — rooftop installations, exhibition stands, retail fixtures — are priced after a sketch or a site survey, and we tell you the exact timing when you get in touch."
+      },
+      {
+        "q": "Do I need a finished layout?",
+        "a": "No. Our designer will develop the layout to your brief, a technologist will prepare the technical specification, and before production we show the product as a 3D visualisation. If you already have a layout, send it in any format: PDF, AI, CDR, PNG."
+      },
+      {
+        "q": "What warranty do you give?",
+        "a": "The warranty depends on the product: from 1 to 5 years. We state the exact term for your order in the quote and fix it in the contract. If there is a defect we refund or replace the item, and we service installed structures for the whole warranty period."
+      },
+      {
+        "q": "How does payment work?",
+        "a": "We work under a contract. The prepayment depends on the project — its scope, complexity and deadline — and we state it in the quote. Regular corporate clients get a resident card: it lets you order with no prepayment and no queue. That helps when a payment cannot be made over the weekend but the finished run is needed on Monday morning. Regular clients also get a flexible system of discounts and bonuses."
+      },
+      {
+        "q": "Do you install?",
+        "a": "Yes. Installation crews under our supervision install signs, rooftop structures, stands and retail fixtures and service them afterwards."
+      },
+      {
+        "q": "Do you work outside Tashkent?",
+        "a": "Yes. We deliver across Uzbekistan and take on the transport risks, and installation crews travel to the regions. Products and materials come directly from partners in China, Russia, Europe, the USA and Dubai, with no middlemen — that keeps the cost low from the start and gives you a better price."
+      },
+      {
+        "q": "Is there a minimum order?",
+        "a": "For outdoor advertising, fixtures and stands — from a single item. For promo products, apparel and print the minimum batch depends on the printing technology — we will price your volume and tell you where the unit price gets better."
+      },
+      {
+        "q": "Can you make it in time for our event?",
+        "a": "We run a dedicated shift for rush orders. Tell us the date — we will plan production, delivery and installation so that everything is ready ahead of time."
+      }
+    ]
+  },
+  "telegram": {
+    "hello": "Hello! I'd like to get a quote.",
+    "service": "Hello! I'd like to get a quote for: {service}.",
+    "hint": "Prefer messaging?",
+    "link": "Write on Telegram"
+  },
+  "industries": {
+    "eyebrow": "Solutions by industry",
+    "title": "We know the tasks of your sector",
+    "intro": "Clients look for “something like mine”. Pick an industry to see what we make for it and who we have already worked with.",
+    "all": "See works in this industry",
+    "items": {
+      "retail": {
+        "title": "Retail and store chains",
+        "text": "Signs and lightboxes for every store, window displays, POS materials and retail fixtures. One standard across the whole chain, regions included."
+      },
+      "finance": {
+        "title": "Banks and finance",
+        "text": "Branch and self-service area branding, wayfinding, reception desks, corporate print and branded gifts."
+      },
+      "horeca": {
+        "title": "Cafés and restaurants",
+        "text": "Façade and interior signs, menus and table tents, embroidered uniforms, badges and branded packaging."
+      },
+      "medical": {
+        "title": "Medical and pharma",
+        "text": "Clinic wayfinding and door plates, reception branding, vehicle wraps, promo products and stands for medical conferences."
+      },
+      "realty": {
+        "title": "Developers and business centres",
+        "text": "Rooftop installations, entrance monuments and pylons, site wayfinding, turnkey sales offices and presentation materials."
+      },
+      "industry": {
+        "title": "Manufacturing and industry",
+        "text": "Entrance and reception branding, a corporate history museum, information stands, branded workwear and awards."
+      },
+      "transport": {
+        "title": "Transport and logistics",
+        "text": "Fleet and special vehicle wraps, airfield and service markings, on-site wayfinding, uniforms and promo products."
+      }
+    }
+  },
+  "testimonials": {
+    "eyebrow": "Client feedback",
+    "title": "Letters of appreciation",
+    "open": "Open the letter",
+    "intro": "The letters are addressed to Premium Selection LLC — the legal entity that operates the Reklama Centr production. Click a letter to read it in full (originals are in Russian).",
+    "items": {
+      "octobank": {
+        "quote": "All work was carried out to a high standard, on schedule and with attention to the goals of our business.",
+        "name": "M. Alinazarov",
+        "role": "Head of PR and Marketing",
+        "company": "Octobank JSC"
+      },
+      "paynet": {
+        "quote": "The team delivered high quality, met the deadlines and paid close attention to the client’s requirements.",
+        "name": "B. Sultanov",
+        "role": "Deputy General Director",
+        "company": "Paynet"
+      },
+      "theonealma": {
+        "quote": "We are fully satisfied with the quality of the products and the service. The products meet every stated requirement.",
+        "name": "T. Yusupov",
+        "role": "Commercial Director",
+        "company": "TheOneAlma aesthetic"
+      },
+      "lem-agency": {
+        "quote": "Professionalism and responsibility of the staff are the hallmark of the company’s work.",
+        "name": "Olga Bortnikova",
+        "role": "Director",
+        "company": "LEM Agency · Life Events"
+      }
+    }
+  },
+  "case": {
+    "eyebrow": "Flagship project",
+    "title": "INFINITY: engineering without equal",
+    "text": "For the premium INFINITY residence by Golden House we engineered, built and lifted dynamic illuminated letters over 3.5 metres tall onto the roof. There are no trusses: each letter stands on its own column, carried by a spar system borrowed from shipbuilding. The installation required the largest mobile crane in Uzbekistan, and assembling it took two 60-tonne cranes and three flatbed loads of components. Today the sign can be seen from the Vodnik district.",
+    "facts": [
+      [
+        "3.5 m+",
+        "letter height"
+      ],
+      [
+        "200 t",
+        "mobile crane"
+      ],
+      [
+        "108 m",
+        "boom height"
+      ],
+      [
+        "",
+        "engineered mounting systems"
+      ]
+    ],
+    "cta": "View the project",
+    "factSub": "a dedicated column for every letter"
+  },
+  "slogan": "Will Be Branded"
+}

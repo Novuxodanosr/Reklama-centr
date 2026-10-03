@@ -1,0 +1,984 @@
+{
+  "meta": {
+    "title": "Reklama Centr — Toshkentda to‘liq tsiklli reklama ishlab chiqarish",
+    "description": "Toshkentda to‘liq tsiklli reklama ishlab chiqarish: tipografiya, suvenirlar, tekstil, POS va savdo uskunalari, ko‘rgazma stendlari, geraldika, tashqi reklama, interyer bezagi. 5 yilgacha kafolat."
+  },
+  "nav": {
+    "home": "Bosh sahifa",
+    "services": "Xizmatlar",
+    "works": "Ishlar",
+    "about": "Kompaniya haqida",
+    "contacts": "Aloqa",
+    "cta": "Narxni hisoblash",
+    "menu": "Menyu",
+    "close": "Yopish",
+    "skip": "Asosiy qismga o‘tish",
+    "call": "Qo‘ng‘iroq qilish"
+  },
+  "hero": {
+    "eyebrow": "Reklama ishlab chiqarish kompaniyasi · Toshkent",
+    "title": "Reklama ishlab chiqaramiz. Tashrif qog‘ozidan tom ustki qurilmagacha.",
+    "subtitle": "Toshkentdagi o‘z ishlab chiqarishimiz va Xitoy, Rossiya, Yevropa, AQSH va Dubaydan to‘g‘ridan-to‘g‘ri yetkazib berish. Tez hisob-kitob, 5 yilgacha kafolat.",
+    "primary": "Narxni hisoblash",
+    "secondary": "Ishlarni ko‘rish",
+    "scroll": "Pastga",
+    "trust": [
+      "5 yilgacha kafolat",
+      "Tez hisob-kitob",
+      "O‘z ishlab chiqarishimiz",
+      "Montaj va servis",
+      "Shoshilinch buyurtmalar"
+    ],
+    "rotate": {
+      "before": "",
+      "after": "ishlab chiqaramiz",
+      "generalCaption": "Toshkentdagi o‘z ishlab chiqarishimiz",
+      "slidesLabel": "Slaydlar",
+      "slide": "{n}-slayd: {name}",
+      "words": {
+        "general": "reklama",
+        "outdoor": "lavhalar",
+        "interior": "dekor",
+        "exhibition": "stendlar",
+        "promo": "suvenirlar",
+        "print": "poligrafiya",
+        "textile": "tekstil",
+        "pos": "POS-materiallar",
+        "heraldry": "mukofotlar",
+        "custom": "art-obyektlar"
+      }
+    },
+    "tagline": "Tashrif qog‘ozidan tom ustki qurilmagacha."
+  },
+  "stats": {
+    "line": {
+      "value": "O‘z liniyamiz",
+      "label": "ishlab chiqarish — vositachilarsiz va ortiqcha ustamalarsiz"
+    },
+    "warranty": {
+      "value": "5 yilgacha",
+      "label": "mahsulot, montaj va servisga kafolat"
+    },
+    "sample": {
+      "value": "Namuna",
+      "label": "tirajdan oldin — tayyor partiyada kutilmagan holatlar yo‘q"
+    },
+    "scale": {
+      "value": "Har qanday ko‘lam",
+      "label": "vizitka va beyjdan ko‘rgazma stendi va tom ustidagi inshootgacha"
+    }
+  },
+  "services": {
+    "eyebrow": "Nimalar ishlab chiqaramiz",
+    "title": "Brendingizga kerak bo‘lgan hammasi",
+    "intro": "O‘nta pudratchi o‘rniga bitta. O‘z uskuna liniyalarimiz, mahsulot va sarf materiallari importi, O‘zbekiston, Xitoy, Rossiya, Yevropa, AQSH va Dubaydagi hamkorlar. Vositachilarsiz ishlaymiz — muddatlar qisqa, narxlar past.",
+    "all": "Barcha xizmatlar",
+    "more": "Batafsil",
+    "productsTitle": "Nimalar tayyorlaymiz",
+    "items": {
+      "print": {
+        "title": "Tipografiya",
+        "tagline": "Qog‘oz · an’analar · san’at",
+        "short": "To‘liq tsiklli poligrafiya: tashrif qog‘ozidan kataloglar va qadoqlashgacha. Shoshilinch bosma.",
+        "body": [
+          "To‘liq tsiklli tipografiya o‘n yildan ortiq vaqt davomida yuqori sifatli poligrafiya mahsulotlarini hamyonbop narxlarda tayyorlaydi: varaqalar va tashrif qog‘ozlari (shu jumladan nostandart shaklda), flayerlar va broshyuralar, kataloglar, plakatlar va bannerlar — har qanday murakkablikda va har qanday byudjetga.",
+          "Korporativ poligrafiya — kompaniyangizni eng yuqori darajada bezaymiz va butlaymiz: firma uslubi, blanklar, papkalar, kundaliklar. Reklama poligrafiyasi — brendlar uchun yorqin obrazlar. Qadoqlash poligrafiyasi — texnik dizaynerlar maket ishlab chiqadi va narx-sifat bo‘yicha eng yaxshi variantni taklif qiladi.",
+          "Kutishga vaqt bo‘lmasa — shoshilinch bosma: eng qisqa muddatda yuqori sifat."
+        ],
+        "products": [
+          "Broshyuralar",
+          "Kataloglar",
+          "Jurnallar",
+          "Blanklar",
+          "Bukletlar va lifletlar",
+          "Papkalar",
+          "Menyu",
+          "Tashrif qog‘ozlari",
+          "Bloknotlar va kubariklar",
+          "Kalendarlar",
+          "Kundaliklar",
+          "Kitoblar",
+          "Stikerlar",
+          "Beyjlar",
+          "Birkalar",
+          "Qadoqlash"
+        ]
+      },
+      "promo": {
+        "title": "Suvenir mahsulotlari",
+        "tagline": "Brendingizning o‘ziga xosligi va uslubi",
+        "short": "Logotipli suvenirlar ulgurji partiyalarda: ruchka, krujka, fleshka, soyabon, sovg‘a to‘plamlari. O‘z importimiz.",
+        "body": [
+          "Reklama-suvenir va ofis mahsulotlarini ulgurji partiyalarda ishlab chiqaramiz va sotamiz. Ruchkalar, bloknotlar, krujkalar, fleshkalar, soyabonlar, breloklar va boshqa ko‘p narsalar — kompaniyangiz logotipi bilan, uzoq xizmat qiladigan sifatli materiallardan.",
+          "O‘z uskunalarimizning keng parki logotipni deyarli har qanday yuzaga tushirish imkonini beradi: UF-bosma, lazer gravirovka, termo-ko‘chirish, oltin bilan bosish.",
+          "To‘g‘ridan-to‘g‘ri yetkazib berish: siz mahalliy bozor bilan cheklanmagansiz. Kerakli mahsulot O‘zbekistonda bo‘lmasa, uni Xitoy, Rossiya, Yevropa, AQSH yoki Dubaydan olib kelamiz — yoki noyob variantlarni taklif qilamiz."
+        ],
+        "products": [
+          "Ruchkalar",
+          "Bloknotlar",
+          "Krujkalar",
+          "Fleshkalar",
+          "Poverbanklar",
+          "Logotipli termoslar",
+          "Soyabonlar",
+          "Breloklar",
+          "Kalendarlar",
+          "Stol bayroqchalari",
+          "Stikerlar",
+          "Beyjlar va lanyardlar",
+          "Nishonlar va medallar",
+          "Sovg‘a to‘plamlari"
+        ]
+      },
+      "textile": {
+        "title": "Tekstil",
+        "tagline": "Brendingiz har bir buyumda",
+        "short": "Futbolka, xudi, maxsus kiyim, xalat, sumkalar. DTF-bosma, kashta, shelkografiya.",
+        "body": [
+          "O‘z tekstil ishlab chiqarishimiz: korporativ va promo-kiyimlarni tikamiz va brendlaymiz — futbolka, polo, xudi, kurtka, jilet, maxsus kiyim, shuningdek xalat, fartuk, sochiq, pled va sumkalar.",
+          "Har qanday murakkablikdagi tasvir tushirish: DTF-bosma yuvishga chidamli yorqin to‘liq rangli tasvir beradi; shuningdek shelkografiya, kashta va termo-ko‘chirish. Tirajlar — kichik partiyadan butun tarmoq xodimlarini kiyintirishgacha."
+        ],
+        "products": [
+          "Futbolka va polo",
+          "Xudi va svitshotlar",
+          "Kurtka va jiletlar",
+          "Maxsus kiyim",
+          "Xalat va fartuklar",
+          "Sochiq va pledlar",
+          "Sumka va shopperlar",
+          "Kepkalar",
+          "DTF-bosma",
+          "Kashta",
+          "Shelkografiya"
+        ]
+      },
+      "pos": {
+        "title": "POS va savdo uskunalari",
+        "tagline": "Shelftokerdan vitrinagacha",
+        "short": "Stoykalar, stendlar, dispenserlar, peshtaxtalar, vitrinalar, stellajlar va brendingiz bilan resepshenlar.",
+        "body": [
+          "Savdo nuqtasida ishlaydigan hamma narsani loyihalaymiz va ishlab chiqaramiz: qog‘oz va plastik POS-materiallardan tortib savdo mebeli va konstruksiyalarigacha. Bitta ishlab chiqaruvchi, bitta sifat standarti, tarmoqning barcha nuqtalarida yagona uslub.",
+          "POS-materiallar: pol va stol usti stoykalar, stendlar, dispenserlar, shelftokerlar, voblerlar, narx ushlagichlari, sim va to‘rli buyumlar, to‘liq rangli tasvirli list plastik buyumlar.",
+          "Savdo uskunalari: peshtaxtalar, vitrinalar, stellajlar, orol modullari, resepshenlar, savdo stendlari. Metall, LDSP, MDF, akril, shisha; kukunli bo‘yash va yoritish — o‘z ishlab chiqarishimizda. Chizmalar tayyorlaymiz, namuna yasaymiz, partiyani ishlab chiqaramiz va obyektda o‘rnatamiz. Kafolat 1 yildan 5 yilgacha."
+        ],
+        "products": [
+          "Pol va stol usti stoykalar",
+          "Stendlar",
+          "Dispenserlar",
+          "Shelftokerlar va voblerlar",
+          "Narx ushlagichlari",
+          "Savat, tokcha, ilgaklar",
+          "Peshtaxta va vitrinalar",
+          "Stellajlar",
+          "Orol modullari",
+          "Resepshenlar",
+          "Metall konstruksiyalar",
+          "Uskunalar yoritgichi"
+        ]
+      },
+      "exhibition": {
+        "title": "Ko‘rgazma stendlari",
+        "tagline": "Ko‘rgazma va forumlar uchun tayyor stendlar",
+        "short": "Har qanday murakkablikdagi ko‘rgazma stendlarini loyihalash, ishlab chiqarish, o‘rnatish va yig‘ishtirish.",
+        "body": [
+          "Ko‘rgazma stendlarini «kalit topshirish» sharti bilan loyihalaymiz va ishlab chiqaramiz: eskiz va 3D-vizualizatsiyadan tortib maydonchada o‘rnatish va tadbirdan keyin yig‘ishtirishgacha. Mobil, yig‘ma va eksklyuziv konstruksiyalar — vazifa va byudjetga qarab.",
+          "Hammasini o‘zimiz qilamiz: metall va yog‘och karkas, panellar, yoritish, to‘liq rangli bosma, brendlash, mebel va multimedia. Stend ko‘rgazmaga tayyor holda keladi, jamoangiz esa faqat mehmonlar bilan shug‘ullanadi.",
+          "Toshkent va viloyatlardagi ko‘rgazmalar, forumlar va taqdimotlar bilan ishlaymiz. Ochilish sanasiga ulguramiz."
+        ],
+        "products": [
+          "Eksklyuziv stendlar",
+          "Mobil va yig‘ma stendlar",
+          "Stoykalar va resepshen",
+          "Podiumlar va osma konstruksiyalar",
+          "Yorug‘lik panellari",
+          "Maydonchani brendlash",
+          "Mebel va multimedia",
+          "O‘rnatish va yig‘ishtirish"
+        ]
+      },
+      "heraldry": {
+        "title": "Geraldika",
+        "tagline": "Nishonlar, medallar va mukofotlar",
+        "short": "Medallar, ordenlar, ko‘krak nishonlari, tangalar — shu jumladan oltin va kumushdan.",
+        "body": [
+          "Har qanday murakkablikdagi mukofot va suvenir mahsulotlarini to‘liq tsiklda ishlab chiqaradigan alohida bo‘linma — nishonlardan tortib qimmatbaho metallardan (oltin, kumush) davlat mukofotlarigacha.",
+          "Eksklyuziv loyihani «kalit topshirish» sharti bilan ishlab chiqishga yoki orden, medal, ko‘krak nishoni, korporativ mukofotning mavjud eskizini to‘ldirishga yordam beramiz. Shuningdek suvenir tangalar, breloklar, haykalchalar tayyorlaymiz.",
+          "Faxriy fuqarolar va munosib xodimlarni mukofotlash, kompaniya yubileyiga xodimlarga sovg‘a, sport musobaqalari g‘oliblarini taqdirlash, bayram va tadbirlar, suvenirlarning chakana savdosi uchun buyurtma qilinadi."
+        ],
+        "products": [
+          "Kolodkali medallar",
+          "Stol medallari",
+          "Ordenlar",
+          "Ko‘krak nishonlari",
+          "Frachniklar",
+          "Tangalar",
+          "Nishonlar",
+          "Breloklar",
+          "Haykalchalar",
+          "Oltin va kumush buyumlar"
+        ]
+      },
+      "outdoor": {
+        "title": "Tashqi reklama",
+        "tagline": "3 yildan 5 yilgacha kafolat",
+        "short": "Hajmli harflar, yorug‘lik qutilari, tom ustki qurilmalar, peshlavhalar, LED-panellar montaji.",
+        "body": [
+          "Tashqi reklama uchun barcha turdagi stanoklar bilan jihozlangan zamonaviy ishlab chiqarish. To‘liq tsikl: loyihalash, dizayn, tayyorlash, montaj va servis xizmati.",
+          "Hajmli va yorug‘lik harflari, yorug‘lik qutilari, tom ustki qurilmalar, peshlavhalar, stela va pilonlar tayyorlaymiz, LED-panellar va mediaekranlarni o‘rnatamiz. 5 yilgacha kafolat."
+        ],
+        "products": [
+          "Hajmli harflar",
+          "Yorug‘lik qutilari",
+          "Tom ustki qurilmalar",
+          "Peshlavhalar",
+          "Stela va pilonlar",
+          "LED-panellar va mediaekranlar",
+          "UF-bosma rulon / planshet",
+          "Avtomobil yopishtirish",
+          "Montaj va servis"
+        ]
+      },
+      "interior": {
+        "title": "Interyer bezagi",
+        "tagline": "Savdo ofislari va savdo nuqtalari",
+        "short": "Savdo ofislari, savdo nuqtalari va shourumlarni «kalit topshirish» sharti bilan bezash: peshlavhalar, navigatsiya, devor brendlash.",
+        "body": [
+          "Savdo ofislari, savdo nuqtalari, shourumlar va korporativ makonlarni «kalit topshirish» sharti bilan bezaymiz: dizayn-loyihadan montajgacha.",
+          "Interyer peshlavhalari va logotiplar, devor va vitrinalarni brendlash, yorug‘lik elementlari, navigatsiya, resepshen zonalari, fotozonalar va interyer bosmasi — hammasini o‘zimiz ishlab chiqaramiz. Tarmoqlar uchun — har bir filialda yagona bezash standarti."
+        ],
+        "products": [
+          "Interyer peshlavhalari",
+          "Devor va vitrinalarni brendlash",
+          "Interyer navigatsiyasi",
+          "Yorug‘lik elementlari",
+          "Resepshen zonalari",
+          "Fotozonalar",
+          "Interyer bosmasi",
+          "Filiallar tarmog‘ini bezash"
+        ]
+      },
+      "custom": {
+        "title": "Nostandart loyihalar",
+        "tagline": "Loyihalash va ishlab chiqish",
+        "short": "Sizning g‘oyangiz bo‘yicha buyumlar: eskiz va chizmadan namuna, partiya va montajgacha.",
+        "body": [
+          "Kerakli mahsulot kataloglarda bo‘lmasa — loyihalaymiz va yasaymiz. Konstruktor va texnologlar chizmalarni ishlab chiqadi, material va texnologiyani tanlaydi, kelishish uchun namuna tayyorlaydi.",
+          "Art-obyektlar, installyatsiyalar, ko‘rgazma konstruksiyalari, nostandart qadoq, rahbarlar uchun sovg‘alar — har qanday murakkablikda, montaj va kafolat bilan."
+        ],
+        "products": [
+          "Loyihalash va chizmalar",
+          "Namunalar tayyorlash",
+          "Art-obyektlar va installyatsiyalar",
+          "Ko‘rgazma konstruksiyalari",
+          "Nostandart qadoq",
+          "VIP-sovg‘alar",
+          "Kichik seriyali ishlab chiqarish"
+        ]
+      }
+    },
+    "photoSoon": "Yo‘nalish fotosi — tez orada",
+    "quote": "Narxni hisoblash"
+  },
+  "advantages": {
+    "eyebrow": "Biz bilan hamkorlik — bu",
+    "title": "Mahsulot sifati, bajarish muddatlari, ishonchli hamkorlik",
+    "items": [
+      {
+        "title": "O‘z ishlab chiqarishimiz va to‘g‘ridan-to‘g‘ri yetkazib berish",
+        "text": "Mahsulot va materiallarni O‘zbekiston, Xitoy, Rossiya, Yevropa, AQSH va Dubaydagi hamkorlardan bevosita olamiz — vositachilarsiz. Siz mahalliy bozor bilan cheklanmagansiz."
+      },
+      {
+        "title": "3 yildan 5 yilgacha kafolat",
+        "text": "Nuqsonli mahsulot uchun pulni qaytarish yoki almashtirishni kafolatlaymiz va mahsulotimizga misli ko‘rilmagan kafolat beramiz."
+      },
+      {
+        "title": "Rezident kartasi",
+        "text": "Doimiy mijozlarga — oldindan to‘lovsiz va navbatsiz buyurtmalar, moslashuvchan chegirma va bonuslar."
+      },
+      {
+        "title": "Shoshilinch buyurtmalar",
+        "text": "Menejerlar eng qisqa muddatda taklif tayyorlaydi, shoshilinch buyurtmalarda yordamga kelishga tayyor."
+      },
+      {
+        "title": "Nostandart yechimlar",
+        "text": "Har qanday murakkablikdagi loyihalar va mijoz so‘rovi bo‘yicha istalgan mahsulot importi."
+      },
+      {
+        "title": "10 yildan ortiq tajriba",
+        "text": "Doimo mamnun mijozlar — ishonchlilik va ishga mas’uliyatli yondashuv ko‘rsatkichi."
+      }
+    ]
+  },
+  "process": {
+    "eyebrow": "Ish tartibi",
+    "title": "Buyurtma 7 qadamda!",
+    "steps": [
+      {
+        "title": "Narxni hisoblash",
+        "text": "Mutaxassis loyihangizni tez hisoblab beradi va barcha savollar bo‘yicha maslahat beradi."
+      },
+      {
+        "title": "Maket ishlab chiqish",
+        "text": "30 yillik tajribaga ega dizayner barcha istaklaringizni hisobga olib buyum maketini ishlab chiqadi."
+      },
+      {
+        "title": "Texnologik ishlanma",
+        "text": "Texnolog maketingizga mos material, mahkamlash va yoritishni tanlaydi hamda hammasini sex uchun topshiriqda qayd etadi."
+      },
+      {
+        "title": "Shartnoma va oldindan to‘lov",
+        "text": "Oldindan to‘lov miqdori loyihaga bog‘liq: hajmi, murakkabligi va muddatiga."
+      },
+      {
+        "title": "3D kelishuv",
+        "text": "Kelajakdagi buyum qanday ko‘rinishini maket emas, balki uch o‘lchamli tasvirda ko‘rasiz."
+      },
+      {
+        "title": "Ishlab chiqarish",
+        "text": "Buyurtmangiz tayyorlashning qaysi bosqichida ekanini doimo xabar qilib turamiz."
+      },
+      {
+        "title": "Yetkazib berish va o‘rnatish",
+        "text": "O‘zimiz olib kelamiz va o‘rnatamiz: transport xavflarini zimmamizga olamiz, ochilish yoki tadbirga ulguramiz."
+      }
+    ],
+    "approved": "Tasdiqlandi"
+  },
+  "works": {
+    "eyebrow": "Portfolio",
+    "title": "Bizning ishlar",
+    "intro": "Amalga oshirilgan obyektlarning bir qismi. Foto va muddatlar bilan to‘liq katalogni so‘rov bo‘yicha yuboramiz.",
+    "all": "Barcha ishlar",
+    "filterAll": "Barchasi",
+    "items": {
+      "octobank-pavilion": {
+        "title": "24/7 bankomat pavilyoni",
+        "client": "Octobank"
+      },
+      "golden-house": {
+        "title": "Golden House interyer brendlashi",
+        "client": "Golden House"
+      },
+      "octobank-expo": {
+        "title": "Octobank ko‘rgazma stendi",
+        "client": "Octobank"
+      },
+      "tmz-pylon": {
+        "title": "Naqshli yorug‘lik piloni",
+        "client": "Toshkent metzavodi"
+      },
+      "dilbar-tags": {
+        "title": "Oltin zarbli birkalar",
+        "client": "Dilbar Collection"
+      },
+      "oz-makon-night": {
+        "title": "O‘Z MAKON yoritilgan kirish stelasi",
+        "client": "O‘Z MAKON"
+      },
+      "ambulance-103": {
+        "title": "«103» avtomobillari partiyasini brendlash",
+        "client": "O‘zbekistondagi Volkswagen zavodi"
+      },
+      "eriell-wayfinding": {
+        "title": "Qavat navigatsiyasi: ko‘rsatkichlar va oynadagi grafika",
+        "client": "ERIELL"
+      },
+      "octobank-facade": {
+        "title": "Fasaddagi yorug‘lik qutisi",
+        "client": "Octobank"
+      },
+      "rooftop-letters": {
+        "title": "Tom ustki qurilma: harflar montaji",
+        "client": "Biznes-markaz"
+      },
+      "paynet-letters": {
+        "title": "PAYNET yorug‘lik harflari",
+        "client": "PAYNET"
+      },
+      "gift-set": {
+        "title": "Premium sovg‘a to‘plami",
+        "client": "Korporativ sovg‘a"
+      },
+      "savdo-center": {
+        "title": "Savdo ofisi uchun tashqi reklama",
+        "client": "Toshkent metallurgiya zavodi"
+      },
+      "crystal-award": {
+        "title": "O‘yma naqshli mukofot stelasi",
+        "client": "Korporativ mukofot"
+      },
+      "ipotekabank-counter": {
+        "title": "Ko‘rgazma promo-stoykasi",
+        "client": "Ipoteka Bank"
+      },
+      "mexxi-stand": {
+        "title": "Mexxi Fruits ko‘rgazma stendi",
+        "client": "Mexxi Fruits"
+      },
+      "tmz-reception": {
+        "title": "Resepshn va axborot zonasi",
+        "client": "Toshkent metzavodi"
+      },
+      "clinic-nav": {
+        "title": "Tibbiyot markazi navigatsiyasi",
+        "client": "Endokrinologiya markazi"
+      },
+      "xalqbank-cap": {
+        "title": "Kashtali kepkalar",
+        "client": "Xalq Banki"
+      },
+      "zarqand-backpack": {
+        "title": "Zarqand logotipli ryukzaklar",
+        "client": "Zarqand"
+      },
+      "gold-cards": {
+        "title": "Oltin folgali tashrif qog‘ozlari",
+        "client": "Premium poligrafiya"
+      },
+      "navruz-coasters": {
+        "title": "Navro‘zga yog‘ochga UV-bosma",
+        "client": "Golden House"
+      },
+      "bilim-ziyo-mug": {
+        "title": "Logotipli krujkalar",
+        "client": "Bilim Ziyo"
+      },
+      "tmz-clock": {
+        "title": "Logotipli devor soati",
+        "client": "Toshkent metzavodi"
+      },
+      "octobank-thermos": {
+        "title": "Octobank logotipli termoslar",
+        "client": "Octobank"
+      },
+      "dr-reddys": {
+        "title": "Dr. Reddy’s charm aksessuarlari",
+        "client": "Dr. Reddy’s"
+      },
+      "josera-display": {
+        "title": "Josera savdo displeyi",
+        "client": "Josera"
+      },
+      "office-map-wall": {
+        "title": "Xoll: yorug‘lik xaritasi va UHD 75″ displey",
+        "client": "ERIELL"
+      },
+      "event-badges": {
+        "title": "Festival bejlari",
+        "client": "One Power Fest"
+      },
+      "vero-catalog": {
+        "title": "Vero katalogi va papkasi",
+        "client": "Vero"
+      },
+      "followme-van": {
+        "title": "Aeroport Follow Me avtomobili",
+        "client": "Aeroport"
+      },
+      "golden-house-facade": {
+        "title": "Golden House fasad lavhasi",
+        "client": "Golden House"
+      },
+      "zarqand-tote": {
+        "title": "Welcome pack",
+        "client": "Zarqand"
+      },
+      "gov-stand": {
+        "title": "Jonli ko‘kalamzor bilan ko‘rgazma stendi",
+        "client": "Hukumat ekspozitsiyasi"
+      },
+      "uv-printer": {
+        "title": "Planshet printerda lavhalarga UV-bosma",
+        "client": "O‘z ishlab chiqarishimiz"
+      },
+      "hospital-lightbox": {
+        "title": "Tashqi yorug‘lik qutisi",
+        "client": "Shifoxona"
+      },
+      "alfabank-set": {
+        "title": "Brendlangan sovg‘a to‘plami",
+        "client": "Alfa-Bank"
+      },
+      "newyear-set": {
+        "title": "Yangi yil korporativ to‘plami",
+        "client": "Korporativ sovg‘a"
+      },
+      "leading-set": {
+        "title": "Firma ranglaridagi biznes to‘plam",
+        "client": "Leading"
+      },
+      "gov-set": {
+        "title": "Vakillik to‘plami",
+        "client": "Davlat tashkiloti"
+      },
+      "samsung-plaid": {
+        "title": "Logotipli pledlar",
+        "client": "Samsung"
+      },
+      "heraldry-star": {
+        "title": "Kolodkali mukofot nishoni",
+        "client": "Mukofot mahsulotlari"
+      },
+      "heraldry-medal": {
+        "title": "Sovg‘a g‘ilofidagi medal",
+        "client": "Korporativ mukofot"
+      },
+      "heraldry-pin": {
+        "title": "Baxmal g‘ilofdagi nishon",
+        "client": "Mukofot mahsulotlari"
+      },
+      "akfa-showroom": {
+        "title": "Shourumni «kalit topshirish» bezagi",
+        "client": "AKFA"
+      },
+      "tmz-hall": {
+        "title": "Zavod xolli: yorug‘lik xaritasi va panellar",
+        "client": "Toshkent metzavodi"
+      },
+      "infinity-letters": {
+        "title": "Tomdagi dinamik yorug‘lik harflari",
+        "client": "INFINITY turar joy majmuasi · Golden House"
+      },
+      "infinity-stele": {
+        "title": "Yo‘l bo‘yidagi yorug‘lik stelasi",
+        "client": "INFINITY turar joy majmuasi · Golden House"
+      },
+      "tmz-navigation": {
+        "title": "Hududning yorug‘lik navigatsiyasi: stela va bosh reja",
+        "client": "Toshkent metallurgiya zavodi"
+      },
+      "octobank-giftset": {
+        "title": "Lojementli keysdagi sovg‘a to‘plamlari",
+        "client": "Octobank"
+      },
+      "lavazza-point": {
+        "title": "Savdo tarmoqlari uchun kofepointlar",
+        "client": "Lavazza"
+      },
+      "lavazza-island": {
+        "title": "Ulkan finjonli promo-orol",
+        "client": "Lavazza"
+      },
+      "powerbank-uv": {
+        "title": "Pauerbanklarga UV-bosma, 400+ dona",
+        "client": "Toshkent xalqaro kinofestivali"
+      },
+      "tmz-meeting": {
+        "title": "Muzokaralar xonasi: logotip, suratlar, bayroq",
+        "client": "Toshkent metallurgiya zavodi"
+      },
+      "tmz-facade": {
+        "title": "Zavod binolaridagi yorug‘lik logotiplari",
+        "client": "Toshkent metallurgiya zavodi"
+      },
+      "italica-sign": {
+        "title": "Savdo markazidagi do‘kon fasadi",
+        "client": "ITALICA"
+      },
+      "tmz-place-card": {
+        "title": "Zanglamas po‘latdan stol lavhalari",
+        "client": "Toshkent metallurgiya zavodi"
+      },
+      "octobank-lightbox": {
+        "title": "Yorug‘lik qutili harflar",
+        "client": "Octobank"
+      },
+      "ipoteka-pins": {
+        "title": "Emalli brend nishonlar",
+        "client": "Ipoteka Bank"
+      },
+      "ipoteka-scarves": {
+        "title": "Logotipli qisqichli korporativ ro‘mollar",
+        "client": "Ipoteka Bank"
+      },
+      "ipoteka-badges": {
+        "title": "Xodimlar uchun beyjlar va lentalar",
+        "client": "Ipoteka Bank"
+      },
+      "oqtepa-badges": {
+        "title": "Tarmoq xodimlari uchun beyjlar",
+        "client": "Oqtepa Lavash"
+      },
+      "ipoteka-rollup": {
+        "title": "Filiallar uchun rollaplar",
+        "client": "Ipoteka Bank"
+      },
+      "ipoteka-chargers": {
+        "title": "Logotipli simsiz zaryadlovchilar",
+        "client": "Ipoteka Bank"
+      },
+      "ipoteka-set": {
+        "title": "Brend to‘plam: paket, taqvim, aksessuarlar",
+        "client": "Ipoteka Bank"
+      },
+      "octobank-ikat": {
+        "title": "Ikat naqshli sumkalar",
+        "client": "Octobank"
+      },
+      "paynet-merch": {
+        "title": "Brend texnika va aksessuarlar",
+        "client": "Paynet"
+      },
+      "best-partner": {
+        "title": "«Best Partner» mukofoti",
+        "client": "Korporativ mukofot"
+      },
+      "tmz-pin": {
+        "title": "Sovg‘a qutisidagi nishon",
+        "client": "Toshkent metallurgiya zavodi"
+      },
+      "uzbek-gift": {
+        "title": "Milliy uslubdagi sovg‘a to‘plami",
+        "client": "Korporativ sovg‘a"
+      },
+      "turizm-letters": {
+        "title": "«TURIZM» hajmli harflari",
+        "client": "Turizm"
+      },
+      "letters-case": {
+        "title": "Keysdagi hajmli elementlar",
+        "client": "Nostandart buyurtma"
+      },
+      "gold-folders": {
+        "title": "Oltin bosmali papkalar",
+        "client": "Korporativ buyurtma"
+      }
+    },
+    "open": "Ko‘rish",
+    "lightbox": {
+      "close": "Yopish",
+      "prev": "Oldingi",
+      "next": "Keyingi"
+    },
+    "filterIndustry": "Soha",
+    "empty": "Bunday filtrlar kombinatsiyasiga mos ishlar hozircha yo‘q.",
+    "reset": "Filtrlarni tozalash",
+    "video": "video",
+    "photos": "foto"
+  },
+  "about": {
+    "eyebrow": "Kompaniya haqida",
+    "title": "To‘liq tsiklli ishlab chiqarish kompaniyasi",
+    "lead": "Reklama Centr — Toshkentdagi reklama ishlab chiqarish kompaniyasi. Biz bitta ish bilan shug‘ullanamiz: yuqori sifatli reklama mahsulotlarini eng qulay narxda tayyorlaymiz — tashrif qog‘ozidan tom ustki qurilmagacha.",
+    "body": [
+      "O‘z uskunalarimiz va mutaxassislarimiz har qanday miqyosdagi korporativ mijozlar bilan ishlash imkonini beradi. O‘z uskuna liniyalarimiz, mahsulot va sarf materiallari importi hamda O‘zbekiston, Xitoy, Rossiya, Yevropa, AQSH va Dubaydagi keng hamkorlar doirasi vositachilarsiz ishlash imkonini beradi — mijozlar natijani eng qisqa muddatda va qulay narxlarda oladi.",
+      "Kompaniya mutaxassislari — katta tajriba va yuqori ma’lumot darajasiga ega professionallar, ular har qanday murakkablikdagi maket, dizayn va loyihani yaratishga yordam beradi. Menejerlar eng qisqa muddatda biznesingiz uchun eng yaxshi taklifni tayyorlaydi.",
+      "Nuqsonli mahsulot uchun pulni qaytarish yoki almashtirishni kafolatlaymiz va mahsulotimizga 3 yildan 5 yilgacha misli ko‘rilmagan kafolat taklif qilamiz. Doimiy mijozlar uchun moslashuvchan chegirmalar, bonuslar tizimi va «Hozir oling, keyin to‘lang» kredit liniyasi amal qiladi."
+    ],
+    "valuesTitle": "Biz bilan hamkorlik — bu",
+    "values": [
+      {
+        "title": "Mahsulot sifati",
+        "text": "O‘z ishlab chiqarishimizda har bir bosqichni nazorat qilamiz, xomashyo va sarf materiallarini o‘zimiz tanlaymiz."
+      },
+      {
+        "title": "Bajarish muddatlari",
+        "text": "Vositachilarsiz — hisob-kitobdan shoshilinch bosma va montajgacha."
+      },
+      {
+        "title": "Ishonchli hamkorlik",
+        "text": "Bozorda 10 yildan ortiq, 3 yildan 5 yilgacha kafolat, doimo mijoz tomonida."
+      }
+    ]
+  },
+  "contacts": {
+    "eyebrow": "Aloqa",
+    "title": "Narxni tez hisoblaymiz",
+    "lead": "O‘lchamlar, tiraj, eskiz yoki shunchaki vazifa tavsifini yuboring — mutaxassis hisob-kitob qiladi va barcha savollar bo‘yicha maslahat beradi.",
+    "phone": "Telefon",
+    "email": "Pochta",
+    "address": "Manzil",
+    "hours": "Du–Sha, 9:00–19:00",
+    "messengers": "Messenjerlar",
+    "managersTitle": "Menejerlar",
+    "managers": {
+      "javohir": {
+        "name": "Javohir Kamalovich",
+        "role": "Menejer"
+      },
+      "raksana": {
+        "name": "Raksana Ramizovna",
+        "role": "Menejer"
+      },
+      "shahina": {
+        "name": "Shahina Kadirovna",
+        "role": "Dizayn menejeri"
+      },
+      "tatyana": {
+        "name": "Tatyana Vasilyevna",
+        "role": "Bosh menejer"
+      }
+    },
+    "mapTitle": "Xarita: Reklama Centr, Toshkent, Beshyog‘och ko‘chasi, 71",
+    "route": "Qanday borish mumkin",
+    "openYandex": "Yandex Xaritalarda yo‘nalish",
+    "openGoogle": "Google navigator",
+    "openTaxi": "Yandex Go taksi"
+  },
+  "form": {
+    "title": "So‘rov qoldirish",
+    "name": "Ismingiz",
+    "phone": "Telefon",
+    "service": "Nima kerak",
+    "servicePlaceholder": "Yo‘nalishni tanlang",
+    "message": "Vazifa tavsifi",
+    "messagePlaceholder": "Tiraj, o‘lchamlar, muddatlar — bilganingizning hammasi",
+    "submit": "Yuborish",
+    "sending": "Yuborilmoqda…",
+    "success": "Rahmat! So‘rov qabul qilindi, ish kuni ichida javob beramiz.",
+    "error": "Onlayn yuborib bo‘lmadi. Bizga qo‘ng‘iroq qiling — darhol javob beramiz.",
+    "consent": "«Yuborish» tugmasini bosish orqali shaxsiy ma’lumotlarni qayta ishlashga rozilik bildirasiz.",
+    "steps": {
+      "what": "Nima kerak",
+      "details": "Tafsilotlar",
+      "contact": "Aloqa"
+    },
+    "step": "{n}/{total}-qadam",
+    "next": "Keyingi",
+    "back": "Orqaga",
+    "attach": "Eskiz yoki fayl biriktirish",
+    "attachHint": "PDF, JPG, PNG, AI, CDR — 10 MB gacha",
+    "fileTooBig": "Fayl 10 MB dan katta",
+    "chooseService": "Yo‘nalishni tanlang",
+    "successTitle": "So‘rov yuborildi",
+    "another": "Yana bitta yuborish",
+    "fileType": "Bu format mos kelmaydi. PDF, JPG, PNG, AI, CDR, EPS yoki SVG kerak",
+    "messageRequired": "Vazifani qisqacha yozing"
+  },
+  "cta": {
+    "title": "Vazifani yuboring — narx va muddat bilan qaytamiz",
+    "text": "O‘lchamlar, tiraj, eskiz yoki shunchaki tavsif. Material va texnologiyalar bo‘yicha bepul maslahat beramiz.",
+    "button": "Narxni hisoblash",
+    "eyebrow": "Tez hisob-kitob"
+  },
+  "footer": {
+    "tagline": "To‘liq tsiklli reklama ishlab chiqarish: tipografiya, suvenirlar, tekstil, POS va savdo uskunalari, ko‘rgazma stendlari, geraldika, tashqi reklama, interyer. Toshkent.",
+    "nav": "Bo‘limlar",
+    "services": "Xizmatlar",
+    "contacts": "Aloqa",
+    "rights": "Barcha huquqlar himoyalangan.",
+    "big": "Vazifangizni muhokama qilamizmi?",
+    "top": "Yuqoriga"
+  },
+  "lang": {
+    "ru": "Русский",
+    "en": "English",
+    "uz": "O‘zbekcha",
+    "label": "Til"
+  },
+  "production": {
+    "eyebrow": "O‘z ishlab chiqarishimiz",
+    "title": "Hammasini o‘zimiz ishlab chiqaramiz",
+    "text": "Butun buyurtma uchun bitta hamkor — yagona shartlar, yagona sifat va natija uchun bitta mas’ul.",
+    "equipment": [
+      "UF-bosma: rulonli va planshetli",
+      "Lazer kesish va gravirovka",
+      "Plastik, metall, yog‘ochni frezerlash",
+      "Tekstilga DTF-bosma va termo-ko‘chirish",
+      "Folga bilan bosish",
+      "Raqamli va ofset bosma",
+      "Metallni payvandlash va kukunli bo‘yash",
+      "Plyonkani plotterda kesish va yopishtirish"
+    ],
+    "facts": [
+      {
+        "title": "Vositachilarsiz ishlaymiz",
+        "text": "Material va butlovchi qismlarni O‘zbekiston, Xitoy, Rossiya, Yevropa, AQSH va Dubaydagi hamkorlardan bevosita olamiz."
+      },
+      {
+        "title": "Shtatda konstruktor va texnologlar",
+        "text": "Chizma va TZ ishlab chiqamiz, ishlab chiqarishga kirishdan oldin 3D-vizualizatsiyani kelishamiz."
+      },
+      {
+        "title": "Montaj va servis",
+        "text": "Nazoratimizdagi montaj brigadalari. O‘rnatilgan konstruksiyalarga butun kafolat muddati davomida xizmat ko‘rsatamiz."
+      },
+      {
+        "title": "Shoshilinch buyurtmalar",
+        "text": "Reklama sanaga kerakligini tushunamiz. Shoshilinch ishlar uchun alohida smena ajratamiz."
+      }
+    ],
+    "techTitle": "Texnologiyalar va uskunalar",
+    "service": {
+      "title": "Servis",
+      "items": [
+        "Dizayn va maket",
+        "Loyihalash va chizmalar",
+        "3D-vizualizatsiya",
+        "Namunalar tayyorlash",
+        "Yetkazib berish",
+        "Montaj va demontaj",
+        "Servis xizmati",
+        "Shoshilinch buyurtmalar"
+      ]
+    },
+    "catalog": "Nimalar ishlab chiqaramiz",
+    "more": "To‘liq ro‘yxat",
+    "highlights": [
+      {
+        "title": "Cheksiz ishlab chiqarish",
+        "text": "Har qanday tiraj, o‘lcham va material"
+      },
+      {
+        "title": "O‘z texnikamiz",
+        "text": "UV-bosma, lazer, frezer, metall payvandlash va bo‘yash"
+      },
+      {
+        "title": "Tirajdan oldin namuna",
+        "text": "Partiya boshlanishidan oldin mahsulotni tasdiqlaysiz"
+      }
+    ]
+  },
+  "clients": {
+    "eyebrow": "Brendlar",
+    "title": "Mijozlar",
+    "note": "Biz buyurtmalarini bajargan brendlar va tashkilotlar"
+  },
+  "notFound": {
+    "eyebrow": "404 xatosi",
+    "title": "Bunday sahifa yo‘q",
+    "text": "Havola eskirgan yoki manzilda xato bo‘lishi mumkin. Bosh sahifaga o‘ting yoki nima ishlab chiqarishimizni ko‘ring.",
+    "home": "Bosh sahifaga",
+    "services": "Xizmatlarni ko‘rish"
+  },
+  "faq": {
+    "eyebrow": "Savol-javob",
+    "title": "Ko‘p beriladigan savollar",
+    "intro": "Javob topolmadingizmi — bizga yozing, menejer materiallar, muddatlar va narx bo‘yicha maslahat beradi.",
+    "ask": "Savol berish",
+    "items": [
+      {
+        "q": "Narxni qanchalik tez hisoblaysiz?",
+        "a": "Vazifaga bog‘liq. Standart buyurtmalarni o‘lcham, tiraj yoki tavsifni olishimiz bilan tez hisoblaymiz. Murakkab obyektlar — tom ustki qurilmalar, ko‘rgazma stendlari, savdo uskunalari — eskiz yoki o‘lchovga chiqqandan keyin hisoblanadi, aniq muddatni murojaat qilganingizda aytamiz."
+      },
+      {
+        "q": "Tayyor maket kerakmi?",
+        "a": "Yo‘q. Dizayner xohishlaringizni hisobga olib maket ishlab chiqadi, texnolog texnik topshiriq tuzadi, ishlab chiqarishdan oldin esa buyumni 3D-vizualizatsiyada ko‘rsatamiz. Maket bor bo‘lsa — istalgan formatda qabul qilamiz: PDF, AI, CDR, PNG."
+      },
+      {
+        "q": "Mahsulotga qanday kafolat berasiz?",
+        "a": "Kafolat muddati mahsulotga bog‘liq: 1 yildan 5 yilgacha. Buyurtmangiz uchun aniq muddatni hisob-kitobda aytamiz va shartnomada qayd etamiz. Nuqson bo‘lsa pulni qaytaramiz yoki mahsulotni almashtiramiz, o‘rnatilgan konstruksiyalarga esa butun kafolat davrida xizmat ko‘rsatamiz."
+      },
+      {
+        "q": "To‘lov qanday amalga oshiriladi?",
+        "a": "Shartnoma asosida ishlaymiz. Oldindan to‘lov miqdori loyihaga bog‘liq: uning hajmi, murakkabligi va muddatiga — uni hisob-kitobda aytamiz. Doimiy korporativ mijozlarga rezident kartasi beriladi: u bilan oldindan to‘lovsiz va navbatsiz buyurtma berish mumkin. Bu dam olish kunlari to‘lovni o‘tkazib bo‘lmaganda, tayyor mahsulot esa dushanba ertalab kerak bo‘lganda qulay. Bundan tashqari, doimiy mijozlar uchun moslashuvchan chegirma va bonuslar tizimi amal qiladi."
+      },
+      {
+        "q": "Montaj qilasizmi?",
+        "a": "Ha. Nazoratimizdagi montaj brigadalari lavhalar, tom ustki qurilmalar, stendlar va savdo uskunalarini o‘rnatadi va keyin ularga xizmat ko‘rsatadi."
+      },
+      {
+        "q": "Viloyatlar bilan ishlaysizmi?",
+        "a": "Ha. Butun O‘zbekiston bo‘ylab yetkazib beramiz va transport xavflarini o‘z zimmamizga olamiz, montaj brigadalari viloyatlarga chiqadi. Mahsulot va materiallarni Xitoy, Rossiya, Yevropa, AQSH va Dubaydagi hamkorlardan bevosita olib kelamiz, vositachilarsiz — bu boshidanoq past tannarxni, sizga esa yaxshiroq narxni beradi."
+      },
+      {
+        "q": "Minimal tiraj bormi?",
+        "a": "Tashqi reklama, uskunalar va stendlar uchun — bitta buyumdan. Suvenirlar, tekstil va poligrafiya uchun minimal partiya tushirish texnologiyasiga bog‘liq — hajmingizga qarab hisoblaymiz va qaysi tirajdan bir dona narxi arzonlashishini aytamiz."
+      },
+      {
+        "q": "Tadbir sanasiga ulgurasizmi?",
+        "a": "Shoshilinch buyurtmalar uchun alohida smena ajratamiz. Sanani ayting — ishlab chiqarish, yetkazib berish va montajni hammasi oldindan tayyor bo‘ladigan qilib rejalashtiramiz."
+      }
+    ]
+  },
+  "telegram": {
+    "hello": "Assalomu alaykum! Narxni hisoblamoqchiman.",
+    "service": "Assalomu alaykum! Narxni hisoblamoqchiman: {service}.",
+    "hint": "Messenjer qulayroqmi?",
+    "link": "Telegramga yozish"
+  },
+  "industries": {
+    "eyebrow": "Sohalar bo‘yicha yechimlar",
+    "title": "Sohangiz vazifalarini bilamiz",
+    "intro": "Mijoz «o‘zimga o‘xshaganlarnikidek» qidiradi. Sohani tanlang — u uchun nima qilishimizni va kimlar bilan ishlaganimizni ko‘rsatamiz.",
+    "all": "Soha ishlarini ko‘rish",
+    "items": {
+      "retail": {
+        "title": "Riteyl va savdo tarmoqlari",
+        "text": "Har bir nuqta uchun lavhalar va yorug‘lik qutilari, vitrinalar bezagi, POS-materiallar va savdo uskunalari. Butun tarmoq uchun yagona standart, viloyatlar bilan birga."
+      },
+      "finance": {
+        "title": "Banklar va moliya",
+        "text": "Filiallar va o‘z-o‘ziga xizmat zonalarini bezash, navigatsiya, resepshenlar, vakillik poligrafiyasi va korporativ sovg‘alar."
+      },
+      "horeca": {
+        "title": "Kafe va restoranlar",
+        "text": "Fasad va interyer lavhalari, menyu va teybl-tentlar, kashtali forma, bejlar va brendlangan qadoq."
+      },
+      "medical": {
+        "title": "Tibbiyot va farmatsevtika",
+        "text": "Klinika navigatsiyasi va xona lavhalari, resepshen bezagi, avtopark brendlashi, tibbiy konferensiyalar uchun suvenirlar va stendlar."
+      },
+      "realty": {
+        "title": "Quruvchilar va biznes-markazlar",
+        "text": "Tom ustki qurilmalar, kirish stelalari va pilonlar, majmua navigatsiyasi, tayyor savdo ofislari va taqdimot materiallari."
+      },
+      "industry": {
+        "title": "Ishlab chiqarish va sanoat",
+        "text": "Kirish va resepshen bezagi, korxona tarixi muzeyi, axborot stendlari, logotipli maxsus kiyim va mukofot mahsulotlari."
+      },
+      "transport": {
+        "title": "Transport va logistika",
+        "text": "Avtoparklar va maxsus texnikani brendlash, aerodrom va xizmat belgilari, obyektlardagi navigatsiya, forma va suvenirlar."
+      }
+    }
+  },
+  "testimonials": {
+    "eyebrow": "Mijozlar fikri",
+    "title": "Minnatdorchilik xatlari",
+    "open": "Xatni ochish",
+    "intro": "Xatlar «Premium Selection» MChJ nomiga yozilgan — Reklama Centr ishlab chiqarishi ana shu yuridik shaxs tarkibida ishlaydi. To‘liq o‘qish uchun xatni bosing (asl nusxalar rus tilida).",
+    "items": {
+      "octobank": {
+        "quote": "Barcha ishlar sifatli, belgilangan muddatda va biznesimiz maqsadlariga e’tibor bilan bajarildi.",
+        "name": "M. Alinazarov",
+        "role": "PR va marketing rahbari",
+        "company": "«Oktobank» AJ"
+      },
+      "paynet": {
+        "quote": "Mutaxassislar yuqori sifat, muddatlarga rioya va buyurtmachi talablariga e’tiborli munosabatni ta’minladi.",
+        "name": "B. Sultanov",
+        "role": "bosh direktor o‘rinbosari",
+        "company": "Paynet"
+      },
+      "theonealma": {
+        "quote": "Mahsulot va xizmat sifatidan to‘liq qoniqdik. Mahsulot barcha e’lon qilingan talablarga javob beradi.",
+        "name": "T. Yusupov",
+        "role": "tijorat direktori",
+        "company": "TheOneAlma aesthetic"
+      },
+      "lem-agency": {
+        "quote": "Kompaniya ishining o‘ziga xos belgisi — xodimlarning professionalligi va mas’uliyati.",
+        "name": "Olga Bortnikova",
+        "role": "direktor",
+        "company": "LEM Agency · Life Events"
+      }
+    }
+  },
+  "case": {
+    "eyebrow": "Flagman loyiha",
+    "title": "INFINITY: tengsiz muhandislik",
+    "text": "Golden House kompaniyasining INFINITY premium turar joy majmuasi uchun balandligi 3,5 metrdan ortiq dinamik yorug‘lik harflarini loyihaladik, ishlab chiqardik va tomga ko‘tardik. Fermalar yo‘q: har bir harf o‘z ustunida turadi — konstruksiya kemasozlikdan olingan lonjeron tizimiga tayanadi. Montaj uchun O‘zbekistondagi eng katta o‘ziyurar kran jalb qilindi, uni yig‘ish uchun ikkita 60 tonnalik kran va uchta uzun yuk mashinasi kerak bo‘ldi. Bugun yozuv Vodnik massividan ham ko‘rinadi.",
+    "facts": [
+      [
+        "3,5 m+",
+        "harflar balandligi"
+      ],
+      [
+        "200 t",
+        "o‘ziyurar kran"
+      ],
+      [
+        "108 m",
+        "strela balandligi"
+      ],
+      [
+        "",
+        "texnologik mahkamlash tizimlari"
+      ]
+    ],
+    "cta": "Loyihani ko‘rish",
+    "factSub": "har bir harf uchun alohida ustun"
+  },
+  "slogan": "Brendlanadi!"
+}

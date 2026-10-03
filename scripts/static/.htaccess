@@ -1,0 +1,79 @@
+# Reklama Centr — правила для Apache (хостинг webname.uz). Кладётся в корень сайта вместе со сборкой deploy/.
+# Русская версия лежит в папке ru/, но открывается без префикса: /about/ → ru/about/index.html.
+
+Options -Indexes
+DirectoryIndex index.html index.php
+AddDefaultCharset utf-8
+ErrorDocument 404 /ru/404/index.html
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+
+# 1. Опечатка-домен reklama-center.uz, www и домены .com (будут куплены позже) → основной reklama-centr.uz.
+#    SSL (Let's Encrypt, авто-продление в DirectAdmin) подключён 03.10.2026 — всё ведёт на https.
+RewriteCond %{HTTP_HOST} ^(www\.)?reklama-center\.(uz|com)$ [NC,OR]
+RewriteCond %{HTTP_HOST} ^(www\.)?reklama-centr\.com$ [NC,OR]
+RewriteCond %{HTTP_HOST} ^www\.reklama-centr\.uz$ [NC]
+RewriteRule ^(.*)$ https://reklama-centr.uz/$1 [R=301,L]
+
+# 1a. Всегда https.
+RewriteCond %{HTTPS} off
+RewriteCond %{HTTP:X-Forwarded-Proto} !https
+RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+
+# 2. Форма заявки: сайт шлёт на /api/lead, обрабатывает PHP.
+RewriteRule ^api/lead/?$ api/lead.php [L]
+# Работы из Instagram (api/instagram.php); служебные файлы (кэш, ключ доступа) — закрыты.
+RewriteRule ^api/instagram/?$ api/instagram.php [L]
+RewriteRule ^api/data(/|$) - [F,L]
+
+# 3. Старые адреса с /ru/ → без префикса (только для прямых заходов, не для внутренних перенаправлений ниже).
+RewriteCond %{ENV:REDIRECT_STATUS} ^$
+RewriteRule ^ru/?$ / [R=301,L]
+RewriteCond %{ENV:REDIRECT_STATUS} ^$
+RewriteRule ^ru/(.*)$ /$1 [R=301,L]
+
+# 4. Адреса страниц всегда со слешем на конце: /about → /about/.
+RewriteCond %{ENV:REDIRECT_STATUS} ^$
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} !\.[A-Za-z0-9]+$
+RewriteCond %{REQUEST_URI} !/$
+RewriteRule ^(.*)$ /$1/ [R=301,L]
+
+# 5. Всё, что не файл и не en/uz, — русская версия из папки ru/.
+RewriteCond %{ENV:REDIRECT_STATUS} ^$
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} !^/(en|uz)(/|$)
+RewriteCond %{REQUEST_URI} !^/(_next|api)/
+RewriteRule ^(.*)$ ru/$1 [L]
+</IfModule>
+
+# Настройки с токеном бота и служебные файлы — не отдавать никому.
+<FilesMatch "^(config\.php|config\.sample\.php|\.ht.*|leads\.log)$">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+  </IfModule>
+</FilesMatch>
+
+# Сжатие и кэш: скрипты и стили Next.js с хешем в имени — на год, картинки и видео — на месяц, страницы — всегда свежие.
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/css application/javascript application/json image/svg+xml
+</IfModule>
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/html "access plus 0 seconds"
+  ExpiresByType image/webp "access plus 1 month"
+  ExpiresByType image/png "access plus 1 month"
+  ExpiresByType image/svg+xml "access plus 1 month"
+  ExpiresByType video/mp4 "access plus 1 month"
+</IfModule>
+<IfModule mod_headers.c>
+  <FilesMatch "\.(js|css|woff2)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+</IfModule>
