@@ -351,6 +351,10 @@
     "all": "All works",
     "filterAll": "All",
     "items": {
+      "ipoteka-rooftops": {
+        "title": "Ipoteka Bank rooftop signs — 12 sites across Uzbekistan",
+        "client": "Ipoteka Bank · OTP Group"
+      },
       "octobank-pavilion": {
         "title": "24/7 ATM pavilion",
         "client": "Octobank"

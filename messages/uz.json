@@ -351,6 +351,10 @@
     "all": "Barcha ishlar",
     "filterAll": "Barchasi",
     "items": {
+      "ipoteka-rooftops": {
+        "title": "Ipoteka Bank tom ustki qurilmalari — respublika bo‘ylab 12 obyekt",
+        "client": "Ipoteka Bank · OTP Group"
+      },
       "octobank-pavilion": {
         "title": "24/7 bankomat pavilyoni",
         "client": "Octobank"

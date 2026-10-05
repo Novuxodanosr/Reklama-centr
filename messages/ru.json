@@ -351,6 +351,10 @@
     "all": "Все работы",
     "filterAll": "Все",
     "items": {
+      "ipoteka-rooftops": {
+        "title": "Крышные установки Ipoteka Bank — 12 объектов по республике",
+        "client": "Ipoteka Bank · OTP Group"
+      },
       "octobank-pavilion": {
         "title": "Павильон банкомата 24/7",
         "client": "Octobank"

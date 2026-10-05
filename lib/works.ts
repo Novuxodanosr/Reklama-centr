@@ -18,6 +18,7 @@ export type Work = {
 // Подписи и клиент — в messages/*.json → works.items.<id>. Фото — public/works/<id>.webp.
 export const works: Work[] = [
   { id: "octobank-pavilion", service: "outdoor", image: "/works/octobank-pavilion.webp", industries: ["finance"], gallery: ["/works/ps-octobank-pavilion-99.webp", "/works/ps-octobank-pavilion-100.webp"] },
+  { id: "ipoteka-rooftops", service: "outdoor", image: "/works/ipoteka-night-close.webp", industries: ["finance"], gallery: ["/works/ipoteka-night-wide.webp", "/works/ipoteka-day-balconies.webp", "/works/ipoteka-qarshi-2.webp", "/works/ipoteka-night-tower-2.webp", "/works/ipoteka-day-crane.webp", "/works/ipoteka-day-sqb.webp", "/works/ipoteka-roof-install.webp", "/works/ipoteka-roof-red.webp", "/works/ipoteka-qarshi.webp", "/works/ipoteka-night-tower.webp"] },
   { id: "tmz-hall", service: "interior", image: "/works/tmz-hall.webp", industries: ["industry"], gallery: ["/works/ps-tmz-hall-60.webp", "/works/ps-tmz-hall-70.webp"] },
   { id: "infinity-letters", service: "outdoor", image: "/works/infinity-letter.webp", industries: ["realty"], video: "/video/infinity-story.mp4", gallery: ["/works/infinity-result.webp", "/works/infinity-rooftop.webp", "/works/infinity-rooftop-2.webp", "/works/infinity-crane.webp", "/works/infinity-gh-logo.webp", "/works/infinity-letter-wide.webp"] },
   { id: "akfa-showroom", service: "interior", image: "/works/akfa-showroom.webp", industries: ["retail", "industry"] },
