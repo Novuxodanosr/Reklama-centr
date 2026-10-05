@@ -41,7 +41,7 @@ export const site = {
   hours: { days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"], opens: "09:00", closes: "19:00" },
   // Коды подтверждения прав на сайт: Google Search Console и Яндекс Вебмастер выдают их при добавлении сайта
   // (способ «метатег»). Вписать сюда значение content="…" — тег появится на всех страницах после сборки.
-  verification: { google: null as string | null, yandex: null as string | null },
+  verification: { google: "d-ThJjkk0YuCGHhBd0Nm-rVDAvROiz5fVe7aL24lA9E" as string | null, yandex: "319be5a9cadee2e0" as string | null },
 };
 
 export function localePath(locale: Locale, path = "") {
