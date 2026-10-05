@@ -980,5 +980,77 @@
     "cta": "View the project",
     "factSub": "a dedicated column for every letter"
   },
-  "slogan": "Will Be Branded"
+  "slogan": "Will Be Branded",
+  "seo": {
+    "pages": {
+      "services": {
+        "title": "Services: advertising production in Tashkent",
+        "description": "Nine lines of work in one company: print, promotional products, textiles, POS and retail fixtures, exhibition stands, heraldry, outdoor advertising, interior branding, custom projects."
+      },
+      "works": {
+        "title": "Portfolio: signs, stands, merchandise, print",
+        "description": "Projects completed by Reklama Centr in Tashkent: outdoor advertising, interior branding, exhibition stands, retail fixtures, promotional products and print."
+      },
+      "about": {
+        "title": "About: advertising production company in Tashkent",
+        "description": "Reklama Centr is a full-cycle advertising production company in Tashkent: engineering, design, fabrication, installation and maintenance. Warranty up to 5 years."
+      },
+      "contacts": {
+        "title": "Contacts: 71 Beshyog‘och St, Tashkent",
+        "description": "Manager phone numbers, address and map of Reklama Centr in Tashkent. Send sizes, quantity or a description of the task and we will price it."
+      }
+    },
+    "ui": {
+      "works": "Sample projects",
+      "others": "Other services",
+      "allWorks": "All work"
+    },
+    "services": {
+      "print": {
+        "h1": "Print shop in Tashkent",
+        "title": "Print shop in Tashkent: business cards, catalogues, packaging",
+        "description": "Full-cycle printing in Tashkent: business cards, booklets, catalogues, calendars, planners, stickers, packaging. Express printing. Our designer can prepare the layout."
+      },
+      "promo": {
+        "h1": "Branded promotional products",
+        "title": "Branded promotional products in Tashkent, wholesale",
+        "description": "Branded merchandise in wholesale quantities in Tashkent: pens, mugs, USB drives, power banks, umbrellas, gift sets. UV printing, engraving, foil stamping. Direct import."
+      },
+      "textile": {
+        "h1": "Branded corporate clothing and textiles",
+        "title": "Branded corporate clothing and textiles in Tashkent",
+        "description": "Sewing and branding of clothing in Tashkent: T-shirts, polos, hoodies, workwear, gowns, bags, caps. DTF printing, embroidery, screen printing. From small batches to whole chains."
+      },
+      "pos": {
+        "h1": "POS materials and retail fixtures",
+        "title": "POS materials and retail fixtures in Tashkent",
+        "description": "POS materials and retail fixtures made in Tashkent: stands, displays, dispensers, counters, showcases, shelving, reception desks. Drawings, sample, batch, installation."
+      },
+      "exhibition": {
+        "h1": "Turnkey exhibition stands",
+        "title": "Turnkey exhibition stands in Tashkent",
+        "description": "Design, fabrication, installation and dismantling of exhibition stands in Tashkent and the regions: custom, mobile and modular structures, 3D visualisation."
+      },
+      "heraldry": {
+        "h1": "Custom medals, badges and awards",
+        "title": "Custom medals, badges and awards in Tashkent",
+        "description": "Heraldry made in Tashkent: medals, orders, lapel pins, badges, coins, statuettes — including gold and silver."
+      },
+      "outdoor": {
+        "h1": "Outdoor advertising in Tashkent",
+        "title": "Outdoor advertising in Tashkent: signs, channel letters",
+        "description": "Outdoor advertising production in Tashkent: channel and illuminated letters, signs, lightboxes, rooftop installations, steles, LED screens. Installation and maintenance. Warranty up to 5 years."
+      },
+      "interior": {
+        "h1": "Interior branding for offices and stores",
+        "title": "Interior branding for offices and stores in Tashkent",
+        "description": "Turnkey fit-out of sales offices, stores and showrooms in Tashkent: interior signs, wayfinding, wall and window branding, reception areas, photo zones."
+      },
+      "custom": {
+        "h1": "Custom-made advertising products",
+        "title": "Custom-made advertising products in Tashkent",
+        "description": "Products built to your idea in Tashkent: engineering and drawings, samples, art objects and installations, custom packaging, VIP gifts, small-batch production."
+      }
+    }
+  }
 }

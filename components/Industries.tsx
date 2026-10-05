@@ -87,7 +87,7 @@ export default function Industries() {
               <ul className="mt-6 flex flex-wrap gap-2">
                 {meta.services.map((s) => (
                   <li key={s}>
-                    <Link href={`/services#${s}`} className="block rounded-full border border-white/25 bg-ink/40 px-3.5 py-1.5 text-sm text-paper backdrop-blur transition-colors hover:border-accent hover:bg-accent hover:text-white">
+                    <Link href={`/services/${s}`} className="block rounded-full border border-white/25 bg-ink/40 px-3.5 py-1.5 text-sm text-paper backdrop-blur transition-colors hover:border-accent hover:bg-accent hover:text-white">
                       {t(`services.items.${s}.title`)}
                     </Link>
                   </li>

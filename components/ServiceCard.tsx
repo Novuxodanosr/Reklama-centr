@@ -30,7 +30,9 @@ export default function ServiceCard({ id, index }: { id: ServiceId; index: numbe
 
       <Reveal delay={0.1} className={flip ? "lg:order-1" : ""}>
         <p className="eyebrow">{t(`items.${id}.tagline`)}</p>
-        <h2 className="mt-3 text-5xl font-extrabold leading-[0.9] sm:text-6xl">{title}</h2>
+        <h2 className="mt-3 text-5xl font-extrabold leading-[0.9] sm:text-6xl">
+          <Link href={`/services/${id}`} className="transition-colors hover:text-accentHover">{title}</Link>
+        </h2>
         <div className="mt-6 space-y-4 text-[15px] leading-relaxed text-paper/80">
           {body.map((p) => <p key={p}>{p}</p>)}
         </div>
@@ -40,9 +42,12 @@ export default function ServiceCard({ id, index }: { id: ServiceId; index: numbe
             <li key={p} className="rounded-full border border-white/15 px-3.5 py-1.5 text-sm text-paper/85 transition-colors hover:border-accent hover:text-white">{p}</li>
           ))}
         </ul>
-        <Link href="/contacts#form" className="btn-primary mt-8">
-          {t("quote")} <ArrowIcon />
-        </Link>
+        <div className="mt-8 flex flex-wrap gap-3">
+          <Link href="/contacts#form" className="btn-primary">
+            {t("quote")} <ArrowIcon />
+          </Link>
+          <Link href={`/services/${id}`} className="btn-ghost">{t("more")}</Link>
+        </div>
       </Reveal>
     </article>
   );

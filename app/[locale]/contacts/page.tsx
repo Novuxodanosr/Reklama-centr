@@ -5,11 +5,11 @@ import LeadForm from "@/components/LeadForm";
 import Faq from "@/components/Faq";
 import { RevealGroup, RevealItem } from "@/components/motion/Reveal";
 import { PhoneIcon, TelegramIcon } from "@/components/icons";
-import { alternatesFor, managers, mapLinks, site, telegramLink, type Locale } from "@/lib/site";
+import { pageMeta, managers, mapLinks, site, telegramLink, type Locale } from "@/lib/site";
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: string } }): Promise<Metadata> {
-  const t = await getTranslations({ locale, namespace: "contacts" });
-  return { title: t("title"), description: t("lead"), alternates: alternatesFor(locale as Locale, "/contacts") };
+  const t = await getTranslations({ locale, namespace: "seo.pages.contacts" });
+  return pageMeta(locale as Locale, "/contacts", t("title"), t("description"));
 }
 
 export default function ContactsPage({ params: { locale } }: { params: { locale: string } }) {

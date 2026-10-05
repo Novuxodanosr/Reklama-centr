@@ -8,11 +8,11 @@ import ProductionBand from "@/components/ProductionBand";
 import ProcessStage from "@/components/ProcessStage";
 import ClientsMarquee from "@/components/ClientsMarquee";
 import QuoteBand from "@/components/QuoteBand";
-import { alternatesFor, type Locale } from "@/lib/site";
+import { pageMeta, type Locale } from "@/lib/site";
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: string } }): Promise<Metadata> {
-  const t = await getTranslations({ locale, namespace: "about" });
-  return { title: t("title"), description: t("lead"), alternates: alternatesFor(locale as Locale, "/about") };
+  const t = await getTranslations({ locale, namespace: "seo.pages.about" });
+  return pageMeta(locale as Locale, "/about", t("title"), t("description"));
 }
 
 export default function AboutPage({ params: { locale } }: { params: { locale: string } }) {

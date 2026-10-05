@@ -980,5 +980,77 @@
     "cta": "Loyihani ko‘rish",
     "factSub": "har bir harf uchun alohida ustun"
   },
-  "slogan": "Brendlanadi!"
+  "slogan": "Brendlanadi!",
+  "seo": {
+    "pages": {
+      "services": {
+        "title": "Xizmatlar: Toshkentda reklama ishlab chiqarish",
+        "description": "Bitta kompaniyada to‘qqiz yo‘nalish: tipografiya, suvenirlar, tekstil, POS va savdo uskunalari, ko‘rgazma stendlari, geraldika, tashqi reklama, interyer bezagi, nostandart loyihalar."
+      },
+      "works": {
+        "title": "Portfolio: peshlavhalar, stendlar, suvenirlar, poligrafiya",
+        "description": "Reklama Centr Toshkentda amalga oshirgan loyihalar: tashqi reklama, interyer bezagi, ko‘rgazma stendlari, savdo uskunalari, suvenir mahsulotlari va poligrafiya."
+      },
+      "about": {
+        "title": "Kompaniya haqida: Toshkentdagi reklama ishlab chiqarish kompaniyasi",
+        "description": "Reklama Centr — Toshkentdagi to‘liq tsiklli reklama ishlab chiqarish kompaniyasi: loyihalash, dizayn, ishlab chiqarish, montaj va xizmat ko‘rsatish. 5 yilgacha kafolat."
+      },
+      "contacts": {
+        "title": "Aloqa: Toshkent, Beshyog‘och ko‘chasi, 71",
+        "description": "Reklama Centr menejerlari telefonlari, manzil va xarita. O‘lcham, adad yoki vazifa tavsifini yuboring — narxini hisoblab beramiz."
+      }
+    },
+    "ui": {
+      "works": "Ishlardan namunalar",
+      "others": "Boshqa yo‘nalishlar",
+      "allWorks": "Barcha ishlar"
+    },
+    "services": {
+      "print": {
+        "h1": "Toshkentda tipografiya",
+        "title": "Toshkentda tipografiya: vizitka, katalog, qadoq",
+        "description": "Toshkentda to‘liq tsiklli poligrafiya: vizitkalar, bukletlar, kataloglar, kalendarlar, kundaliklar, stikerlar, qadoq. Shoshilinch bosma. Maketni dizaynerimiz tayyorlaydi."
+      },
+      "promo": {
+        "h1": "Logotipli suvenir mahsulotlari",
+        "title": "Toshkentda logotipli suvenir mahsulotlari ulgurji",
+        "description": "Toshkentda logotipli suvenirlar ulgurji partiyalarda: ruchka, krujka, fleshka, pauerbank, soyabon, sovg‘a to‘plamlari. UV-bosma, gravirovka, zarhal bosma. O‘z importimiz."
+      },
+      "textile": {
+        "h1": "Logotipli korporativ kiyim va tekstil",
+        "title": "Toshkentda logotipli korporativ kiyim va tekstil",
+        "description": "Toshkentda kiyim tikish va brendlash: futbolka, polo, xudi, maxsus kiyim, xalat, sumka, kepka. DTF-bosma, kashta, shelkografiya. Kichik partiyadan butun tarmoqqacha."
+      },
+      "pos": {
+        "h1": "POS-materiallar va savdo uskunalari",
+        "title": "Toshkentda POS-materiallar va savdo uskunalari",
+        "description": "Toshkentda POS-materiallar va savdo uskunalari ishlab chiqarish: stoykalar, stendlar, dispenserlar, peshtaxtalar, vitrinalar, stellajlar, resepshenlar. Chizma, namuna, partiya, montaj."
+      },
+      "exhibition": {
+        "h1": "Ko‘rgazma stendlari tayyor holda",
+        "title": "Toshkentda ko‘rgazma stendlari tayyor holda",
+        "description": "Toshkent va viloyatlarda ko‘rgazma stendlarini loyihalash, ishlab chiqarish, o‘rnatish va yig‘ishtirish: eksklyuziv, mobil va yig‘ma konstruksiyalar, 3D-vizualizatsiya."
+      },
+      "heraldry": {
+        "h1": "Buyurtma asosida medal, nishon va mukofotlar",
+        "title": "Toshkentda buyurtma asosida medal, nishon va mukofotlar",
+        "description": "Toshkentda geraldika ishlab chiqarish: medallar, ordenlar, ko‘krak nishonlari, znachoklar, tangalar, haykalchalar — shu jumladan oltin va kumushdan."
+      },
+      "outdoor": {
+        "h1": "Toshkentda tashqi reklama",
+        "title": "Toshkentda tashqi reklama: peshlavhalar, hajmli harflar",
+        "description": "Toshkentda tashqi reklama ishlab chiqarish: hajmli va yorug‘ harflar, peshlavhalar, yorug‘lik qutilari, tom ustki qurilmalar, stelalar, LED-ekranlar. Montaj va xizmat ko‘rsatish. 5 yilgacha kafolat."
+      },
+      "interior": {
+        "h1": "Ofis va do‘konlar uchun interyer bezagi",
+        "title": "Toshkentda ofis va do‘konlar uchun interyer bezagi",
+        "description": "Toshkentda savdo ofislari, do‘konlar va shourumlarni tayyor holda bezash: interyer peshlavhalari, navigatsiya, devor va vitrinalarni brendlash, resepshen zonalari, fotozonalar."
+      },
+      "custom": {
+        "h1": "Buyurtma asosida nostandart reklama buyumlari",
+        "title": "Toshkentda buyurtma asosida nostandart reklama buyumlari",
+        "description": "Toshkentda sizning g‘oyangiz bo‘yicha buyumlar: loyihalash va chizmalar, namuna, art-obyektlar va installyatsiyalar, nostandart qadoq, VIP-sovg‘alar, kichik seriyali ishlab chiqarish."
+      }
+    }
+  }
 }

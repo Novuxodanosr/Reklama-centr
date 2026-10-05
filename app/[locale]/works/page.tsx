@@ -5,11 +5,11 @@ import WorksGrid from "@/components/WorksGrid";
 import FeaturedCase from "@/components/FeaturedCase";
 import ClientsMarquee from "@/components/ClientsMarquee";
 import QuoteBand from "@/components/QuoteBand";
-import { alternatesFor, type Locale } from "@/lib/site";
+import { pageMeta, type Locale } from "@/lib/site";
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: string } }): Promise<Metadata> {
-  const t = await getTranslations({ locale, namespace: "works" });
-  return { title: t("title"), description: t("intro"), alternates: alternatesFor(locale as Locale, "/works") };
+  const t = await getTranslations({ locale, namespace: "seo.pages.works" });
+  return pageMeta(locale as Locale, "/works", t("title"), t("description"));
 }
 
 export default function WorksPage({ params: { locale } }: { params: { locale: string } }) {

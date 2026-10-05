@@ -23,7 +23,7 @@ export default function Directions() {
           return (
             <Link
               key={id}
-              href={`/services#${id}`}
+              href={`/services/${id}`}
               role="listitem"
               onMouseEnter={() => setActive(id)}
               onFocus={() => setActive(id)}
@@ -76,7 +76,7 @@ export default function Directions() {
           const image = serviceImages[id];
           const title = t(`items.${id}.title`);
           return (
-            <Link key={id} href={`/services#${id}`} className="group relative isolate flex aspect-[4/3] flex-col justify-end overflow-hidden rounded-xl bg-coal p-5">
+            <Link key={id} href={`/services/${id}`} className="group relative isolate flex aspect-[4/3] flex-col justify-end overflow-hidden rounded-xl bg-coal p-5">
               {image ? (
                 <Image src={image} alt="" fill sizes="(min-width: 640px) 50vw, 100vw" className="object-cover transition-transform duration-700 group-hover:scale-105" />
               ) : (

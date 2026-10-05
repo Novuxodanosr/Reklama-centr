@@ -7,7 +7,8 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import MobileBar from "@/components/MobileBar";
 import Effects from "@/components/fx/Effects";
-import { alternatesFor, locales, ogLocale, safeJsonLd, siteUrl, site, type Locale } from "@/lib/site";
+import { alternatesFor, localePath, locales, managers, ogLocale, safeJsonLd, siteUrl, site, type Locale } from "@/lib/site";
+import { serviceIds } from "@/lib/services";
 import "../globals.css";
 
 // Заголовки: узкий плотный гротеск, как на вывесках. Текст: Onest с родной кириллицей.
@@ -28,7 +29,11 @@ export async function generateMetadata({ params: { locale } }: { params: { local
     title: { default: t("title"), template: `%s — ${site.name}` },
     description: t("description"),
     alternates: alternatesFor(locale as Locale, "/"),
-    openGraph: { type: "website", siteName: site.name, title: t("title"), description: t("description"), locale: ogLocale(locale as Locale) },
+    openGraph: { type: "website", siteName: site.name, title: t("title"), description: t("description"), url: localePath(locale as Locale, "/"), locale: ogLocale(locale as Locale) },
+    verification: {
+      ...(site.verification.google ? { google: site.verification.google } : {}),
+      ...(site.verification.yandex ? { yandex: site.verification.yandex } : {}),
+    },
   };
 }
 
@@ -42,11 +47,16 @@ export default async function LocaleLayout({
   if (!locales.includes(locale as Locale)) notFound();
   unstable_setRequestLocale(locale);
   const messages = await getMessages();
+  const t = await getTranslations({ locale });
 
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "Organization",
+    "@type": "LocalBusiness",
+    "@id": `${siteUrl}/#organization`,
     name: site.name,
+    description: t("meta.description"),
+    image: `${siteUrl}/opengraph-image.png`,
+    logo: `${siteUrl}/logo.svg`,
     slogan: `${site.slogan.short} — ${site.slogan.full}`,
     url: siteUrl,
     telephone: site.phone,
@@ -54,6 +64,11 @@ export default async function LocaleLayout({
     ...(site.instagram || site.telegram ? { sameAs: [site.instagram, site.telegram].filter(Boolean) } : {}),
     address: { "@type": "PostalAddress", streetAddress: site.streetAddress, addressLocality: "Tashkent", addressCountry: "UZ" },
     geo: { "@type": "GeoCoordinates", latitude: site.geo.lat, longitude: site.geo.lon },
+    hasMap: `https://yandex.uz/maps/?pt=${site.geo.lon}%2C${site.geo.lat}&z=16`,
+    openingHoursSpecification: { "@type": "OpeningHoursSpecification", dayOfWeek: site.hours.days, opens: site.hours.opens, closes: site.hours.closes },
+    areaServed: [{ "@type": "City", name: "Tashkent" }, { "@type": "Country", name: "Uzbekistan" }],
+    contactPoint: managers.map((m) => ({ "@type": "ContactPoint", contactType: "sales", telephone: m.phone, availableLanguage: ["ru", "uz", "en"] })),
+    knowsAbout: serviceIds.map((id) => t(`services.items.${id}.title`)),
   };
 
   return (

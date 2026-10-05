@@ -37,6 +37,11 @@ export const site = {
   },
   streetAddress: "Beshyog‘och ko‘chasi 71",
   geo: { lat: 41.304631, lon: 69.248478 },
+  // Часы работы для поисковиков и карт — те же, что в messages → contacts.hours («Пн–Сб, 9:00–19:00»). Менять в обоих местах.
+  hours: { days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"], opens: "09:00", closes: "19:00" },
+  // Коды подтверждения прав на сайт: Google Search Console и Яндекс Вебмастер выдают их при добавлении сайта
+  // (способ «метатег»). Вписать сюда значение content="…" — тег появится на всех страницах после сборки.
+  verification: { google: null as string | null, yandex: null as string | null },
 };
 
 export function localePath(locale: Locale, path = "") {
@@ -76,6 +81,17 @@ export function alternatesFor(locale: Locale, path: string) {
 
 // Локаль в формате Open Graph (ru_RU, а не ru).
 export const ogLocale = (l: Locale) => ({ ru: "ru_RU", en: "en_US", uz: "uz_UZ" })[l];
+
+// Метаданные страницы целиком: заголовок и описание для поиска, канонический адрес и карточка для соцсетей
+// и мессенджеров (иначе при пересылке ссылки на любую страницу показывался бы заголовок главной).
+export function pageMeta(locale: Locale, path: string, title: string, description: string) {
+  return {
+    title,
+    description,
+    alternates: alternatesFor(locale, path),
+    openGraph: { type: "website" as const, siteName: site.name, title, description, url: localePath(locale, path), locale: ogLocale(locale), images: [{ url: "/opengraph-image.png", width: 1200, height: 630 }] },
+  };
+}
 
 // JSON-LD внутри <script>: экранируем «<», чтобы текст никогда не закрыл тег раньше времени.
 export const safeJsonLd = (data: unknown) => JSON.stringify(data).replace(/</g, "\\u003c");

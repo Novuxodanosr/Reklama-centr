@@ -4,11 +4,11 @@ import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import { serviceIds } from "@/lib/services";
 import ServiceCard from "@/components/ServiceCard";
 import QuoteBand from "@/components/QuoteBand";
-import { alternatesFor, type Locale } from "@/lib/site";
+import { pageMeta, type Locale } from "@/lib/site";
 
 export async function generateMetadata({ params: { locale } }: { params: { locale: string } }): Promise<Metadata> {
-  const t = await getTranslations({ locale, namespace: "services" });
-  return { title: t("title"), description: t("intro"), alternates: alternatesFor(locale as Locale, "/services") };
+  const t = await getTranslations({ locale, namespace: "seo.pages.services" });
+  return pageMeta(locale as Locale, "/services", t("title"), t("description"));
 }
 
 export default function ServicesPage({ params: { locale } }: { params: { locale: string } }) {
