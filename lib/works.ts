@@ -25,6 +25,7 @@ export const works: Work[] = [
   { id: "golden-house", service: "interior", image: "/works/golden-house.webp", industries: ["realty"], gallery: ["/works/ps-golden-house-66.webp", "/works/ps-golden-house-67.webp"] },
   { id: "tmz-navigation", service: "outdoor", image: "/works/tmz-stele-night.webp", industries: ["industry", "realty"], gallery: ["/works/tmz-plan-night.webp", "/works/tmz-plan-day.webp", "/works/tmz-stele-production.webp"] },
   { id: "octobank-giftset", service: "promo", image: "/works/octobank-set-box.webp", industries: ["finance"], gallery: ["/works/octobank-set-macro.webp", "/works/octobank-set-top.webp"] },
+  { id: "beluga-stand", service: "pos", image: "/works/beluga-stand.webp", industries: ["horeca", "retail"] },
   { id: "lavazza-point", service: "pos", image: "/works/lavazza-point.webp", industries: ["horeca", "retail"], video: "/video/lavazza-point.mp4", gallery: ["/works/lavazza-point-2.webp", "/works/lavazza-relief.webp"] },
   { id: "powerbank-uv", service: "promo", image: "/works/powerbank-batch.webp", gallery: ["/works/powerbank-batch-2.webp", "/works/powerbank-single.webp", "/works/powerbank-macro.webp"] },
   { id: "tmz-meeting", service: "interior", image: "/works/tmz-meeting-room.webp", industries: ["industry"], gallery: ["/works/tmz-meeting-flag.webp", "/works/tmz-meeting-logo.webp"] },

@@ -646,6 +646,10 @@
       "gold-folders": {
         "title": "Oltin bosmali papkalar",
         "client": "Korporativ buyurtma"
+      },
+      "beluga-stand": {
+        "title": "Shisha uchun yorug‘lik displey-tagligi",
+        "client": "Beluga Vodka"
       }
     },
     "open": "Ko‘rish",

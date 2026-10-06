@@ -646,6 +646,10 @@
       "gold-folders": {
         "title": "Folders with gold foil stamping",
         "client": "Corporate order"
+      },
+      "beluga-stand": {
+        "title": "Illuminated bottle display stand",
+        "client": "Beluga Vodka"
       }
     },
     "open": "View",
