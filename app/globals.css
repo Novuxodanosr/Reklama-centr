@@ -233,3 +233,33 @@ h1, h2, h3, .display {
   .group:hover .stat-neon { color: #ff2d48; text-shadow: 0 0 4px rgba(255, 45, 72, 0.9), 0 0 14px rgba(228, 20, 47, 0.7), 0 0 32px rgba(228, 20, 47, 0.45); }
 }
 @media (prefers-reduced-motion: reduce) { .stat-neon { transition: none; } }
+
+/* «?» в блоке частых вопросов (components/QuestionSign.tsx): прорисовка контура → неоновая вспышка → лёгкое парение. */
+.qsign { width: 250px; height: 400px; color: #F5F4F0; opacity: 0.9; }
+.qsign .qsign-hook { stroke-dasharray: 1; stroke-dashoffset: 1; }
+.qsign .qsign-dot { transform-origin: 108px 266px; transform: scale(0); }
+.qsign.is-on .qsign-hook { animation: qsign-draw 1.6s cubic-bezier(.65,0,.35,1) forwards; }
+.qsign.is-on .qsign-dot { animation: qsign-pop 0.5s 1.5s cubic-bezier(.2,1.6,.4,1) forwards, qsign-pulse 2.6s 2.4s ease-in-out infinite; }
+.qsign.is-on .qsign-glyph { animation: qsign-neon 1.4s 1.7s ease-out forwards, qsign-float 6s 3s ease-in-out infinite; transform-origin: 100px 160px; }
+.qsign .qsign-ruler line { stroke-dasharray: 20; stroke-dashoffset: 20; }
+.qsign.is-on .qsign-ruler line { animation: qsign-tick 0.4s ease-out forwards; }
+.qsign.is-on .qsign-ruler line:nth-child(n) { animation-delay: calc(0.08s * var(--i, 0)); }
+@keyframes qsign-draw { to { stroke-dashoffset: 0; } }
+@keyframes qsign-pop { to { transform: scale(1); } }
+@keyframes qsign-pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.25); } }
+@keyframes qsign-tick { to { stroke-dashoffset: 0; } }
+@keyframes qsign-neon {
+  0% { color: #F5F4F0; }
+  25% { color: #FF2D48; }
+  35% { color: #F5F4F0; }
+  45% { color: #FF2D48; }
+  55% { color: #FF6A7E; }
+  100% { color: #FF2D48; }
+}
+@keyframes qsign-float { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-10px) rotate(-3deg); } }
+@media (prefers-reduced-motion: reduce) {
+  .qsign .qsign-hook, .qsign .qsign-ruler line { stroke-dashoffset: 0; }
+  .qsign .qsign-dot { transform: scale(1); }
+  .qsign .qsign-glyph { color: #FF2D48; }
+  .qsign.is-on * { animation: none !important; }
+}

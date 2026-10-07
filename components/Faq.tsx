@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import { AnimatePresence, motion } from "framer-motion";
 import { safeJsonLd } from "@/lib/site";
 import Reveal, { ease } from "./motion/Reveal";
+import QuestionSign from "./QuestionSign";
 import { ArrowIcon } from "./icons";
 
 
@@ -30,6 +31,9 @@ export default function Faq() {
           <a href="#form" className="btn-ghost mt-8 !py-2.5">
             {t("ask")} <ArrowIcon />
           </a>
+          <div className="mt-10 hidden lg:flex lg:justify-center">
+            <QuestionSign />
+          </div>
         </Reveal>
 
         <div className="divide-y divide-white/10 border-y border-white/10">
