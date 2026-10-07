@@ -8,7 +8,7 @@ export const siteUrl = "https://reklama-centr.uz";
 // Менеджеры (телефоны реальные, заказчик 11.09.2026).
 // Имена и должности — в messages/*.json → contacts.managers.<id>.
 export const managers = [
-  { id: "javohir", phone: "+998 88 000 61 61", href: "tel:+998880006161" },
+  { id: "javohir", phone: "+998 87 000 61 61", href: "tel:+998870006161" },
   { id: "raksana", phone: "+998 92 001 63 63", href: "tel:+998920016363" },
   { id: "shahina", phone: "+998 88 001 46 46", href: "tel:+998880014646" },
   { id: "tatyana", phone: "+998 88 001 34 34", href: "tel:+998880013434" },
