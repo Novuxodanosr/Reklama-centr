@@ -14,7 +14,7 @@ export default function Footer() {
   return (
     <footer className="relative border-t border-line bg-ink">
       <div className="container-x">
-        <div className="grid gap-12 py-14 md:grid-cols-[1.3fr_1fr_1fr_1fr] lg:py-20">
+        <div className="grid gap-12 py-14 md:grid-cols-[1.2fr_0.7fr_1fr_1.4fr] lg:py-20">
           <div>
             <Logo className="h-10 text-paper" />
             <Slogan lockup className="mt-3" />
@@ -52,7 +52,7 @@ export default function Footer() {
             <h3 className="eyebrow-muted font-sans normal-case tracking-[0.24em]">{t("footer.contacts")}</h3>
             <ul className="mt-5 space-y-3 text-sm">
               {managers.map((m) => (
-                <li key={m.id}>
+                <li key={m.id} className="whitespace-nowrap">
                   <a href={m.href} className="tabular-nums text-paper/80 hover:text-white">{m.phone}</a>
                   <span className="text-dim"> · {t(`contacts.managers.${m.id}.name`)}</span>
                 </li>

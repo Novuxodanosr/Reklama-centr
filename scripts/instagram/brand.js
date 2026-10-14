@@ -4,14 +4,14 @@ const sharp = require("sharp");
 const fs = require("fs");
 const path = require("path");
 
-const OUT = "D:/САЙТ/Instagram";
+const OUT = "D:/CLAUDE/Сайт Reklama Centr/Instagram";
 const FONT = path.join(__dirname, "sofia.ttf"); // шрифт из ASCII-пути: Pango не читает кириллицу в пути
 const FAMILY = "Sofia Sans Extra Condensed ExtraBold";
 const INK = "#0B0B0D", PAPER = "#F5F4F0", RED = "#E4142F", MIST = "#9A9AA2";
 const W = 1080, H = 1350, X = 84;
 
 // Логотип из компонента сайта (components/Logo.tsx) — те же пути, белым.
-const logoSrc = fs.readFileSync("D:/САЙТ/RC/components/Logo.tsx", "utf8");
+const logoSrc = fs.readFileSync("D:/CLAUDE/Сайт Reklama Centr/RC/components/Logo.tsx", "utf8");
 const logoPaths = logoSrc.match(/<path [^>]*\/>/g).join("");
 const logoSvg = (fill, width) => {
   const h = Math.round((width * 135.25) / 503.2);
@@ -99,7 +99,7 @@ async function highlights() {
 
 // ---------- Закреплённые карусели ----------
 async function pinned() {
-  const W_ = (id) => `D:/САЙТ/RC/public/works/${id}.webp`;
+  const W_ = (id) => `D:/CLAUDE/Сайт Reklama Centr/RC/public/works/${id}.webp`;
 
   const about = path.join(OUT, "pinned-1-kto-my");
   fs.mkdirSync(about, { recursive: true });
@@ -142,7 +142,7 @@ async function pinned() {
 async function caseInfinity() {
   const dir = path.join(OUT, "pinned-2-keys-infinity");
   fs.mkdirSync(dir, { recursive: true });
-  const P = (id) => `D:/САЙТ/RC/public/works/${id}.webp`;
+  const P = (id) => `D:/CLAUDE/Сайт Reklama Centr/RC/public/works/${id}.webp`;
   await slide({ file: `${dir}/1.jpg`, bg: P("infinity-result"), eyebrow: "Кейс · ЖК INFINITY", title: "Буквы 3,5 м на крыше", titlePx: 170, body: span(PAPER, "Без ферм — на лонжеронной системе. Монтаж краном 200 т."), cta: "Листайте →" });
   const photos = ["infinity-letter", "infinity-crane", "infinity-rooftop", "infinity-rooftop-2", "infinity-letter-wide", "infinity-gh-logo"];
   for (const [i, id] of photos.entries()) {

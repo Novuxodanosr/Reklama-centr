@@ -11,9 +11,9 @@ const INK = "#0B0B0D", PAPER = "#F5F4F0", RED = "#E4142F";
 const W = 1080, H = 1920;
 const TMP = path.join(__dirname, "reel");
 fs.mkdirSync(TMP, { recursive: true });
-const VID = "D:/САЙТ/RC/public/video";
+const VID = "D:/CLAUDE/Сайт Reklama Centr/RC/public/video";
 
-const logoPaths = fs.readFileSync("D:/САЙТ/RC/components/Logo.tsx", "utf8").match(/<path [^>]*\/>/g).join("");
+const logoPaths = fs.readFileSync("D:/CLAUDE/Сайт Reklama Centr/RC/components/Logo.tsx", "utf8").match(/<path [^>]*\/>/g).join("");
 const logo = (w) => Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 503.2 135.25" width="${w}" height="${Math.round((w * 135.25) / 503.2)}"><g fill="${PAPER}">${logoPaths}</g></svg>`);
 async function text(markup, px) {
   const b = await sharp({ text: { text: markup, font: `${FAMILY}, ${px}`, fontfile: FONT, rgba: true, dpi: 72, align: "center" } }).png().toBuffer();
@@ -70,9 +70,9 @@ async function label(file, word) {
   }
   fc += `[${n + 1}]scale=${W}:${H},setsar=1,fps=30,format=yuv420p[c${n + 1}];`;
   fc += Array.from({ length: n + 2 }, (_, i) => `[c${i}]`).join("") + `concat=n=${n + 2}:v=1:a=0[out]`;
-  args.push("-filter_complex", fc, "-map", "[out]", "-c:v", "libx264", "-preset", "slow", "-crf", "19", "-pix_fmt", "yuv420p", "-movflags", "+faststart", "D:/САЙТ/Instagram/reel-manifest.mp4");
+  args.push("-filter_complex", fc, "-map", "[out]", "-c:v", "libx264", "-preset", "slow", "-crf", "19", "-pix_fmt", "yuv420p", "-movflags", "+faststart", "D:/CLAUDE/Сайт Reklama Centr/Instagram/reel-manifest.mp4");
   execFileSync("ffmpeg", args, { stdio: "inherit" });
   // Обложка ролика для сетки — заставка.
-  fs.copyFileSync(`${TMP}/intro.png`, "D:/САЙТ/Instagram/reel-manifest-cover.png");
+  fs.copyFileSync(`${TMP}/intro.png`, "D:/CLAUDE/Сайт Reklama Centr/Instagram/reel-manifest-cover.png");
   console.log("ok");
 })().catch((e) => { console.error(e); process.exit(1); });
