@@ -9,7 +9,8 @@ import { ArrowIcon, CheckIcon, PaperclipIcon, TelegramIcon } from "./icons";
 import { ease } from "./motion/Reveal";
 
 type Status = "idle" | "sending" | "success" | "error";
-const MAX_FILE = 10 * 1024 * 1024;
+// 50 МБ — предел, который Telegram принимает от ботов (файл летит менеджерам напрямую в группу).
+const MAX_FILE = 50 * 1024 * 1024;
 // Те же форматы, что принимает сервер (app/api/lead/route.ts).
 const ALLOWED_FILE = /\.(pdf|jpe?g|png|webp|ai|cdr|eps|svg)$/i;
 const steps = ["what", "details", "contact"] as const;
@@ -196,7 +197,7 @@ export default function LeadForm() {
                 <PaperclipIcon />
                 <span className="min-w-0 flex-1 truncate">{file ? file.name : t("form.attach")}</span>
                 <span className="hidden shrink-0 text-xs text-dim sm:block">{fileError ? fileErrorText : t("form.attachHint")}</span>
-                <input type="file" className="sr-only" accept=".pdf,.jpg,.jpeg,.png,.webp,.ai,.cdr,.eps,.svg" onChange={(e) => pick(e.target.files?.[0] ?? null)} />
+                <input type="file" className="sr-only" accept=".pdf,.jpg,.jpeg,.png,.webp,.ai,.cdr,.eps,.svg,.psd,.tif,.tiff,.zip,.rar,.doc,.docx,.xls,.xlsx" onChange={(e) => pick(e.target.files?.[0] ?? null)} />
               </label>
               {fileError && <p className="mt-2 text-xs text-accentHover sm:hidden">{fileErrorText}</p>}
               <div className="mt-6 flex gap-3">

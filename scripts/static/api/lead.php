@@ -48,8 +48,9 @@ if ($name === '' || $phone === '') reply(422, ['ok' => false]);
 $file = null;
 if (!empty($_FILES['file']) && $_FILES['file']['error'] !== UPLOAD_ERR_NO_FILE) {
     $f = $_FILES['file'];
+    // 50 МБ — предел Telegram для файлов от ботов. Лимиты PHP хостинга подняты в api/.user.ini.
     // UPLOAD_ERR_INI_SIZE/FORM_SIZE — файл больше лимита хостинга; для формы это та же ошибка «файл».
-    if ($f['error'] !== UPLOAD_ERR_OK || $f['size'] > 10 * 1024 * 1024 || !preg_match('/\.(pdf|jpe?g|png|webp|ai|cdr|eps|svg)$/i', $f['name'])) {
+    if ($f['error'] !== UPLOAD_ERR_OK || $f['size'] > 50 * 1024 * 1024 || !preg_match('/\.(pdf|jpe?g|png|webp|ai|cdr|eps|svg|psd|tiff?|zip|rar|docx?|xlsx?)$/i', $f['name'])) {
         reply(413, ['ok' => false, 'error' => 'file']);
     }
     $file = $f;

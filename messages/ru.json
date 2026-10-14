@@ -745,12 +745,12 @@
     "next": "Далее",
     "back": "Назад",
     "attach": "Прикрепить эскиз или файл",
-    "attachHint": "PDF, JPG, PNG, AI, CDR — до 10 МБ",
-    "fileTooBig": "Файл больше 10 МБ",
+    "attachHint": "PDF, JPG, PNG, AI, CDR, PSD, ZIP — до 50 МБ. Больше — ссылкой на Google Drive или Яндекс Диск в описании",
+    "fileTooBig": "Файл больше 50 МБ — пришлите ссылку на Google Drive или Яндекс Диск в описании",
     "chooseService": "Выберите направление",
     "successTitle": "Заявка отправлена",
     "another": "Отправить ещё одну",
-    "fileType": "Такой формат не подходит. Нужен PDF, JPG, PNG, AI, CDR, EPS или SVG",
+    "fileType": "Такой формат не подходит. Нужен PDF, JPG, PNG, AI, CDR, EPS, SVG, PSD, TIFF, ZIP, RAR, DOC или XLS",
     "messageRequired": "Опишите задачу хотя бы в двух словах"
   },
   "cta": {

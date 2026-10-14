@@ -50,7 +50,7 @@ RewriteRule ^(.*)$ ru/$1 [L]
 </IfModule>
 
 # Настройки с токеном бота и служебные файлы — не отдавать никому.
-<FilesMatch "^(config\.php|config\.sample\.php|\.ht.*|leads\.log)$">
+<FilesMatch "^(config\.php|config\.sample\.php|\.ht.*|\.user\.ini|leads\.log)$">
   <IfModule mod_authz_core.c>
     Require all denied
   </IfModule>

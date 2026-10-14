@@ -745,12 +745,12 @@
     "next": "Keyingi",
     "back": "Orqaga",
     "attach": "Eskiz yoki fayl biriktirish",
-    "attachHint": "PDF, JPG, PNG, AI, CDR — 10 MB gacha",
-    "fileTooBig": "Fayl 10 MB dan katta",
+    "attachHint": "PDF, JPG, PNG, AI, CDR, PSD, ZIP — 50 MB gacha. Kattaroq fayl — tavsifda Google Drive yoki Yandex Disk havolasi",
+    "fileTooBig": "Fayl 50 MB dan katta — tavsifda Google Drive yoki Yandex Disk havolasini yuboring",
     "chooseService": "Yo‘nalishni tanlang",
     "successTitle": "So‘rov yuborildi",
     "another": "Yana bitta yuborish",
-    "fileType": "Bu format mos kelmaydi. PDF, JPG, PNG, AI, CDR, EPS yoki SVG kerak",
+    "fileType": "Bu format mos kelmaydi. PDF, JPG, PNG, AI, CDR, EPS, SVG, PSD, TIFF, ZIP, RAR, DOC yoki XLS kerak",
     "messageRequired": "Vazifani qisqacha yozing"
   },
   "cta": {

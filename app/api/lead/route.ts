@@ -5,7 +5,7 @@ import ru from "@/messages/ru.json";
 const hits = new Map<string, number[]>();
 const LIMIT = 5;
 const WINDOW_MS = 60_000;
-const MAX_FILE = 10 * 1024 * 1024;
+const MAX_FILE = 50 * 1024 * 1024;
 const ALLOWED_FILE = /\.(pdf|jpe?g|png|webp|ai|cdr|eps|svg)$/i;
 
 function rateLimited(ip: string) {

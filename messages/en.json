@@ -745,12 +745,12 @@
     "next": "Next",
     "back": "Back",
     "attach": "Attach a sketch or file",
-    "attachHint": "PDF, JPG, PNG, AI, CDR — up to 10 MB",
-    "fileTooBig": "File is larger than 10 MB",
+    "attachHint": "PDF, JPG, PNG, AI, CDR, PSD, ZIP — up to 50 MB. Larger files: share a Google Drive link in the description",
+    "fileTooBig": "File is larger than 50 MB — add a Google Drive or Yandex Disk link in the description",
     "chooseService": "Choose a direction",
     "successTitle": "Request sent",
     "another": "Send another",
-    "fileType": "This format is not supported. Please use PDF, JPG, PNG, AI, CDR, EPS or SVG",
+    "fileType": "This format is not supported. Please use PDF, JPG, PNG, AI, CDR, EPS, SVG, PSD, TIFF, ZIP, RAR, DOC or XLS",
     "messageRequired": "Describe the task in a few words"
   },
   "cta": {
