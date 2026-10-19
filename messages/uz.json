@@ -1082,6 +1082,9 @@
     "branding": "Logotip tushirish: UV-bosma, lazer gravirovka yoki tampobosma — korpus materialiga mos tanlaymiz.",
     "back": "Kategoriyaga qaytish",
     "leadMessage": "Qiziqtirdi: {title} ({code}). Adadi: ___ dona.",
-    "breadcrumbCatalog": "Katalog"
+    "breadcrumbCatalog": "Katalog",
+    "perM2": "m² uchun",
+    "empty": "Bu bo‘limda mahsulotlar tez orada paydo bo‘ladi. Bizga yozing — vazifangizga mos tanlab, narxini hisoblaymiz.",
+    "notFound": "Mahsulot topilmadi."
   }
 }

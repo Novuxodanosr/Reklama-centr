@@ -106,15 +106,26 @@ const ti = (s) => {
   return hit ? { ru: `${m[1]} × ${hit[0]}`, en: `${m[1]} × ${hit[1]}`, uz: `${m[1]} × ${hit[2]}` } : { ru: s, en: s, uz: s };
 };
 
+const T = (ru, en, uz) => ({ ru, en, uz });
 const categories = [
-  { id: "gifts", parent: null, title: { ru: "Корпоративные подарки", en: "Corporate gifts", uz: "Korporativ sovg‘alar" }, order: 1 },
-  { id: "wireless-chargers", parent: "gifts", title: { ru: "Беспроводные зарядки", en: "Wireless chargers", uz: "Simsiz zaryadlovchilar" }, order: 1 },
-  { id: "magsafe-power-banks", parent: "gifts", title: { ru: "Магнитные повербанки", en: "Magnetic power banks", uz: "Magnitli pauerbanklar" }, order: 2 },
-  { id: "pd-power-banks", parent: "gifts", title: { ru: "Повербанки с быстрой зарядкой", en: "Fast-charging power banks", uz: "Tez zaryadlovchi pauerbanklar" }, order: 3 },
-  { id: "capsule-power-banks", parent: "gifts", title: { ru: "Компактные повербанки", en: "Compact power banks", uz: "Ixcham pauerbanklar" }, order: 4 },
-  { id: "regular-power-banks", parent: "gifts", title: { ru: "Классические повербанки", en: "Classic power banks", uz: "Klassik pauerbanklar" }, order: 5 },
-  { id: "solar-power-banks", parent: "gifts", title: { ru: "Повербанки на солнечных батареях", en: "Solar power banks", uz: "Quyosh batareyali pauerbanklar" }, order: 6 },
-  { id: "laptop-power-banks", parent: "gifts", title: { ru: "Повербанки для ноутбуков", en: "Laptop power banks", uz: "Noutbuk uchun pauerbanklar" }, order: 7 },
+  { id: "outdoor", parent: null, title: T("Наружная реклама", "Outdoor advertising", "Tashqi reklama"), order: 1 },
+  { id: "print", parent: null, title: T("Полиграфия", "Print", "Poligrafiya"), order: 2 },
+  { id: "souvenirs", parent: null, title: T("Сувенирная продукция", "Promotional products", "Suvenir mahsulotlari"), order: 3 },
+  { id: "wide-format-print", parent: "outdoor", title: T("Широкоформатная печать", "Large-format printing", "Keng formatli bosma"), order: 1 },
+  { id: "volumetric-letters", parent: "outdoor", title: T("Объёмные буквы", "Channel letters", "Hajmli harflar"), order: 2 },
+  { id: "lightboxes", parent: "outdoor", title: T("Световые короба", "Lightboxes", "Yorug‘lik qutilari"), order: 3 },
+  { id: "business-cards", parent: "print", title: T("Визитки", "Business cards", "Vizitkalar"), order: 1 },
+  { id: "flyers", parent: "print", title: T("Листовки и флаеры", "Flyers", "Flayerlar"), order: 2 },
+  { id: "notepads", parent: "print", title: T("Блокноты", "Notepads", "Bloknotlar"), order: 3 },
+  { id: "stickers", parent: "print", title: T("Наклейки", "Stickers", "Stikerlar"), order: 4 },
+  { id: "wireless-chargers", parent: "souvenirs", title: T("Беспроводные зарядки", "Wireless chargers", "Simsiz zaryadlovchilar"), order: 1 },
+  { id: "magsafe-power-banks", parent: "souvenirs", title: T("Магнитные повербанки", "Magnetic power banks", "Magnitli pauerbanklar"), order: 2 },
+  { id: "pd-power-banks", parent: "souvenirs", title: T("Повербанки с быстрой зарядкой", "Fast-charging power banks", "Tez zaryadlovchi pauerbanklar"), order: 3 },
+  { id: "capsule-power-banks", parent: "souvenirs", title: T("Компактные повербанки", "Compact power banks", "Ixcham pauerbanklar"), order: 4 },
+  { id: "regular-power-banks", parent: "souvenirs", title: T("Классические повербанки", "Classic power banks", "Klassik pauerbanklar"), order: 5 },
+  { id: "solar-power-banks", parent: "souvenirs", title: T("Повербанки на солнечных батареях", "Solar power banks", "Quyosh batareyali pauerbanklar"), order: 6 },
+  { id: "laptop-power-banks", parent: "souvenirs", title: T("Повербанки для ноутбуков", "Laptop power banks", "Noutbuk uchun pauerbanklar"), order: 7 },
+  { id: "statuettes", parent: "souvenirs", title: T("Статуэтки и награды", "Statuettes and awards", "Haykalchalar va mukofotlar"), order: 8 },
 ];
 
 const imgDir = path.join(root, "public/catalog");
@@ -141,7 +152,9 @@ const products = items.map((p, i) => {
     specs: p.specs.map((s) => ({ k: tk(s.k), v: tv(s.v) })),
     included: p.included.map(ti),
     images,
+    unit: "pcs",
     costUsd: p.usdFrom,
+    markup: null,
     priceUzs: null,
     published: true,
     order: i + 1,
@@ -149,7 +162,7 @@ const products = items.map((p, i) => {
 });
 
 const catalog = {
-  settings: { showPrices: false, usdRate: 12300, markupPct: 60, priceStep: 1000, minQty: 50 },
+  settings: { showPrices: false, usdRate: 12300, markupMode: "pct", markupValue: 60, priceStep: 1000, minQty: 50 },
   categories,
   products,
 };

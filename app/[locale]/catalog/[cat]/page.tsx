@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import { Link } from "@/lib/navigation";
-import { catalog, categoryById, childCategories, l10n } from "@/lib/catalog";
+import { catalog, categoryById, childCategories, l10n, productsIn } from "@/lib/catalog";
 import CategoryGrid from "@/components/catalog/CategoryGrid";
 import QuoteBand from "@/components/QuoteBand";
 import { localePath, pageMeta, safeJsonLd, site, siteUrl, type Locale } from "@/lib/site";
@@ -61,7 +61,7 @@ export default async function CategoryPage({ params: { locale, cat } }: Params) 
             ))}
           </div>
         )}
-        <CategoryGrid category={cat} />
+        <CategoryGrid category={cat} products={productsIn(cat)} settings={catalog.settings} />
       </section>
       <div className="h-16" />
       <QuoteBand />

@@ -95,6 +95,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $p['costUsd'] = ($_POST['costUsd'] ?? '') === '' ? null : (float)str_replace(',', '.', (string)$_POST['costUsd']);
         $p['priceUzs'] = ($_POST['priceUzs'] ?? '') === '' ? null : (int)preg_replace('/\D/', '', (string)$_POST['priceUzs']);
         $p['published'] = !empty($_POST['published']);
+        $p['unit'] = ($_POST['unit'] ?? 'pcs') === 'm2' ? 'm2' : 'pcs';
+        $p['markup'] = ($_POST['markupValue'] ?? '') === '' ? null : ['mode' => ($_POST['markupMode'] ?? 'pct') === 'abs' ? 'abs' : 'pct', 'value' => (float)str_replace(',', '.', (string)$_POST['markupValue'])];
         $p['order'] = (int)($_POST['order'] ?? $p['order']);
         // Фото: порядок и удаление
         $keep = array_values(array_filter(array_map('trim', preg_split('/\r?\n/', (string)($_POST['images'] ?? ''))), fn($x) => $x !== ''));
@@ -129,13 +131,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $s = &$data['settings'];
         $s['showPrices'] = !empty($_POST['showPrices']);
         $s['usdRate'] = (float)str_replace(',', '.', (string)$_POST['usdRate']);
-        $s['markupPct'] = (float)str_replace(',', '.', (string)$_POST['markupPct']);
+        $s['markupMode'] = ($_POST['markupMode'] ?? 'pct') === 'abs' ? 'abs' : 'pct';
+        $s['markupValue'] = (float)str_replace(',', '.', (string)$_POST['markupValue']);
+        unset($s['markupPct']);
         $s['priceStep'] = max(1, (int)$_POST['priceStep']);
         $s['minQty'] = max(1, (int)$_POST['minQty']);
         unset($s);
         if (!empty($_POST['recalc'])) {
             $n = 0;
-            foreach ($data['products'] as &$q) { if (!empty($q['costUsd'])) { $q['priceUzs'] = catalog_price($data['settings'], (float)$q['costUsd']); $n++; } }
+            foreach ($data['products'] as &$q) { if (!empty($q['costUsd'])) { $q['priceUzs'] = catalog_price($data['settings'], (float)$q['costUsd'], $q['markup'] ?? null); $n++; } }
             unset($q); flash("Настройки сохранены, пересчитаны цены у $n товаров.");
         } else flash('Настройки сохранены.');
         catalog_save($data); redirect('?a=settings');
@@ -246,15 +250,17 @@ if ($action === 'edit' || $action === 'new') {
         return implode("\n", $out);
     };
     $inclLines = fn(string $l) => implode("\n", array_map(fn($s) => is_array($s) ? ($s[$l] ?? $s['ru'] ?? '') : $s, $p['included']));
-    $suggest = catalog_price($data['settings'], $p['costUsd'] ? (float)$p['costUsd'] : null);
+    $suggest = catalog_price($data['settings'], $p['costUsd'] ? (float)$p['costUsd'] : null, $p['markup'] ?? null);
+    $mk = $p['markup'] ?? null;
     page_start($p['id'] ? 'Товар ' . $p['id'] : 'Новый товар'); nav($action === 'new' ? 'new' : 'list');
     echo '<form method="post" action="?a=save-product" enctype="multipart/form-data"><input type="hidden" name="csrf" value="' . $C . '"><input type="hidden" name="id" value="' . h($p['id']) . '">';
     echo '<div class="card"><h1>' . ($p['id'] ? h($l10n($p['title']) ?: $p['id']) : 'Новый товар') . '</h1><div class="grid3">';
     echo '<div><label>Категория<select name="category">'; foreach ($data['categories'] as $c) if ($c['parent']) echo '<option value="' . h($c['id']) . '"' . ($p['category'] === $c['id'] ? ' selected' : '') . '>' . h($c['title']['ru']) . '</option>'; echo '</select></label>';
     echo '<label>Коды модели (через запятую)<input type="text" name="codes" value="' . h(implode(', ', $p['codes'])) . '"></label><label>Порядок в списке<input type="number" name="order" value="' . (int)$p['order'] . '"></label></div>';
     echo '<div><label>Себестоимость, USD (видно только здесь)<input type="text" name="costUsd" value="' . h((string)($p['costUsd'] ?? '')) . '"></label>';
-    echo '<label>Цена на сайте, сум (за шт., «от»)<input type="text" name="priceUzs" id="priceUzs" value="' . h((string)($p['priceUzs'] ?? '')) . '"></label>';
-    if ($suggest) echo '<p class="muted" style="margin:6px 0 0">По формуле (курс ' . h((string)$data['settings']['usdRate']) . ' × наценка ' . h((string)$data['settings']['markupPct']) . '%): <a href="#" onclick="document.getElementById(\'priceUzs\').value=' . $suggest . ';return false">' . number_format($suggest, 0, '', ' ') . ' сум</a></p>';
+    echo '<label>Наценка этого товара (пусто — общая из настроек)<div style="display:flex;gap:6px"><input type="text" name="markupValue" value="' . h((string)($mk['value'] ?? '')) . '" placeholder="' . h((string)$data['settings']['markupValue']) . '"><select name="markupMode" style="width:120px"><option value="pct"' . (($mk['mode'] ?? $data['settings']['markupMode']) === 'pct' ? ' selected' : '') . '>%</option><option value="abs"' . (($mk['mode'] ?? $data['settings']['markupMode']) === 'abs' ? ' selected' : '') . '>сум</option></select></div></label>';
+    echo '<label>Цена на сайте, сум («от»)<div style="display:flex;gap:6px"><input type="text" name="priceUzs" id="priceUzs" value="' . h((string)($p['priceUzs'] ?? '')) . '"><select name="unit" style="width:120px"><option value="pcs"' . (($p['unit'] ?? 'pcs') === 'pcs' ? ' selected' : '') . '>за шт.</option><option value="m2"' . (($p['unit'] ?? '') === 'm2' ? ' selected' : '') . '>за м²</option></select></div></label>';
+    if ($suggest) echo '<p class="muted" style="margin:6px 0 0">По формуле (курс ' . h((string)$data['settings']['usdRate']) . ', наценка ' . h((string)($mk['value'] ?? $data['settings']['markupValue'])) . (($mk['mode'] ?? $data['settings']['markupMode']) === 'abs' ? ' сум' : '%') . '): <a href="#" onclick="document.getElementById(\'priceUzs\').value=' . $suggest . ';return false">' . number_format($suggest, 0, '', ' ') . ' сум</a></p>';
     echo '</div><div><label style="display:flex;gap:8px;align-items:center;margin-top:28px"><input type="checkbox" name="published" ' . (!empty($p['published']) ? 'checked' : '') . '> Показывать на сайте</label>';
     echo '<p class="muted">Фото: до 1200 px, WebP/JPG/PNG. Первое — главное. Чтобы удалить — сотрите строку ниже.</p></div></div></div>';
 
@@ -280,7 +286,7 @@ if ($action === 'edit' || $action === 'new') {
 if ($action === 'categories') {
     page_start('Категории'); nav('categories');
     echo '<form method="post" action="?a=categories"><input type="hidden" name="csrf" value="' . $C . '"><div class="card"><table><tr><th>ID (латиницей)</th><th>Родитель</th><th>Русский</th><th>English</th><th>O‘zbekcha</th><th>Порядок</th><th>Удалить</th></tr>';
-    $rows = array_merge($data['categories'], [['id' => '', 'parent' => null, 'title' => [], 'order' => count($data['categories']) + 1]]);
+    $rows = $data['categories']; for ($k = 1; $k <= 3; $k++) $rows[] = ['id' => '', 'parent' => null, 'title' => [], 'order' => count($data['categories']) + $k];
     foreach ($rows as $i => $c) {
         echo '<tr><td><input type="text" name="cat[' . $i . '][id]" value="' . h($c['id']) . '"></td><td><select name="cat[' . $i . '][parent]"><option value="">— раздел —</option>';
         foreach ($data['categories'] as $pc) if (!$pc['parent']) echo '<option value="' . h($pc['id']) . '"' . (($c['parent'] ?? '') === $pc['id'] ? ' selected' : '') . '>' . h($pc['title']['ru']) . '</option>';
@@ -288,7 +294,7 @@ if ($action === 'categories') {
         foreach (['ru', 'en', 'uz'] as $l) echo '<td><input type="text" name="cat[' . $i . '][' . $l . ']" value="' . h($c['title'][$l] ?? '') . '"></td>';
         echo '<td><input type="number" name="cat[' . $i . '][order]" value="' . (int)$c['order'] . '" style="width:70px"></td><td>' . ($c['id'] ? '<input type="checkbox" name="cat[' . $i . '][delete]">' : '<span class="muted">новая</span>') . '</td></tr>';
     }
-    echo '</table><p class="muted">Подраздел = категория с родителем. Товары ссылаются на ID подраздела; меняя ID, перепривяжите товары. Новые подразделы появляются на сайте сразу, отдельная страница раздела — после пересборки сайта.</p></div><button class="btn">Сохранить</button></form>';
+    echo '</table><p class="muted">Раздел — строка без родителя (например «Наружная реклама»), подраздел — с родителем; товары лежат в подразделах. Чтобы добавить раздел и сразу подразделы к нему: сначала сохраните раздел, затем добавьте подразделы. Товары ссылаются на ID подраздела; меняя ID, перепривяжите товары. Новые подразделы появляются на сайте сразу, отдельная страница раздела — после пересборки сайта.</p></div><button class="btn">Сохранить</button></form>';
     page_end(); exit;
 }
 
@@ -297,7 +303,7 @@ if ($action === 'settings') {
     page_start('Настройки'); nav('settings');
     echo '<form method="post" action="?a=settings"><input type="hidden" name="csrf" value="' . $C . '"><div class="card"><h2>Цены</h2><div class="grid3">';
     echo '<div><label style="display:flex;gap:8px;align-items:center"><input type="checkbox" name="showPrices" ' . ($s['showPrices'] ? 'checked' : '') . '> Показывать цены на сайте</label><p class="muted">Выключено — вместо цены «Цена по запросу».</p></div>';
-    echo '<div><label>Курс доллара, сум<input type="text" name="usdRate" value="' . h((string)$s['usdRate']) . '"></label><label>Наценка к себестоимости, %<input type="text" name="markupPct" value="' . h((string)$s['markupPct']) . '"></label></div>';
+    echo '<div><label>Курс доллара, сум<input type="text" name="usdRate" value="' . h((string)$s['usdRate']) . '"></label><label>Наценка к себестоимости (общая)<div style="display:flex;gap:6px"><input type="text" name="markupValue" value="' . h((string)$s['markupValue']) . '"><select name="markupMode" style="width:120px"><option value="pct"' . ($s['markupMode'] === 'pct' ? ' selected' : '') . '>%</option><option value="abs"' . ($s['markupMode'] === 'abs' ? ' selected' : '') . '>сум</option></select></div></label></div>';
     echo '<div><label>Округление цены, сум<input type="number" name="priceStep" value="' . (int)$s['priceStep'] . '"></label><label>Минимальный тираж, шт.<input type="number" name="minQty" value="' . (int)$s['minQty'] . '"></label></div></div>';
     echo '<p><label style="display:flex;gap:8px;align-items:center"><input type="checkbox" name="recalc"> Пересчитать цены всех товаров по формуле (себестоимость × курс × наценка). Цены, введённые вручную, будут заменены.</label></p><button class="btn">Сохранить</button></div></form>';
     echo '<form method="post" action="?a=change-password"><input type="hidden" name="csrf" value="' . $C . '"><div class="card"><h2>Пароль</h2><div class="grid3"><label>Старый<input type="password" name="old" required></label><label>Новый (от 8 знаков)<input type="password" name="new" required minlength="8"></label><div><br><button class="btn ghost">Сменить пароль</button></div></div></div></form>';

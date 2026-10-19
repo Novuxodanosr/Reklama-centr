@@ -11,7 +11,8 @@ function catalog_load(): array {
     $file = is_file(CATALOG_FILE) ? CATALOG_FILE : CATALOG_SEED;
     $data = is_file($file) ? json_decode((string)file_get_contents($file), true) : null;
     if (!is_array($data)) $data = ['settings' => [], 'categories' => [], 'products' => []];
-    $data['settings'] += ['showPrices' => false, 'usdRate' => 12300, 'markupPct' => 60, 'priceStep' => 1000, 'minQty' => 50];
+    $data['settings'] += ['showPrices' => false, 'usdRate' => 12300, 'markupMode' => 'pct', 'markupValue' => 60, 'priceStep' => 1000, 'minQty' => 50];
+    if (isset($data['settings']['markupPct']) && !isset($data['settings']['markupValue'])) $data['settings']['markupValue'] = $data['settings']['markupPct'];
     return $data;
 }
 
@@ -31,7 +32,7 @@ function catalog_public(array $data): array {
     usort($cats, fn($a, $b) => ($a['order'] ?? 0) <=> ($b['order'] ?? 0));
     $prods = array_values(array_filter($data['products'], fn($p) => !empty($p['published'])));
     usort($prods, fn($a, $b) => ($a['order'] ?? 0) <=> ($b['order'] ?? 0));
-    foreach ($prods as &$p) unset($p['costUsd']);
+    foreach ($prods as &$p) unset($p['costUsd'], $p['markup']);
     return [
         'settings' => ['showPrices' => (bool)$s['showPrices'], 'priceStep' => (int)$s['priceStep'], 'minQty' => (int)$s['minQty']],
         'categories' => $cats,
@@ -39,9 +40,13 @@ function catalog_public(array $data): array {
     ];
 }
 
-// Цена из себестоимости: USD × курс × (1 + наценка) с округлением до шага.
-function catalog_price(array $s, ?float $costUsd): ?int {
+// Цена из себестоимости: USD × курс, затем наценка товара (если задана) или общая — в % или в сумах; округление до шага.
+function catalog_price(array $s, ?float $costUsd, ?array $markup = null): ?int {
     if (!$costUsd) return null;
+    $mode = $markup['mode'] ?? $s['markupMode'] ?? 'pct';
+    $value = (float)($markup['value'] ?? $s['markupValue'] ?? 0);
+    $base = $costUsd * (float)$s['usdRate'];
+    $price = $mode === 'abs' ? $base + $value : $base * (1 + $value / 100);
     $step = max(1, (int)$s['priceStep']);
-    return (int)(ceil($costUsd * (float)$s['usdRate'] * (1 + (float)$s['markupPct'] / 100) / $step) * $step);
+    return (int)(ceil($price / $step) * $step);
 }

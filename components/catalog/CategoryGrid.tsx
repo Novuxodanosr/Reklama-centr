@@ -1,21 +1,31 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { catalog as staticCatalog } from "@/lib/catalog";
+import { Link } from "@/lib/navigation";
+import type { CatalogSettings, Product } from "@/lib/catalog-shared";
+import { ArrowIcon } from "@/components/icons";
 import ProductCard from "./ProductCard";
 import { useLiveCatalog } from "./useLiveCatalog";
 
-// Сетка товаров категории: сначала статические данные сборки, затем — живые из админки.
-export default function CategoryGrid({ category }: { category: string }) {
+// Сетка товаров категории: со сборки приходят только товары этой категории; правки из админки подтягиваются живьём.
+export default function CategoryGrid({ category, products: initial, settings: initialSettings }: { category: string; products: Product[]; settings: CatalogSettings }) {
   const t = useTranslations("catalog");
   const live = useLiveCatalog();
-  const data = live ?? staticCatalog;
-  const products = data.products.filter((p) => p.category === category);
+  const products = live ? live.products.filter((p) => p.category === category) : initial;
+  const settings = live?.settings ?? initialSettings;
+  if (products.length === 0) {
+    return (
+      <div className="mt-10 rounded-xl border border-white/10 p-10 text-center">
+        <p className="text-mist">{t("empty")}</p>
+        <Link href="/contacts#form" className="btn-primary mt-6">{t("request")} <ArrowIcon /></Link>
+      </div>
+    );
+  }
   return (
     <>
       <p className="mt-6 text-sm text-dim">{t("items", { n: products.length })}</p>
       <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {products.map((p) => <ProductCard key={p.id} product={p} settings={data.settings} />)}
+        {products.map((p) => <ProductCard key={p.id} product={p} settings={settings} />)}
       </div>
     </>
   );

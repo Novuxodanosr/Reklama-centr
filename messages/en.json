@@ -1082,6 +1082,9 @@
     "branding": "Logo branding: UV printing, laser engraving or pad printing — matched to the case material.",
     "back": "Back to category",
     "leadMessage": "Interested in: {title} ({code}). Quantity: ___ pcs.",
-    "breadcrumbCatalog": "Catalogue"
+    "breadcrumbCatalog": "Catalogue",
+    "perM2": "per m²",
+    "empty": "Items in this section are coming soon. Contact us — we will pick and quote for your task.",
+    "notFound": "Product not found."
   }
 }

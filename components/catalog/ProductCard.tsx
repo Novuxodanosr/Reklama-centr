@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/lib/navigation";
-import { formatUzs, l10n, type CatalogSettings, type Product } from "@/lib/catalog";
+import { formatUzs, l10n, type CatalogSettings, type Product } from "@/lib/catalog-shared";
 import type { Locale } from "@/lib/site";
 
 export function Price({ product, settings, className = "" }: { product: Product; settings: CatalogSettings; className?: string }) {
@@ -11,7 +11,7 @@ export function Price({ product, settings, className = "" }: { product: Product;
   if (!settings.showPrices || !product.priceUzs) return <span className={`text-sm text-mist ${className}`}>{t("onRequest")}</span>;
   return (
     <span className={`font-display text-2xl font-bold ${className}`}>
-      {t("from", { price: formatUzs(product.priceUzs) })} <span className="font-sans text-sm font-normal text-mist">{t("perUnit")}</span>
+      {t("from", { price: formatUzs(product.priceUzs) })} <span className="font-sans text-sm font-normal text-mist">{product.unit === "m2" ? t("perM2") : t("perUnit")}</span>
     </span>
   );
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import type { PublicCatalog } from "@/lib/catalog";
+import type { PublicCatalog } from "@/lib/catalog-shared";
 
 // Живые данные каталога с хостинга (/api/catalog → api/catalog.php). Страницы собраны статически из data/catalog.json,
 // а правки из админки (цены, тексты, новые товары) подтягиваются при открытии страницы без пересборки сайта.
