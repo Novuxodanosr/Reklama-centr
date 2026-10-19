@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import { catalog, categoryById, l10n, productById, productsIn } from "@/lib/catalog";
 import ProductView from "@/components/catalog/ProductView";
-import QuoteBand from "@/components/QuoteBand";
+import CatalogCta from "@/components/catalog/CatalogCta";
 import { localePath, pageMeta, safeJsonLd, site, siteUrl, type Locale } from "@/lib/site";
 
 export const dynamicParams = false;
@@ -60,7 +60,7 @@ export default async function ProductPage({ params: { locale, cat, id } }: Param
   return (
     <>
       <ProductView id={id} product={p} category={c} similar={productsIn(cat).filter((x) => x.id !== id).slice(0, 4)} settings={catalog.settings} />
-      <QuoteBand />
+      <CatalogCta />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: safeJsonLd(jsonLd) }} />
     </>
   );

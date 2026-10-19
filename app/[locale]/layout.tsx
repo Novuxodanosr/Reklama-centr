@@ -9,6 +9,7 @@ import MobileBar from "@/components/MobileBar";
 import Effects from "@/components/fx/Effects";
 import { alternatesFor, localePath, locales, managers, ogLocale, safeJsonLd, siteUrl, site, type Locale } from "@/lib/site";
 import { serviceIds } from "@/lib/services";
+import { coreMessages } from "@/lib/client-messages";
 import "../globals.css";
 
 // Заголовки: узкий плотный гротеск, как на вывесках. Текст: Onest с родной кириллицей.
@@ -74,7 +75,7 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} className={`${display.variable} ${body.variable}`}>
       <body className="flex min-h-screen flex-col font-sans">
-        <NextIntlClientProvider messages={messages}>
+        <NextIntlClientProvider messages={coreMessages(messages as Record<string, any>)}>
           <Header />
           <main id="main" className="flex-1 pb-16 pt-[76px] lg:pb-0">{children}</main>
           <Footer />
