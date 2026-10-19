@@ -13,7 +13,8 @@
     "menu": "Menu",
     "close": "Close",
     "skip": "Skip to content",
-    "call": "Call"
+    "call": "Call",
+    "catalog": "Catalogue"
   },
   "hero": {
     "eyebrow": "Advertising production company · Tashkent",
@@ -1002,6 +1003,10 @@
       "contacts": {
         "title": "Contacts: 71 Beshyog‘och St, Tashkent",
         "description": "Manager phone numbers, address and map of Reklama Centr in Tashkent. Send sizes, quantity or a description of the task and we will price it."
+      },
+      "catalog": {
+        "title": "Catalogue: branded power banks and wireless chargers in Tashkent",
+        "description": "Corporate gifts with logo branding: magnetic power banks, wireless chargers, laptop power banks. Model selection, branding and batch delivery in Tashkent."
       }
     },
     "ui": {
@@ -1056,5 +1061,27 @@
         "description": "Products built to your idea in Tashkent: engineering and drawings, samples, art objects and installations, custom packaging, VIP gifts, small-batch production."
       }
     }
+  },
+  "catalog": {
+    "title": "Catalogue",
+    "eyebrow": "Product catalogue",
+    "intro": "Ready-made items for logo branding: pick a model, we apply your brand and deliver the batch.",
+    "all": "Full catalogue",
+    "items": "{n} items",
+    "from": "from {price}",
+    "perUnit": "per unit",
+    "onRequest": "Price on request",
+    "minQty": "From {n} pcs",
+    "request": "Request a quote",
+    "requestHint": "We will quote the price with logo branding and lead time within one business day.",
+    "specs": "Specifications",
+    "features": "Features",
+    "included": "In the box",
+    "gallery": "Photos",
+    "similar": "Similar products",
+    "branding": "Logo branding: UV printing, laser engraving or pad printing — matched to the case material.",
+    "back": "Back to category",
+    "leadMessage": "Interested in: {title} ({code}). Quantity: ___ pcs.",
+    "breadcrumbCatalog": "Catalogue"
   }
 }

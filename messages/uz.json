@@ -13,7 +13,8 @@
     "menu": "Menyu",
     "close": "Yopish",
     "skip": "Asosiy qismga o‘tish",
-    "call": "Qo‘ng‘iroq qilish"
+    "call": "Qo‘ng‘iroq qilish",
+    "catalog": "Katalog"
   },
   "hero": {
     "eyebrow": "Reklama ishlab chiqarish kompaniyasi · Toshkent",
@@ -1002,6 +1003,10 @@
       "contacts": {
         "title": "Aloqa: Toshkent, Beshyog‘och ko‘chasi, 71",
         "description": "Reklama Centr menejerlari telefonlari, manzil va xarita. O‘lcham, adad yoki vazifa tavsifini yuboring — narxini hisoblab beramiz."
+      },
+      "catalog": {
+        "title": "Katalog: Toshkentda logotipli pauerbank va simsiz zaryadlovchilar",
+        "description": "Logotip tushirilgan korporativ sovg‘alar: magnitli pauerbanklar, simsiz zaryadlovchilar, noutbuk uchun pauerbanklar. Model tanlash, brendlash va yetkazib berish."
       }
     },
     "ui": {
@@ -1056,5 +1061,27 @@
         "description": "Toshkentda sizning g‘oyangiz bo‘yicha buyumlar: loyihalash va chizmalar, namuna, art-obyektlar va installyatsiyalar, nostandart qadoq, VIP-sovg‘alar, kichik seriyali ishlab chiqarish."
       }
     }
+  },
+  "catalog": {
+    "title": "Katalog",
+    "eyebrow": "Mahsulotlar katalogi",
+    "intro": "Logotip tushirish uchun tayyor buyumlar: modelni tanlang, brendingizni tushiramiz va partiyani yetkazib beramiz.",
+    "all": "Butun katalog",
+    "items": "{n} ta mahsulot",
+    "from": "{price} dan",
+    "perUnit": "donasiga",
+    "onRequest": "Narxi so‘rov bo‘yicha",
+    "minQty": "{n} donadan",
+    "request": "Narx so‘rash",
+    "requestHint": "Logotip tushirish bilan narx va muddatni ish kuni davomida aytamiz.",
+    "specs": "Xususiyatlari",
+    "features": "Afzalliklari",
+    "included": "To‘plamda",
+    "gallery": "Fotolar",
+    "similar": "O‘xshash mahsulotlar",
+    "branding": "Logotip tushirish: UV-bosma, lazer gravirovka yoki tampobosma — korpus materialiga mos tanlaymiz.",
+    "back": "Kategoriyaga qaytish",
+    "leadMessage": "Qiziqtirdi: {title} ({code}). Adadi: ___ dona.",
+    "breadcrumbCatalog": "Katalog"
   }
 }

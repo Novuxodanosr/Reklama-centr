@@ -26,6 +26,14 @@ RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
 RewriteRule ^api/lead/?$ api/lead.php [L]
 # Работы из Instagram (api/instagram.php); служебные файлы (кэш, ключ доступа) — закрыты.
 RewriteRule ^api/instagram/?$ api/instagram.php [L]
+# Каталог: публичные данные (api/catalog.php) и запасная страница для товаров, добавленных в админке после сборки.
+RewriteRule ^api/catalog/?$ api/catalog.php [L]
+RewriteCond %{ENV:REDIRECT_STATUS} ^$
+RewriteCond %{DOCUMENT_ROOT}/ru/catalog/$1/$2/index.html !-f
+RewriteRule ^catalog/([a-z0-9-]+)/([a-z0-9-]+)/?$ /ru/catalog/item/index.html [L]
+RewriteCond %{ENV:REDIRECT_STATUS} ^$
+RewriteCond %{DOCUMENT_ROOT}/$1/catalog/$2/$3/index.html !-f
+RewriteRule ^(en|uz)/catalog/([a-z0-9-]+)/([a-z0-9-]+)/?$ /$1/catalog/item/index.html [L]
 RewriteRule ^api/data(/|$) - [F,L]
 
 # 3. Старые адреса с /ru/ → без префикса (только для прямых заходов, не для внутренних перенаправлений ниже).

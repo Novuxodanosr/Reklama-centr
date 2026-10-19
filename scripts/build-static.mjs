@@ -16,7 +16,7 @@ const root = process.cwd();
 // Сборка идёт в копии проекта: исходники не трогаем, а Windows не даёт двигать папки,
 // которые держит запущенный dev-сервер. node_modules находятся уровнем выше — Node ищет их вверх по дереву.
 const work = join(root, ".static-build");
-const copy = ["app", "components", "lib", "messages", "public", "i18n.ts", "next.config.mjs", "tailwind.config.ts", "postcss.config.mjs", "tsconfig.json", "package.json", "next-env.d.ts"];
+const copy = ["app", "components", "lib", "messages", "public", "data", "i18n.ts", "next.config.mjs", "tailwind.config.ts", "postcss.config.mjs", "tsconfig.json", "package.json", "next-env.d.ts"];
 // Частям, которым нужен Node-сервер, в копии не место: форма → Telegram (app/api) и «ловушка» несуществующих
 // адресов [...rest] — их заменяют api/lead.php и .htaccess. middleware.ts не копируется вовсе.
 const skip = [join("app", "api"), join("app", "[locale]", "[...rest]")];
@@ -62,6 +62,9 @@ if (ok) {
   // Страницы русской версии лежат в out/ru/, но открываются без префикса (/about/) — это делает .htaccess.
   cpSync(join(root, "out"), deploy, { recursive: true });
   cpSync(join(root, "scripts/static"), deploy, { recursive: true });
+  // Каталог: снимок данных для хостинга (api/catalog.php и /admin/ читают его, пока нет своего catalog.json).
+  mkdirSync(join(deploy, "api/data"), { recursive: true });
+  cpSync(join(root, "data/catalog.json"), join(deploy, "api/data/catalog.seed.json"));
   // Прототипы дизайна (v2 и др.) — только для показа заказчику на localhost, на боевой сайт не идут.
   rmSync(join(deploy, "prototypes"), { recursive: true, force: true });
 
