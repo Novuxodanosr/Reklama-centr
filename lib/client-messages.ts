@@ -10,6 +10,7 @@ export function coreMessages(all: Messages): Messages {
     nav: all.nav,
     footer: all.footer,
     telegram: all.telegram,
+    slogan: all.slogan,
     lang: all.lang,
     contacts: { managers: all.contacts?.managers },
     services: { items: Object.fromEntries(Object.entries(items).map(([id, v]: [string, any]) => [id, { title: v.title }])) },
