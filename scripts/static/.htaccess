@@ -49,10 +49,10 @@ RewriteCond %{REQUEST_URI} !\.[A-Za-z0-9]+$
 RewriteCond %{REQUEST_URI} !/$
 RewriteRule ^(.*)$ /$1/ [R=301,L]
 
-# 5. Всё, что не файл, не папка (admin/, api/) и не en/uz, — русская версия из папки ru/.
+# 5. Всё, что не файл и не en/uz, — русская версия из папки ru/ (admin/ и api/ — живые папки, их не трогаем;
+#    папка catalog/ с картинками не мешает: /catalog/ уходит в ru/catalog/, картинки — файлы).
 RewriteCond %{ENV:REDIRECT_STATUS} ^$
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_URI} !^/(en|uz)(/|$)
 RewriteCond %{REQUEST_URI} !^/(_next|api|admin)/
 RewriteRule ^(.*)$ ru/$1 [L]
