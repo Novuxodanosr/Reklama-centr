@@ -13,3 +13,4 @@ deploy/
 deploy.zip
 reklamacenter.zip
 .claude/settings.local.json
+deploy-parts/
