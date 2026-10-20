@@ -2,11 +2,11 @@ import type { MetadataRoute } from "next";
 
 // Для статической сборки (PHP-хостинг) файл генерируется один раз при сборке.
 export const dynamic = "force-static";
-import { locales, localePath, siteUrl } from "@/lib/site";
+import { catalogPublic, locales, localePath, siteUrl } from "@/lib/site";
 import { serviceIds } from "@/lib/services";
 import { catalog } from "@/lib/catalog";
 
-const pages = ["/", "/services", ...serviceIds.map((id) => `/services/${id}`), "/catalog", ...catalog.categories.filter((c) => c.parent).map((c) => `/catalog/${c.id}`), ...catalog.products.map((p) => `/catalog/${p.category}/${p.id}`), "/works", "/about", "/contacts"];
+const pages = ["/", "/services", ...serviceIds.map((id) => `/services/${id}`), ...(catalogPublic ? ["/catalog", ...catalog.categories.filter((c) => c.parent).map((c) => `/catalog/${c.id}`), ...catalog.products.map((p) => `/catalog/${p.category}/${p.id}`)] : []), "/works", "/about", "/contacts"];
 // На хостинге адреса страниц всегда со слешем на конце (.htaccess) — в карте сайта указываем их так же, без переадресаций.
 const slash = process.env.STATIC_EXPORT === "1";
 const abs = (locale: (typeof locales)[number], page: string) => {

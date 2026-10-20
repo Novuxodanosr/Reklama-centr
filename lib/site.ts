@@ -4,6 +4,9 @@ export const defaultLocale: Locale = "ru";
 
 // Основной домен (куплен 02.10.2026 на webname.uz); reklama-center.uz (опечатка) и .com-варианты — переадресация сюда же.
 export const siteUrl = "https://reklama-centr.uz";
+// Каталог товаров ещё не заполнен: false — ссылок в меню и подвале нет, поисковикам закрыт (robots, noindex, нет в sitemap),
+// но страницы /catalog/ открываются по прямой ссылке для проверки. Поставить true, когда каталог готов.
+export const catalogPublic = false;
 
 // Менеджеры (телефоны реальные, заказчик 11.09.2026).
 // Имена и должности — в messages/*.json → contacts.managers.<id>.

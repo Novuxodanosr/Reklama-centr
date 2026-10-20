@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { AnimatePresence, motion } from "framer-motion";
 import { Link, usePathname } from "@/lib/navigation";
-import { managers, site, telegramLink } from "@/lib/site";
+import { catalogPublic, managers, site, telegramLink } from "@/lib/site";
 import Logo from "./Logo";
 import Slogan from "./Slogan";
 import { ease } from "./motion/Reveal";
@@ -17,7 +17,7 @@ const items = [
   { href: "/works", key: "works" },
   { href: "/about", key: "about" },
   { href: "/contacts", key: "contacts" },
-] as const;
+].filter((it) => catalogPublic || it.key !== "catalog");
 
 // Шапка: прозрачная над первым экраном, после прокрутки становится тёмной и остаётся на месте.
 // Телефон и кнопка расчёта всегда под рукой.
