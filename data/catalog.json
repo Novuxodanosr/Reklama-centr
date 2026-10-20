@@ -1,11 +1,12 @@
 {
  "settings": {
-  "showPrices": false,
+  "showPrices": true,
+  "currency": "usd",
   "usdRate": 12300,
-  "priceStep": 1000,
-  "minQty": 50,
   "markupMode": "pct",
-  "markupValue": 60
+  "markupValue": 30,
+  "priceStep": 0.5,
+  "minQty": 50
  },
  "categories": [
   {
@@ -350,11 +351,11 @@
     "/catalog/c8-3.webp"
    ],
    "costUsd": 5.75,
-   "priceUzs": null,
    "published": true,
    "order": 1,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "t15",
@@ -531,11 +532,11 @@
     "/catalog/t15-2.webp"
    ],
    "costUsd": 8.45,
-   "priceUzs": null,
    "published": true,
    "order": 2,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "t3",
@@ -710,11 +711,11 @@
     "/catalog/t3-3.webp"
    ],
    "costUsd": 21.35,
-   "priceUzs": null,
    "published": true,
    "order": 3,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "t5",
@@ -889,11 +890,11 @@
     "/catalog/t5-3.webp"
    ],
    "costUsd": 17.75,
-   "priceUzs": null,
    "published": true,
    "order": 4,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "z15",
@@ -1076,11 +1077,11 @@
     "/catalog/z15-3.webp"
    ],
    "costUsd": 15.31,
-   "priceUzs": null,
    "published": true,
    "order": 5,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "t330",
@@ -1222,11 +1223,11 @@
     "/catalog/t330-2.webp"
    ],
    "costUsd": 3.8,
-   "priceUzs": null,
    "published": true,
    "order": 6,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "t331",
@@ -1368,11 +1369,11 @@
     "/catalog/t331-2.webp"
    ],
    "costUsd": 4.65,
-   "priceUzs": null,
    "published": true,
    "order": 7,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "t502",
@@ -1521,11 +1522,11 @@
     "/catalog/t502-3.webp"
    ],
    "costUsd": 1.87,
-   "priceUzs": null,
    "published": true,
    "order": 8,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "t503",
@@ -1686,11 +1687,11 @@
     "/catalog/t503-2.webp"
    ],
    "costUsd": 8.15,
-   "priceUzs": null,
    "published": true,
    "order": 9,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "t506",
@@ -1851,11 +1852,11 @@
     "/catalog/t506-2.webp"
    ],
    "costUsd": 8.15,
-   "priceUzs": null,
    "published": true,
    "order": 10,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "t531",
@@ -2003,11 +2004,11 @@
     "/catalog/t531-2.webp"
    ],
    "costUsd": 5.19,
-   "priceUzs": null,
    "published": true,
    "order": 11,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "t533",
@@ -2149,11 +2150,11 @@
     "/catalog/t533-2.webp"
    ],
    "costUsd": 2.5,
-   "priceUzs": null,
    "published": true,
    "order": 12,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "t567",
@@ -2319,11 +2320,11 @@
     "/catalog/t567-2.webp"
    ],
    "costUsd": 13.82,
-   "priceUzs": null,
    "published": true,
    "order": 13,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "t561",
@@ -2480,11 +2481,11 @@
     "/catalog/t561-2.webp"
    ],
    "costUsd": 9.95,
-   "priceUzs": null,
    "published": true,
    "order": 14,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "t562",
@@ -2645,11 +2646,11 @@
     "/catalog/t562-2.webp"
    ],
    "costUsd": 9.32,
-   "priceUzs": null,
    "published": true,
    "order": 15,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "t556",
@@ -2811,11 +2812,11 @@
     "/catalog/t556-2.webp"
    ],
    "costUsd": 12.85,
-   "priceUzs": null,
    "published": true,
    "order": 16,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "t566",
@@ -2989,11 +2990,11 @@
     "/catalog/t566-2.webp"
    ],
    "costUsd": 12.51,
-   "priceUzs": null,
    "published": true,
    "order": 17,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "t569",
@@ -3166,11 +3167,11 @@
     "/catalog/t569-1.webp"
    ],
    "costUsd": 13.38,
-   "priceUzs": null,
    "published": true,
    "order": 18,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "t554",
@@ -3335,11 +3336,11 @@
     "/catalog/t554-2.webp"
    ],
    "costUsd": 14.95,
-   "priceUzs": null,
    "published": true,
    "order": 19,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "t548",
@@ -3482,11 +3483,11 @@
     "/catalog/t548-2.webp"
    ],
    "costUsd": 16.25,
-   "priceUzs": null,
    "published": true,
    "order": 20,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "t540",
@@ -3647,11 +3648,11 @@
     "/catalog/t540-2.webp"
    ],
    "costUsd": 8.37,
-   "priceUzs": null,
    "published": true,
    "order": 21,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "t544",
@@ -3812,11 +3813,11 @@
     "/catalog/t544-2.webp"
    ],
    "costUsd": 7.97,
-   "priceUzs": null,
    "published": true,
    "order": 22,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "t545",
@@ -3977,11 +3978,11 @@
     "/catalog/t545-2.webp"
    ],
    "costUsd": 7.75,
-   "priceUzs": null,
    "published": true,
    "order": 23,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "t558",
@@ -4142,11 +4143,11 @@
     "/catalog/t558-2.webp"
    ],
    "costUsd": 4.59,
-   "priceUzs": null,
    "published": true,
    "order": 24,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "w07",
@@ -4320,11 +4321,11 @@
     "/catalog/w07-2.webp"
    ],
    "costUsd": 3.63,
-   "priceUzs": null,
    "published": true,
    "order": 25,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "ga68",
@@ -4468,11 +4469,11 @@
     "/catalog/ga68-2.webp"
    ],
    "costUsd": 2.65,
-   "priceUzs": null,
    "published": true,
    "order": 26,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "gy68-15w",
@@ -4621,11 +4622,11 @@
     "/catalog/gy68-15w-3.webp"
    ],
    "costUsd": 2.59,
-   "priceUzs": null,
    "published": true,
    "order": 27,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "yt30",
@@ -4796,11 +4797,11 @@
     "/catalog/yt30-3.webp"
    ],
    "costUsd": 12.82,
-   "priceUzs": null,
    "published": true,
    "order": 28,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "jh3",
@@ -4973,11 +4974,11 @@
     "/catalog/jh3-2.webp"
    ],
    "costUsd": 5.85,
-   "priceUzs": null,
    "published": true,
    "order": 29,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "m02",
@@ -5150,11 +5151,11 @@
     "/catalog/m02-2.webp"
    ],
    "costUsd": 8.48,
-   "priceUzs": null,
    "published": true,
    "order": 30,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "td2501",
@@ -5324,11 +5325,11 @@
     "/catalog/td2501-2.webp"
    ],
    "costUsd": 12.85,
-   "priceUzs": null,
    "published": true,
    "order": 31,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "ojd82",
@@ -5480,11 +5481,11 @@
     "/catalog/ojd82-4.webp"
    ],
    "costUsd": 5.14,
-   "priceUzs": null,
    "published": true,
    "order": 32,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "c14",
@@ -5651,11 +5652,11 @@
     "/catalog/c14-3.webp"
    ],
    "costUsd": 3.87,
-   "priceUzs": null,
    "published": true,
    "order": 33,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "z2",
@@ -5808,11 +5809,11 @@
     "/catalog/z2-2.webp"
    ],
    "costUsd": 2.59,
-   "priceUzs": null,
    "published": true,
    "order": 34,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "s25",
@@ -5971,11 +5972,11 @@
     "/catalog/s25-3.webp"
    ],
    "costUsd": 2.39,
-   "priceUzs": null,
    "published": true,
    "order": 35,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "ap08",
@@ -6145,11 +6146,11 @@
     "/catalog/ap08-2.webp"
    ],
    "costUsd": 5.89,
-   "priceUzs": null,
    "published": true,
    "order": 36,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "ak09",
@@ -6319,11 +6320,11 @@
     "/catalog/ak09-2.webp"
    ],
    "costUsd": 17.95,
-   "priceUzs": null,
    "published": true,
    "order": 37,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "s90",
@@ -6497,11 +6498,11 @@
     "/catalog/s90-2.webp"
    ],
    "costUsd": 5.71,
-   "priceUzs": null,
    "published": true,
    "order": 38,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "s90m",
@@ -6672,11 +6673,11 @@
     "/catalog/s90m-3.webp"
    ],
    "costUsd": 5.97,
-   "priceUzs": null,
    "published": true,
    "order": 39,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "z11",
@@ -6851,11 +6852,11 @@
     "/catalog/z11-3.webp"
    ],
    "costUsd": 6.45,
-   "priceUzs": null,
    "published": true,
    "order": 40,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "y011",
@@ -7030,11 +7031,11 @@
     "/catalog/y011-3.webp"
    ],
    "costUsd": 6.59,
-   "priceUzs": null,
    "published": true,
    "order": 41,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "a8",
@@ -7204,11 +7205,11 @@
     "/catalog/a8-3.webp"
    ],
    "costUsd": 6.97,
-   "priceUzs": null,
    "published": true,
    "order": 42,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "t552",
@@ -7369,11 +7370,11 @@
     "/catalog/t552-2.webp"
    ],
    "costUsd": 7.15,
-   "priceUzs": null,
    "published": true,
    "order": 43,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "item-43",
@@ -7545,11 +7546,11 @@
     "/catalog/item-43-2.webp"
    ],
    "costUsd": 6.35,
-   "priceUzs": null,
    "published": true,
    "order": 44,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "al01",
@@ -7689,11 +7690,11 @@
     "/catalog/al01-2.webp"
    ],
    "costUsd": 6.85,
-   "priceUzs": null,
    "published": true,
    "order": 45,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "al02",
@@ -7833,11 +7834,11 @@
     "/catalog/al02-2.webp"
    ],
    "costUsd": 8.35,
-   "priceUzs": null,
    "published": true,
    "order": 46,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "h27c",
@@ -7969,11 +7970,11 @@
     "/catalog/h27c-2.webp"
    ],
    "costUsd": 8.32,
-   "priceUzs": null,
    "published": true,
    "order": 47,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "h27e",
@@ -8110,11 +8111,11 @@
     "/catalog/h27e-2.webp"
    ],
    "costUsd": 8.25,
-   "priceUzs": null,
    "published": true,
    "order": 48,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "w043",
@@ -8254,11 +8255,11 @@
     "/catalog/w043-2.webp"
    ],
    "costUsd": 10.32,
-   "priceUzs": null,
    "published": true,
    "order": 49,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "w036",
@@ -8411,11 +8412,11 @@
     "/catalog/w036-3.webp"
    ],
    "costUsd": 8.15,
-   "priceUzs": null,
    "published": true,
    "order": 50,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "w037",
@@ -8567,11 +8568,11 @@
     "/catalog/w037-2.webp"
    ],
    "costUsd": 9.65,
-   "priceUzs": null,
    "published": true,
    "order": 51,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "p2c",
@@ -8713,11 +8714,11 @@
     "/catalog/p2c-4.webp"
    ],
    "costUsd": 6.5,
-   "priceUzs": null,
    "published": true,
    "order": 52,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "p3",
@@ -8860,11 +8861,11 @@
     "/catalog/p3-5.webp"
    ],
    "costUsd": 7.98,
-   "priceUzs": null,
    "published": true,
    "order": 53,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "y361",
@@ -9005,11 +9006,11 @@
     "/catalog/y361-3.webp"
    ],
    "costUsd": 6.81,
-   "priceUzs": null,
    "published": true,
    "order": 54,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "y429",
@@ -9170,11 +9171,11 @@
     "/catalog/y429-2.webp"
    ],
    "costUsd": 6.69,
-   "priceUzs": null,
    "published": true,
    "order": 55,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "y430",
@@ -9338,11 +9339,11 @@
     "/catalog/y430-5.webp"
    ],
    "costUsd": 8.19,
-   "priceUzs": null,
    "published": true,
    "order": 56,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "y388",
@@ -9503,11 +9504,11 @@
     "/catalog/y388-2.webp"
    ],
    "costUsd": 6.98,
-   "priceUzs": null,
    "published": true,
    "order": 57,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "y389",
@@ -9668,11 +9669,11 @@
     "/catalog/y389-2.webp"
    ],
    "costUsd": 9.17,
-   "priceUzs": null,
    "published": true,
    "order": 58,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "w101-01",
@@ -9819,11 +9820,11 @@
     "/catalog/w101-01-1.webp"
    ],
    "costUsd": 7.89,
-   "priceUzs": null,
    "published": true,
    "order": 59,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "w101-01-2",
@@ -9994,11 +9995,11 @@
     "/catalog/w101-01-2-1.webp"
    ],
    "costUsd": 8.42,
-   "priceUzs": null,
    "published": true,
    "order": 60,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "h11",
@@ -10138,11 +10139,11 @@
     "/catalog/h11-2.webp"
    ],
    "costUsd": 6.35,
-   "priceUzs": null,
    "published": true,
    "order": 61,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "152",
@@ -10288,11 +10289,11 @@
     "/catalog/152-2.webp"
    ],
    "costUsd": 10.98,
-   "priceUzs": null,
    "published": true,
    "order": 62,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "153",
@@ -10438,11 +10439,11 @@
     "/catalog/153-2.webp"
    ],
    "costUsd": 15.89,
-   "priceUzs": null,
    "published": true,
    "order": 63,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "154",
@@ -10590,11 +10591,11 @@
     "/catalog/154-4.webp"
    ],
    "costUsd": 13.17,
-   "priceUzs": null,
    "published": true,
    "order": 64,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "155",
@@ -10742,11 +10743,11 @@
     "/catalog/155-4.webp"
    ],
    "costUsd": 17.96,
-   "priceUzs": null,
    "published": true,
    "order": 65,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "158a",
@@ -10893,11 +10894,11 @@
     "/catalog/158a-3.webp"
    ],
    "costUsd": 11.32,
-   "priceUzs": null,
    "published": true,
    "order": 66,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "158b",
@@ -11044,11 +11045,11 @@
     "/catalog/158b-3.webp"
    ],
    "costUsd": 16.18,
-   "priceUzs": null,
    "published": true,
    "order": 67,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "axd-114",
@@ -11192,11 +11193,11 @@
     "/catalog/axd-114-2.webp"
    ],
    "costUsd": 8.98,
-   "priceUzs": null,
    "published": true,
    "order": 68,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "axd-116",
@@ -11340,11 +11341,11 @@
     "/catalog/axd-116-2.webp"
    ],
    "costUsd": 10.65,
-   "priceUzs": null,
    "published": true,
    "order": 69,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "20a",
@@ -11496,11 +11497,11 @@
     "/catalog/20a-1.webp"
    ],
    "costUsd": 6.97,
-   "priceUzs": null,
    "published": true,
    "order": 70,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "21a",
@@ -11652,11 +11653,11 @@
     "/catalog/21a-1.webp"
    ],
    "costUsd": 8.39,
-   "priceUzs": null,
    "published": true,
    "order": 71,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "ck801",
@@ -11800,11 +11801,11 @@
     "/catalog/ck801-2.webp"
    ],
    "costUsd": 9.25,
-   "priceUzs": null,
    "published": true,
    "order": 72,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "c3",
@@ -11950,11 +11951,11 @@
     "/catalog/c3-2.webp"
    ],
    "costUsd": 6.5,
-   "priceUzs": null,
    "published": true,
    "order": 73,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "c5",
@@ -12113,11 +12114,11 @@
     "/catalog/c5-2.webp"
    ],
    "costUsd": 7.75,
-   "priceUzs": null,
    "published": true,
    "order": 74,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "a3c",
@@ -12310,11 +12311,11 @@
     "/catalog/a3c-2.webp"
    ],
    "costUsd": 12.35,
-   "priceUzs": null,
    "published": true,
    "order": 75,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "h6e",
@@ -12461,11 +12462,11 @@
     "/catalog/h6e-1.webp"
    ],
    "costUsd": 5.98,
-   "priceUzs": null,
    "published": true,
    "order": 76,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "h19e",
@@ -12616,11 +12617,11 @@
     "/catalog/h19e-2.webp"
    ],
    "costUsd": 7.65,
-   "priceUzs": null,
    "published": true,
    "order": 77,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "h25c",
@@ -12768,11 +12769,11 @@
     "/catalog/h25c-2.webp"
    ],
    "costUsd": 7.65,
-   "priceUzs": null,
    "published": true,
    "order": 78,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "m5",
@@ -12931,11 +12932,11 @@
     "/catalog/m5-2.webp"
    ],
    "costUsd": 6.63,
-   "priceUzs": null,
    "published": true,
    "order": 79,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "m6",
@@ -13088,11 +13089,11 @@
     "/catalog/m6-1.webp"
    ],
    "costUsd": 8.42,
-   "priceUzs": null,
    "published": true,
    "order": 80,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "h43c",
@@ -13241,11 +13242,11 @@
     "/catalog/h43c-3.webp"
    ],
    "costUsd": 7.85,
-   "priceUzs": null,
    "published": true,
    "order": 81,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "h45c",
@@ -13394,11 +13395,11 @@
     "/catalog/h45c-3.webp"
    ],
    "costUsd": 9.12,
-   "priceUzs": null,
    "published": true,
    "order": 82,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "h30c",
@@ -13549,11 +13550,11 @@
     "/catalog/h30c-2.webp"
    ],
    "costUsd": 8.31,
-   "priceUzs": null,
    "published": true,
    "order": 83,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "h32c",
@@ -13704,11 +13705,11 @@
     "/catalog/h32c-2.webp"
    ],
    "costUsd": 10.85,
-   "priceUzs": null,
    "published": true,
    "order": 84,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "h34c",
@@ -13858,11 +13859,11 @@
     "/catalog/h34c-1.webp"
    ],
    "costUsd": 13.36,
-   "priceUzs": null,
    "published": true,
    "order": 85,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "y330",
@@ -14013,11 +14014,11 @@
     "/catalog/y330-2.webp"
    ],
    "costUsd": 7.72,
-   "priceUzs": null,
    "published": true,
    "order": 86,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "y329",
@@ -14168,11 +14169,11 @@
     "/catalog/y329-2.webp"
    ],
    "costUsd": 9.17,
-   "priceUzs": null,
    "published": true,
    "order": 87,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "w044",
@@ -14348,11 +14349,11 @@
     "/catalog/w044-3.webp"
    ],
    "costUsd": 7.82,
-   "priceUzs": null,
    "published": true,
    "order": 88,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "w016",
@@ -14496,11 +14497,11 @@
     "/catalog/w016-3.webp"
    ],
    "costUsd": 6.69,
-   "priceUzs": null,
    "published": true,
    "order": 89,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "w018",
@@ -14642,11 +14643,11 @@
     "/catalog/w018-1.webp"
    ],
    "costUsd": 7.97,
-   "priceUzs": null,
    "published": true,
    "order": 90,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "w014",
@@ -14816,11 +14817,11 @@
     "/catalog/w014-2.webp"
    ],
    "costUsd": 8.98,
-   "priceUzs": null,
    "published": true,
    "order": 91,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "w026",
@@ -15005,11 +15006,11 @@
     "/catalog/w026-6.webp"
    ],
    "costUsd": 8.98,
-   "priceUzs": null,
    "published": true,
    "order": 92,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "dx126",
@@ -15163,11 +15164,11 @@
     "/catalog/dx126-2.webp"
    ],
    "costUsd": 7.75,
-   "priceUzs": null,
    "published": true,
    "order": 93,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "dx126f",
@@ -15358,11 +15359,11 @@
     "/catalog/dx126f-5.webp"
    ],
    "costUsd": 8.97,
-   "priceUzs": null,
    "published": true,
    "order": 94,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "w010",
@@ -15538,11 +15539,11 @@
     "/catalog/w010-3.webp"
    ],
    "costUsd": 8.45,
-   "priceUzs": null,
    "published": true,
    "order": 95,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "ck18",
@@ -15687,11 +15688,11 @@
     "/catalog/ck18-3.webp"
    ],
    "costUsd": 9.86,
-   "priceUzs": null,
    "published": true,
    "order": 96,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "wpb02",
@@ -15851,11 +15852,11 @@
     "/catalog/wpb02-2.webp"
    ],
    "costUsd": 10.17,
-   "priceUzs": null,
    "published": true,
    "order": 97,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "wpb11",
@@ -16015,11 +16016,11 @@
     "/catalog/wpb11-2.webp"
    ],
    "costUsd": 9.97,
-   "priceUzs": null,
    "published": true,
    "order": 98,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "wpb08",
@@ -16173,11 +16174,11 @@
     "/catalog/wpb08-2.webp"
    ],
    "costUsd": 8.82,
-   "priceUzs": null,
    "published": true,
    "order": 99,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "dx443",
@@ -16376,11 +16377,11 @@
     "/catalog/dx443-3.webp"
    ],
    "costUsd": 6.83,
-   "priceUzs": null,
    "published": true,
    "order": 100,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "dx444",
@@ -16579,11 +16580,11 @@
     "/catalog/dx444-3.webp"
    ],
    "costUsd": 9.89,
-   "priceUzs": null,
    "published": true,
    "order": 101,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "h27f",
@@ -16706,11 +16707,11 @@
     "/catalog/h27f-1.webp"
    ],
    "costUsd": 6.89,
-   "priceUzs": null,
    "published": true,
    "order": 102,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "h27f-2",
@@ -16833,11 +16834,11 @@
     "/catalog/h27f-2-1.webp"
    ],
    "costUsd": 6.79,
-   "priceUzs": null,
    "published": true,
    "order": 103,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "26006",
@@ -16977,11 +16978,11 @@
     "/catalog/26006-2.webp"
    ],
    "costUsd": 7.98,
-   "priceUzs": null,
    "published": true,
    "order": 104,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "gx06",
@@ -17117,11 +17118,11 @@
     "/catalog/gx06-1.webp"
    ],
    "costUsd": 4.35,
-   "priceUzs": null,
    "published": true,
    "order": 105,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "gx07",
@@ -17257,11 +17258,11 @@
     "/catalog/gx07-1.webp"
    ],
    "costUsd": 5.87,
-   "priceUzs": null,
    "published": true,
    "order": 106,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "gx08",
@@ -17397,11 +17398,11 @@
     "/catalog/gx08-1.webp"
    ],
    "costUsd": 10.85,
-   "priceUzs": null,
    "published": true,
    "order": 107,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "q40",
@@ -17537,11 +17538,11 @@
     "/catalog/q40-1.webp"
    ],
    "costUsd": 5.59,
-   "priceUzs": null,
    "published": true,
    "order": 108,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "q40b",
@@ -17677,11 +17678,11 @@
     "/catalog/q40b-1.webp"
    ],
    "costUsd": 8.15,
-   "priceUzs": null,
    "published": true,
    "order": 109,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "ck099",
@@ -17819,11 +17820,11 @@
     "/catalog/ck099-4.webp"
    ],
    "costUsd": 8.75,
-   "priceUzs": null,
    "published": true,
    "order": 110,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "ck100",
@@ -17961,11 +17962,11 @@
     "/catalog/ck100-4.webp"
    ],
    "costUsd": 11.25,
-   "priceUzs": null,
    "published": true,
    "order": 111,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "ck074b",
@@ -18109,11 +18110,11 @@
     "/catalog/ck074b-1.webp"
    ],
    "costUsd": 5.15,
-   "priceUzs": null,
    "published": true,
    "order": 112,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "ck075b",
@@ -18257,11 +18258,11 @@
     "/catalog/ck075b-1.webp"
    ],
    "costUsd": 7.72,
-   "priceUzs": null,
    "published": true,
    "order": 113,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "dx457f",
@@ -18424,11 +18425,11 @@
     "/catalog/dx457f-5.webp"
    ],
    "costUsd": 7.65,
-   "priceUzs": null,
    "published": true,
    "order": 114,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "dx463f",
@@ -18593,11 +18594,11 @@
     "/catalog/dx463f-3.webp"
    ],
    "costUsd": 6.97,
-   "priceUzs": null,
    "published": true,
    "order": 115,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "dx464f",
@@ -18762,11 +18763,11 @@
     "/catalog/dx464f-3.webp"
    ],
    "costUsd": 9.96,
-   "priceUzs": null,
    "published": true,
    "order": 116,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "dx377f",
@@ -18912,11 +18913,11 @@
     "/catalog/dx377f-5.webp"
    ],
    "costUsd": 7.54,
-   "priceUzs": null,
    "published": true,
    "order": 117,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "h43a",
@@ -19048,11 +19049,11 @@
     "/catalog/h43a-2.webp"
    ],
    "costUsd": 5.78,
-   "priceUzs": null,
    "published": true,
    "order": 118,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "h45a",
@@ -19179,11 +19180,11 @@
     "/catalog/h45a-2.webp"
    ],
    "costUsd": 7.35,
-   "priceUzs": null,
    "published": true,
    "order": 119,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "h46a",
@@ -19309,11 +19310,11 @@
     "/catalog/h46a-1.webp"
    ],
    "costUsd": 6.87,
-   "priceUzs": null,
    "published": true,
    "order": 120,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "h47a",
@@ -19444,11 +19445,11 @@
     "/catalog/h47a-1.webp"
    ],
    "costUsd": 9.65,
-   "priceUzs": null,
    "published": true,
    "order": 121,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "il05",
@@ -19594,11 +19595,11 @@
     "/catalog/il05-3.webp"
    ],
    "costUsd": 8.15,
-   "priceUzs": null,
    "published": true,
    "order": 122,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "k51-akx01",
@@ -19737,11 +19738,11 @@
     "/catalog/k51-akx01-1.webp"
    ],
    "costUsd": 5.87,
-   "priceUzs": null,
    "published": true,
    "order": 123,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "k52-akx01",
@@ -19881,11 +19882,11 @@
     "/catalog/k52-akx01-2.webp"
    ],
    "costUsd": 8.52,
-   "priceUzs": null,
    "published": true,
    "order": 124,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "k53-akx01",
@@ -20024,11 +20025,11 @@
     "/catalog/k53-akx01-1.webp"
    ],
    "costUsd": 11.25,
-   "priceUzs": null,
    "published": true,
    "order": 125,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "h9a",
@@ -20166,11 +20167,11 @@
     "/catalog/h9a-1.webp"
    ],
    "costUsd": 6.58,
-   "priceUzs": null,
    "published": true,
    "order": 126,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "h9b",
@@ -20308,11 +20309,11 @@
     "/catalog/h9b-1.webp"
    ],
    "costUsd": 8.7,
-   "priceUzs": null,
    "published": true,
    "order": 127,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "h28d",
@@ -20472,11 +20473,11 @@
     "/catalog/h28d-1.webp"
    ],
    "costUsd": 6.98,
-   "priceUzs": null,
    "published": true,
    "order": 128,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "h30d",
@@ -20636,11 +20637,11 @@
     "/catalog/h30d-1.webp"
    ],
    "costUsd": 6.39,
-   "priceUzs": null,
    "published": true,
    "order": 129,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "h32d",
@@ -20800,11 +20801,11 @@
     "/catalog/h32d-1.webp"
    ],
    "costUsd": 8.97,
-   "priceUzs": null,
    "published": true,
    "order": 130,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "a1",
@@ -20964,11 +20965,11 @@
     "/catalog/a1-2.webp"
    ],
    "costUsd": 7.21,
-   "priceUzs": null,
    "published": true,
    "order": 131,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "a2",
@@ -21139,11 +21140,11 @@
     "/catalog/a2-2.webp"
    ],
    "costUsd": 8.85,
-   "priceUzs": null,
    "published": true,
    "order": 132,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "a5",
@@ -21314,11 +21315,11 @@
     "/catalog/a5-2.webp"
    ],
    "costUsd": 11.97,
-   "priceUzs": null,
    "published": true,
    "order": 133,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "s46",
@@ -21453,11 +21454,11 @@
     "/catalog/s46-1.webp"
    ],
    "costUsd": 6.43,
-   "priceUzs": null,
    "published": true,
    "order": 134,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "s46-2",
@@ -21592,11 +21593,11 @@
     "/catalog/s46-2-1.webp"
    ],
    "costUsd": 9.25,
-   "priceUzs": null,
    "published": true,
    "order": 135,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "s46-3",
@@ -21731,11 +21732,11 @@
     "/catalog/s46-3-1.webp"
    ],
    "costUsd": 11.98,
-   "priceUzs": null,
    "published": true,
    "order": 136,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "v26b",
@@ -21866,11 +21867,11 @@
     "/catalog/v26b-1.webp"
    ],
    "costUsd": 5.75,
-   "priceUzs": null,
    "published": true,
    "order": 137,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "v27b",
@@ -22001,11 +22002,11 @@
     "/catalog/v27b-1.webp"
    ],
    "costUsd": 8.35,
-   "priceUzs": null,
    "published": true,
    "order": 138,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "h28a",
@@ -22134,11 +22135,11 @@
     "/catalog/h28a-2.webp"
    ],
    "costUsd": 6.13,
-   "priceUzs": null,
    "published": true,
    "order": 139,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "h30a",
@@ -22267,11 +22268,11 @@
     "/catalog/h30a-2.webp"
    ],
    "costUsd": 5.52,
-   "priceUzs": null,
    "published": true,
    "order": 140,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "h32a",
@@ -22400,11 +22401,11 @@
     "/catalog/h32a-2.webp"
    ],
    "costUsd": 7.98,
-   "priceUzs": null,
    "published": true,
    "order": 141,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "h34a",
@@ -22533,11 +22534,11 @@
     "/catalog/h34a-2.webp"
    ],
    "costUsd": 10.6,
-   "priceUzs": null,
    "published": true,
    "order": 142,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "dx271f",
@@ -22710,11 +22711,11 @@
     "/catalog/dx271f-2.webp"
    ],
    "costUsd": 5.87,
-   "priceUzs": null,
    "published": true,
    "order": 143,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "dx272f",
@@ -22883,11 +22884,11 @@
     "/catalog/dx272f-3.webp"
    ],
    "costUsd": 8.72,
-   "priceUzs": null,
    "published": true,
    "order": 144,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "dx273f",
@@ -23054,11 +23055,11 @@
     "/catalog/dx273f-1.webp"
    ],
    "costUsd": 11.45,
-   "priceUzs": null,
    "published": true,
    "order": 145,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "dx131",
@@ -23224,11 +23225,11 @@
     "/catalog/dx131-2.webp"
    ],
    "costUsd": 7.83,
-   "priceUzs": null,
    "published": true,
    "order": 146,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "dx99f",
@@ -23368,11 +23369,11 @@
     "/catalog/dx99f-2.webp"
    ],
    "costUsd": 6.37,
-   "priceUzs": null,
    "published": true,
    "order": 147,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "dx100f",
@@ -23507,11 +23508,11 @@
     "/catalog/dx100f-2.webp"
    ],
    "costUsd": 8.85,
-   "priceUzs": null,
    "published": true,
    "order": 148,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "k61",
@@ -23648,11 +23649,11 @@
     "/catalog/k61-2.webp"
    ],
    "costUsd": 5.35,
-   "priceUzs": null,
    "published": true,
    "order": 149,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "k63",
@@ -23788,11 +23789,11 @@
     "/catalog/k63-1.webp"
    ],
    "costUsd": 7.95,
-   "priceUzs": null,
    "published": true,
    "order": 150,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "k5f",
@@ -23932,11 +23933,11 @@
     "/catalog/k5f-2.webp"
    ],
    "costUsd": 5.89,
-   "priceUzs": null,
    "published": true,
    "order": 151,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "k6f",
@@ -24076,11 +24077,11 @@
     "/catalog/k6f-2.webp"
    ],
    "costUsd": 5.19,
-   "priceUzs": null,
    "published": true,
    "order": 152,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "k8f",
@@ -24220,11 +24221,11 @@
     "/catalog/k8f-2.webp"
    ],
    "costUsd": 7.82,
-   "priceUzs": null,
    "published": true,
    "order": 153,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "q6f",
@@ -24364,11 +24365,11 @@
     "/catalog/q6f-2.webp"
    ],
    "costUsd": 5.19,
-   "priceUzs": null,
    "published": true,
    "order": 154,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "q7f",
@@ -24507,11 +24508,11 @@
     "/catalog/q7f-2.webp"
    ],
    "costUsd": 7.82,
-   "priceUzs": null,
    "published": true,
    "order": 155,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "q8f",
@@ -24656,11 +24657,11 @@
     "/catalog/q8f-2.webp"
    ],
    "costUsd": 11.25,
-   "priceUzs": null,
    "published": true,
    "order": 156,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "q9f",
@@ -24800,11 +24801,11 @@
     "/catalog/q9f-2.webp"
    ],
    "costUsd": 11.25,
-   "priceUzs": null,
    "published": true,
    "order": 157,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "dx687",
@@ -24988,11 +24989,11 @@
     "/catalog/dx687-2.webp"
    ],
    "costUsd": 9.75,
-   "priceUzs": null,
    "published": true,
    "order": 158,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "dx688",
@@ -25176,11 +25177,11 @@
     "/catalog/dx688-2.webp"
    ],
    "costUsd": 13.89,
-   "priceUzs": null,
    "published": true,
    "order": 159,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "dx689",
@@ -25363,11 +25364,11 @@
     "/catalog/dx689-1.webp"
    ],
    "costUsd": 16.25,
-   "priceUzs": null,
    "published": true,
    "order": 160,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "dx268",
@@ -25531,11 +25532,11 @@
     "/catalog/dx268-3.webp"
    ],
    "costUsd": 3.41,
-   "priceUzs": null,
    "published": true,
    "order": 161,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "dx268f",
@@ -25701,11 +25702,11 @@
     "/catalog/dx268f-2.webp"
    ],
    "costUsd": 4.25,
-   "priceUzs": null,
    "published": true,
    "order": 162,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "t191",
@@ -25871,11 +25872,11 @@
     "/catalog/t191-3.webp"
    ],
    "costUsd": 6.65,
-   "priceUzs": null,
    "published": true,
    "order": 163,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "y406",
@@ -26033,11 +26034,11 @@
     "/catalog/y406-3.webp"
    ],
    "costUsd": 4.65,
-   "priceUzs": null,
    "published": true,
    "order": 164,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "02-04f",
@@ -26145,11 +26146,11 @@
     "/catalog/02-04f-1.webp"
    ],
    "costUsd": 4.89,
-   "priceUzs": null,
    "published": true,
    "order": 165,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "03-04f",
@@ -26257,11 +26258,11 @@
     "/catalog/03-04f-1.webp"
    ],
    "costUsd": 6.25,
-   "priceUzs": null,
    "published": true,
    "order": 166,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "ck602",
@@ -26432,11 +26433,11 @@
     "/catalog/ck602-3.webp"
    ],
    "costUsd": 4.45,
-   "priceUzs": null,
    "published": true,
    "order": 167,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "ck612",
@@ -26597,11 +26598,11 @@
     "/catalog/ck612-3.webp"
    ],
    "costUsd": 6.45,
-   "priceUzs": null,
    "published": true,
    "order": 168,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "a089",
@@ -26753,11 +26754,11 @@
     "/catalog/a089-4.webp"
    ],
    "costUsd": 3.25,
-   "priceUzs": null,
    "published": true,
    "order": 169,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "dx145",
@@ -26907,11 +26908,11 @@
     "/catalog/dx145-2.webp"
    ],
    "costUsd": 3.19,
-   "priceUzs": null,
    "published": true,
    "order": 170,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "zp66",
@@ -27066,11 +27067,11 @@
     "/catalog/zp66-2.webp"
    ],
    "costUsd": 3.2,
-   "priceUzs": null,
    "published": true,
    "order": 171,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "q3",
@@ -27198,11 +27199,11 @@
     "/catalog/q3-1.webp"
    ],
    "costUsd": 3.15,
-   "priceUzs": null,
    "published": true,
    "order": 172,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "k47",
@@ -27343,11 +27344,11 @@
     "/catalog/k47-1.webp"
    ],
    "costUsd": 3.5,
-   "priceUzs": null,
    "published": true,
    "order": 173,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "ak61",
@@ -27488,11 +27489,11 @@
     "/catalog/ak61-1.webp"
    ],
    "costUsd": 4.69,
-   "priceUzs": null,
    "published": true,
    "order": 174,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "ak62",
@@ -27633,11 +27634,11 @@
     "/catalog/ak62-1.webp"
    ],
    "costUsd": 7.25,
-   "priceUzs": null,
    "published": true,
    "order": 175,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "ak63",
@@ -27778,11 +27779,11 @@
     "/catalog/ak63-1.webp"
    ],
    "costUsd": 9.95,
-   "priceUzs": null,
    "published": true,
    "order": 176,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "p269",
@@ -27932,11 +27933,11 @@
     "/catalog/p269-2.webp"
    ],
    "costUsd": 2.87,
-   "priceUzs": null,
    "published": true,
    "order": 177,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "il01",
@@ -28082,11 +28083,11 @@
     "/catalog/il01-2.webp"
    ],
    "costUsd": 3.15,
-   "priceUzs": null,
    "published": true,
    "order": 178,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "il03",
@@ -28227,11 +28228,11 @@
     "/catalog/il03-2.webp"
    ],
    "costUsd": 5.59,
-   "priceUzs": null,
    "published": true,
    "order": 179,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "k3",
@@ -28381,11 +28382,11 @@
     "/catalog/k3-2.webp"
    ],
    "costUsd": 2.69,
-   "priceUzs": null,
    "published": true,
    "order": 180,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "k5",
@@ -28524,11 +28525,11 @@
    ],
    "images": [],
    "costUsd": 4.82,
-   "priceUzs": null,
    "published": true,
    "order": 181,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "k6",
@@ -28674,11 +28675,11 @@
     "/catalog/k6-2.webp"
    ],
    "costUsd": 3.49,
-   "priceUzs": null,
    "published": true,
    "order": 182,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "k8",
@@ -28819,11 +28820,11 @@
     "/catalog/k8-2.webp"
    ],
    "costUsd": 6.65,
-   "priceUzs": null,
    "published": true,
    "order": 183,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "q3-2",
@@ -28973,11 +28974,11 @@
     "/catalog/q3-2-2.webp"
    ],
    "costUsd": 2.75,
-   "priceUzs": null,
    "published": true,
    "order": 184,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "q6",
@@ -29123,11 +29124,11 @@
     "/catalog/q6-1.webp"
    ],
    "costUsd": 3.57,
-   "priceUzs": null,
    "published": true,
    "order": 185,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "q7",
@@ -29268,11 +29269,11 @@
     "/catalog/q7-1.webp"
    ],
    "costUsd": 6.65,
-   "priceUzs": null,
    "published": true,
    "order": 186,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "q8",
@@ -29411,11 +29412,11 @@
    ],
    "images": [],
    "costUsd": 9.98,
-   "priceUzs": null,
    "published": true,
    "order": 187,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "q9",
@@ -29554,11 +29555,11 @@
    ],
    "images": [],
    "costUsd": 10.17,
-   "priceUzs": null,
    "published": true,
    "order": 188,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "c01",
@@ -29735,11 +29736,11 @@
     "/catalog/c01-1.webp"
    ],
    "costUsd": 6.82,
-   "priceUzs": null,
    "published": true,
    "order": 189,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "q3l",
@@ -29885,11 +29886,11 @@
     "/catalog/q3l-1.webp"
    ],
    "costUsd": 4.61,
-   "priceUzs": null,
    "published": true,
    "order": 190,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "q6l",
@@ -30038,11 +30039,11 @@
     "/catalog/q6l-1.webp"
    ],
    "costUsd": 5.31,
-   "priceUzs": null,
    "published": true,
    "order": 191,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "1601",
@@ -30189,11 +30190,11 @@
     "/catalog/1601-2.webp"
    ],
    "costUsd": 1.89,
-   "priceUzs": null,
    "published": true,
    "order": 192,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "1602",
@@ -30346,11 +30347,11 @@
     "/catalog/1602-2.webp"
    ],
    "costUsd": 2.79,
-   "priceUzs": null,
    "published": true,
    "order": 193,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "pb04",
@@ -30495,11 +30496,11 @@
     "/catalog/pb04-2.webp"
    ],
    "costUsd": 2.87,
-   "priceUzs": null,
    "published": true,
    "order": 194,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "m03",
@@ -30649,11 +30650,11 @@
     "/catalog/m03-5.webp"
    ],
    "costUsd": 3.54,
-   "priceUzs": null,
    "published": true,
    "order": 195,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "0517",
@@ -30803,11 +30804,11 @@
     "/catalog/0517-2.webp"
    ],
    "costUsd": 3.75,
-   "priceUzs": null,
    "published": true,
    "order": 196,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "dx81",
@@ -30981,11 +30982,11 @@
     "/catalog/dx81-3.webp"
    ],
    "costUsd": null,
-   "priceUzs": null,
    "published": true,
    "order": 197,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "dx82",
@@ -31164,11 +31165,11 @@
     "/catalog/dx82-3.webp"
    ],
    "costUsd": null,
-   "priceUzs": null,
    "published": true,
    "order": 198,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "zl809",
@@ -31350,11 +31351,11 @@
     "/catalog/zl809-2.webp"
    ],
    "costUsd": null,
-   "priceUzs": null,
    "published": true,
    "order": 199,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "151xd",
@@ -31500,11 +31501,11 @@
     "/catalog/151xd-2.webp"
    ],
    "costUsd": null,
-   "priceUzs": null,
    "published": true,
    "order": 200,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "152xd",
@@ -31655,11 +31656,11 @@
     "/catalog/152xd-2.webp"
    ],
    "costUsd": null,
-   "priceUzs": null,
    "published": true,
    "order": 201,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "153xd",
@@ -31800,11 +31801,11 @@
     "/catalog/153xd-2.webp"
    ],
    "costUsd": null,
-   "priceUzs": null,
    "published": true,
    "order": 202,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "dx654",
@@ -31989,11 +31990,11 @@
     "/catalog/dx654-1.webp"
    ],
    "costUsd": null,
-   "priceUzs": null,
    "published": true,
    "order": 203,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "dx655",
@@ -32178,11 +32179,11 @@
     "/catalog/dx655-1.webp"
    ],
    "costUsd": null,
-   "priceUzs": null,
    "published": true,
    "order": 204,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "dx656",
@@ -32367,11 +32368,11 @@
     "/catalog/dx656-1.webp"
    ],
    "costUsd": null,
-   "priceUzs": null,
    "published": true,
    "order": 205,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "zl602-2",
@@ -32542,11 +32543,11 @@
     "/catalog/zl602-2-2.webp"
    ],
    "costUsd": null,
-   "priceUzs": null,
    "published": true,
    "order": 206,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "zl908a",
@@ -32728,11 +32729,11 @@
     "/catalog/zl908a-3.webp"
    ],
    "costUsd": null,
-   "priceUzs": null,
    "published": true,
    "order": 207,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "zl917",
@@ -32901,11 +32902,11 @@
     "/catalog/zl917-1.webp"
    ],
    "costUsd": null,
-   "priceUzs": null,
    "published": true,
    "order": 208,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "zl907",
@@ -33075,11 +33076,11 @@
     "/catalog/zl907-2.webp"
    ],
    "costUsd": null,
-   "priceUzs": null,
    "published": true,
    "order": 209,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "zl902",
@@ -33272,11 +33273,11 @@
     "/catalog/zl902-3.webp"
    ],
    "costUsd": null,
-   "priceUzs": null,
    "published": true,
    "order": 210,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "wl01-35w",
@@ -33364,11 +33365,11 @@
     "/catalog/wl01-35w-1.webp"
    ],
    "costUsd": 10.97,
-   "priceUzs": null,
    "published": true,
    "order": 211,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "wl02-35w",
@@ -33455,11 +33456,11 @@
     "/catalog/wl02-35w-1.webp"
    ],
    "costUsd": 15.58,
-   "priceUzs": null,
    "published": true,
    "order": 212,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "wl02-65w",
@@ -33547,11 +33548,11 @@
     "/catalog/wl02-65w-1.webp"
    ],
    "costUsd": 16.68,
-   "priceUzs": null,
    "published": true,
    "order": 213,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "ck056",
@@ -33633,11 +33634,11 @@
     "/catalog/ck056-3.webp"
    ],
    "costUsd": 13.61,
-   "priceUzs": null,
    "published": true,
    "order": 214,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "ck058",
@@ -33719,11 +33720,11 @@
     "/catalog/ck058-3.webp"
    ],
    "costUsd": 13.61,
-   "priceUzs": null,
    "published": true,
    "order": 215,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "gx19",
@@ -33853,11 +33854,11 @@
     "/catalog/gx19-3.webp"
    ],
    "costUsd": 13.25,
-   "priceUzs": null,
    "published": true,
    "order": 216,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "gx21",
@@ -34003,11 +34004,11 @@
     "/catalog/gx21-3.webp"
    ],
    "costUsd": 17.67,
-   "priceUzs": null,
    "published": true,
    "order": 217,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "m10",
@@ -34171,11 +34172,11 @@
     "/catalog/m10-2.webp"
    ],
    "costUsd": 22.98,
-   "priceUzs": null,
    "published": true,
    "order": 218,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "m12",
@@ -34346,11 +34347,11 @@
     "/catalog/m12-5.webp"
    ],
    "costUsd": 19.37,
-   "priceUzs": null,
    "published": true,
    "order": 219,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "lp01-100w",
@@ -34508,11 +34509,11 @@
     "/catalog/lp01-100w-2.webp"
    ],
    "costUsd": 19.97,
-   "priceUzs": null,
    "published": true,
    "order": 220,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "h32-65w",
@@ -34638,11 +34639,11 @@
     "/catalog/h32-65w-2.webp"
    ],
    "costUsd": 16.35,
-   "priceUzs": null,
    "published": true,
    "order": 221,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "h34-65w",
@@ -34767,11 +34768,11 @@
     "/catalog/h34-65w-1.webp"
    ],
    "costUsd": 20.42,
-   "priceUzs": null,
    "published": true,
    "order": 222,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "h36-65w",
@@ -34896,11 +34897,11 @@
     "/catalog/h36-65w-1.webp"
    ],
    "costUsd": 20.85,
-   "priceUzs": null,
    "published": true,
    "order": 223,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   },
   {
    "id": "h38-65w",
@@ -35057,11 +35058,11 @@
     "/catalog/h38-65w-3.webp"
    ],
    "costUsd": 23.95,
-   "priceUzs": null,
    "published": true,
    "order": 224,
    "unit": "pcs",
-   "markup": null
+   "markup": null,
+   "price": null
   }
  ]
 }

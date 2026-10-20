@@ -93,7 +93,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $p['category'] = (string)($_POST['category'] ?? '');
         $p['codes'] = $lines(str_replace(',', "\n", (string)($_POST['codes'] ?? '')));
         $p['costUsd'] = ($_POST['costUsd'] ?? '') === '' ? null : (float)str_replace(',', '.', (string)$_POST['costUsd']);
-        $p['priceUzs'] = ($_POST['priceUzs'] ?? '') === '' ? null : (int)preg_replace('/\D/', '', (string)$_POST['priceUzs']);
+        $p['price'] = ($_POST['price'] ?? '') === '' ? null : (float)str_replace([',', ' ', ' '], ['.', '', ''], (string)$_POST['price']);
         $p['published'] = !empty($_POST['published']);
         $p['unit'] = ($_POST['unit'] ?? 'pcs') === 'm2' ? 'm2' : 'pcs';
         $p['markup'] = ($_POST['markupValue'] ?? '') === '' ? null : ['mode' => ($_POST['markupMode'] ?? 'pct') === 'abs' ? 'abs' : 'pct', 'value' => (float)str_replace(',', '.', (string)$_POST['markupValue'])];
@@ -130,17 +130,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($post === 'settings') {
         $s = &$data['settings'];
         $s['showPrices'] = !empty($_POST['showPrices']);
+        $s['currency'] = ($_POST['currency'] ?? 'usd') === 'uzs' ? 'uzs' : 'usd';
         $s['usdRate'] = (float)str_replace(',', '.', (string)$_POST['usdRate']);
         $s['markupMode'] = ($_POST['markupMode'] ?? 'pct') === 'abs' ? 'abs' : 'pct';
         $s['markupValue'] = (float)str_replace(',', '.', (string)$_POST['markupValue']);
         unset($s['markupPct']);
-        $s['priceStep'] = max(1, (int)$_POST['priceStep']);
+        $step = (float)str_replace(',', '.', (string)$_POST['priceStep']);
+        $s['priceStep'] = $step > 0 ? $step : ($s['currency'] === 'uzs' ? 1000 : 0.5);
         $s['minQty'] = max(1, (int)$_POST['minQty']);
         unset($s);
         if (!empty($_POST['recalc'])) {
+            // Сбрасываем ручные цены: сайт и выгрузка считают цену по формуле сами, когда она не задана.
             $n = 0;
-            foreach ($data['products'] as &$q) { if (!empty($q['costUsd'])) { $q['priceUzs'] = catalog_price($data['settings'], (float)$q['costUsd'], $q['markup'] ?? null); $n++; } }
-            unset($q); flash("Настройки сохранены, пересчитаны цены у $n товаров.");
+            foreach ($data['products'] as &$q) { if (($q['price'] ?? null) !== null) { $q['price'] = null; $n++; } }
+            unset($q); flash("Настройки сохранены, $n ручных цен сброшены — теперь все цены по формуле.");
         } else flash('Настройки сохранены.');
         catalog_save($data); redirect('?a=settings');
     }
@@ -229,11 +232,12 @@ if ($action === 'list') {
     echo '<form class="toolbar" method="get"><input type="hidden" name="a" value="list"><input type="text" name="q" placeholder="Поиск по названию или коду" value="' . h($q) . '"><select name="cat"><option value="">Все категории</option>';
     foreach ($data['categories'] as $c) if ($c['parent']) echo '<option value="' . h($c['id']) . '"' . ($cat === $c['id'] ? ' selected' : '') . '>' . h($c['title']['ru']) . '</option>';
     echo '</select><button class="btn ghost sm">Найти</button><span class="muted">Всего: ' . count($rows) . ' · Цены на сайте: ' . ($data['settings']['showPrices'] ? '<span class="pill on">показаны</span>' : '<span class="pill">скрыты</span>') . '</span></form>';
-    echo '<div class="card"><table><tr><th></th><th>Название</th><th>Код</th><th>Категория</th><th>Цена, сум</th><th>Статус</th><th></th></tr>';
+    echo '<div class="card"><table><tr><th></th><th>Название</th><th>Код</th><th>Категория</th><th>Цена, ' . catalog_currency_label($data['settings']) . '</th><th>Статус</th><th></th></tr>';
     foreach ($rows as $p) {
         echo '<tr><td>' . ($p['images'][0] ?? '' ? '<img class="thumb" src="' . h($p['images'][0]) . '" alt="">' : '') . '</td>';
         echo '<td><a href="?a=edit&id=' . h($p['id']) . '">' . h($l10n($p['title']) ?: $p['id']) . '</a></td><td class="muted">' . h(implode(', ', $p['codes'] ?? [])) . '</td><td class="muted">' . h($catTitle($p['category'])) . '</td>';
-        echo '<td>' . ($p['priceUzs'] ? number_format((int)$p['priceUzs'], 0, '', ' ') : '<span class="muted">—</span>') . '</td>';
+        $pr = ($p['price'] ?? null) !== null ? (float)$p['price'] : catalog_price($data['settings'], !empty($p['costUsd']) ? (float)$p['costUsd'] : null, $p['markup'] ?? null);
+        echo '<td>' . ($pr ? h(catalog_format_price($data['settings'], $pr)) . (($p['price'] ?? null) === null ? '' : ' <span class="muted" title="введена вручную">✎</span>') : '<span class="muted">—</span>') . '</td>';
         echo '<td><form method="post" action="?a=toggle"><input type="hidden" name="csrf" value="' . $C . '"><input type="hidden" name="id" value="' . h($p['id']) . '"><input type="hidden" name="back" value="' . h(http_build_query(['a' => 'list', 'q' => $q, 'cat' => $cat])) . '"><button class="pill ' . (!empty($p['published']) ? 'on' : '') . '" style="cursor:pointer;background:none">' . (!empty($p['published']) ? 'на сайте' : 'скрыт') . '</button></form></td>';
         echo '<td><a class="btn ghost sm" href="?a=edit&id=' . h($p['id']) . '">Изменить</a></td></tr>';
     }
@@ -243,7 +247,7 @@ if ($action === 'list') {
 if ($action === 'edit' || $action === 'new') {
     $p = $action === 'edit' ? $find((string)($_GET['id'] ?? '')) : null;
     if ($action === 'edit' && !$p) { flash('Товар не найден.'); redirect('./'); }
-    $p ??= ['id' => '', 'category' => $data['categories'][1]['id'] ?? '', 'codes' => [], 'title' => [], 'short' => [], 'features' => [], 'specs' => [], 'included' => [], 'images' => [], 'costUsd' => null, 'priceUzs' => null, 'published' => true, 'order' => count($data['products']) + 1];
+    $p ??= ['id' => '', 'category' => $data['categories'][1]['id'] ?? '', 'codes' => [], 'title' => [], 'short' => [], 'features' => [], 'specs' => [], 'included' => [], 'images' => [], 'costUsd' => null, 'price' => null, 'published' => true, 'order' => count($data['products']) + 1];
     $specLines = function (string $l) use ($p): string {
         $out = [];
         foreach ($p['specs'] as $s) { $k = is_array($s['k']) ? ($s['k'][$l] ?? $s['k']['ru'] ?? '') : $s['k']; $v = is_array($s['v']) ? ($s['v'][$l] ?? $s['v']['ru'] ?? '') : $s['v']; $out[] = "$k | $v"; }
@@ -258,9 +262,10 @@ if ($action === 'edit' || $action === 'new') {
     echo '<div><label>Категория<select name="category">'; foreach ($data['categories'] as $c) if ($c['parent']) echo '<option value="' . h($c['id']) . '"' . ($p['category'] === $c['id'] ? ' selected' : '') . '>' . h($c['title']['ru']) . '</option>'; echo '</select></label>';
     echo '<label>Коды модели (через запятую)<input type="text" name="codes" value="' . h(implode(', ', $p['codes'])) . '"></label><label>Порядок в списке<input type="number" name="order" value="' . (int)$p['order'] . '"></label></div>';
     echo '<div><label>Себестоимость, USD (видно только здесь)<input type="text" name="costUsd" value="' . h((string)($p['costUsd'] ?? '')) . '"></label>';
-    echo '<label>Наценка этого товара (пусто — общая из настроек)<div style="display:flex;gap:6px"><input type="text" name="markupValue" value="' . h((string)($mk['value'] ?? '')) . '" placeholder="' . h((string)$data['settings']['markupValue']) . '"><select name="markupMode" style="width:120px"><option value="pct"' . (($mk['mode'] ?? $data['settings']['markupMode']) === 'pct' ? ' selected' : '') . '>%</option><option value="abs"' . (($mk['mode'] ?? $data['settings']['markupMode']) === 'abs' ? ' selected' : '') . '>сум</option></select></div></label>';
-    echo '<label>Цена на сайте, сум («от»)<div style="display:flex;gap:6px"><input type="text" name="priceUzs" id="priceUzs" value="' . h((string)($p['priceUzs'] ?? '')) . '"><select name="unit" style="width:120px"><option value="pcs"' . (($p['unit'] ?? 'pcs') === 'pcs' ? ' selected' : '') . '>за шт.</option><option value="m2"' . (($p['unit'] ?? '') === 'm2' ? ' selected' : '') . '>за м²</option></select></div></label>';
-    if ($suggest) echo '<p class="muted" style="margin:6px 0 0">По формуле (курс ' . h((string)$data['settings']['usdRate']) . ', наценка ' . h((string)($mk['value'] ?? $data['settings']['markupValue'])) . (($mk['mode'] ?? $data['settings']['markupMode']) === 'abs' ? ' сум' : '%') . '): <a href="#" onclick="document.getElementById(\'priceUzs\').value=' . $suggest . ';return false">' . number_format($suggest, 0, '', ' ') . ' сум</a></p>';
+    $cur = catalog_currency_label($data['settings']);
+    echo '<label>Наценка этого товара (пусто — общая из настроек)<div style="display:flex;gap:6px"><input type="text" name="markupValue" value="' . h((string)($mk['value'] ?? '')) . '" placeholder="' . h((string)$data['settings']['markupValue']) . '"><select name="markupMode" style="width:120px"><option value="pct"' . (($mk['mode'] ?? $data['settings']['markupMode']) === 'pct' ? ' selected' : '') . '>%</option><option value="abs"' . (($mk['mode'] ?? $data['settings']['markupMode']) === 'abs' ? ' selected' : '') . '>' . $cur . '</option></select></div></label>';
+    echo '<label>Цена на сайте, ' . $cur . ' («от»; пусто — по формуле)<div style="display:flex;gap:6px"><input type="text" name="price" id="price" value="' . h(($p['price'] ?? null) === null ? '' : (string)$p['price']) . '" placeholder="' . ($suggest ? h((string)$suggest) : '') . '"><select name="unit" style="width:120px"><option value="pcs"' . (($p['unit'] ?? 'pcs') === 'pcs' ? ' selected' : '') . '>за шт.</option><option value="m2"' . (($p['unit'] ?? '') === 'm2' ? ' selected' : '') . '>за м²</option></select></div></label>';
+    if ($suggest) echo '<p class="muted" style="margin:6px 0 0">По формуле (' . ($data['settings']['currency'] === 'uzs' ? 'курс ' . h((string)$data['settings']['usdRate']) . ', ' : '') . 'наценка ' . h((string)($mk['value'] ?? $data['settings']['markupValue'])) . (($mk['mode'] ?? $data['settings']['markupMode']) === 'abs' ? ' ' . $cur : '%') . '): ' . h(catalog_format_price($data['settings'], $suggest)) . ' — так и показывается на сайте, пока поле цены пустое.</p>';
     echo '</div><div><label style="display:flex;gap:8px;align-items:center;margin-top:28px"><input type="checkbox" name="published" ' . (!empty($p['published']) ? 'checked' : '') . '> Показывать на сайте</label>';
     echo '<p class="muted">Фото: до 1200 px, WebP/JPG/PNG. Первое — главное. Чтобы удалить — сотрите строку ниже.</p></div></div></div>';
 
@@ -302,10 +307,14 @@ if ($action === 'settings') {
     $s = $data['settings'];
     page_start('Настройки'); nav('settings');
     echo '<form method="post" action="?a=settings"><input type="hidden" name="csrf" value="' . $C . '"><div class="card"><h2>Цены</h2><div class="grid3">';
-    echo '<div><label style="display:flex;gap:8px;align-items:center"><input type="checkbox" name="showPrices" ' . ($s['showPrices'] ? 'checked' : '') . '> Показывать цены на сайте</label><p class="muted">Выключено — вместо цены «Цена по запросу».</p></div>';
-    echo '<div><label>Курс доллара, сум<input type="text" name="usdRate" value="' . h((string)$s['usdRate']) . '"></label><label>Наценка к себестоимости (общая)<div style="display:flex;gap:6px"><input type="text" name="markupValue" value="' . h((string)$s['markupValue']) . '"><select name="markupMode" style="width:120px"><option value="pct"' . ($s['markupMode'] === 'pct' ? ' selected' : '') . '>%</option><option value="abs"' . ($s['markupMode'] === 'abs' ? ' selected' : '') . '>сум</option></select></div></label></div>';
-    echo '<div><label>Округление цены, сум<input type="number" name="priceStep" value="' . (int)$s['priceStep'] . '"></label><label>Минимальный тираж, шт.<input type="number" name="minQty" value="' . (int)$s['minQty'] . '"></label></div></div>';
-    echo '<p><label style="display:flex;gap:8px;align-items:center"><input type="checkbox" name="recalc"> Пересчитать цены всех товаров по формуле (себестоимость × курс × наценка). Цены, введённые вручную, будут заменены.</label></p><button class="btn">Сохранить</button></div></form>';
+    $cur = catalog_currency_label($s);
+    echo '<div><label style="display:flex;gap:8px;align-items:center"><input type="checkbox" name="showPrices" ' . ($s['showPrices'] ? 'checked' : '') . '> Показывать цены на сайте</label><p class="muted">Выключено — вместо цены «Цена по запросу».</p>';
+    echo '<label>Валюта цен на сайте<select name="currency"><option value="usd"' . ($s['currency'] === 'usd' ? ' selected' : '') . '>Доллары США (оплата в сумах по курсу на день оплаты)</option><option value="uzs"' . ($s['currency'] === 'uzs' ? ' selected' : '') . '>Сумы (себестоимость × курс)</option></select></label></div>';
+    echo '<div><label>Наценка к себестоимости (общая)<div style="display:flex;gap:6px"><input type="text" name="markupValue" value="' . h((string)$s['markupValue']) . '"><select name="markupMode" style="width:120px"><option value="pct"' . ($s['markupMode'] === 'pct' ? ' selected' : '') . '>%</option><option value="abs"' . ($s['markupMode'] === 'abs' ? ' selected' : '') . '>' . $cur . '</option></select></div></label>';
+    echo '<label>Курс доллара, сум (нужен только для цен в сумах)<input type="text" name="usdRate" value="' . h((string)$s['usdRate']) . '"></label></div>';
+    echo '<div><label>Округление цены вверх, ' . $cur . '<input type="text" name="priceStep" value="' . h((string)$s['priceStep']) . '"></label><label>Минимальный тираж, шт.<input type="number" name="minQty" value="' . (int)$s['minQty'] . '"></label></div></div>';
+    echo '<p class="muted">Цена товара = себестоимость' . ($s['currency'] === 'uzs' ? ' × курс' : '') . ' + наценка (общая или своя у товара), округлённая вверх до шага. Считается автоматически у всех товаров, где поле «Цена на сайте» пустое. Себестоимость и наценки на сайт не уходят.</p>';
+    echo '<p><label style="display:flex;gap:8px;align-items:center"><input type="checkbox" name="recalc"> Сбросить цены, введённые вручную, чтобы все товары считались по формуле.</label></p><button class="btn">Сохранить</button></div></form>';
     echo '<form method="post" action="?a=change-password"><input type="hidden" name="csrf" value="' . $C . '"><div class="card"><h2>Пароль</h2><div class="grid3"><label>Старый<input type="password" name="old" required></label><label>Новый (от 8 знаков)<input type="password" name="new" required minlength="8"></label><div><br><button class="btn ghost">Сменить пароль</button></div></div></div></form>';
     echo '<div class="card"><h2>Данные</h2><p class="muted">Файл каталога: api/data/catalog.json · резервные копии: api/data/backup/ (по одной на день). <a href="?a=export">Скачать catalog.json</a></p></div>';
     page_end(); exit;

@@ -1072,6 +1072,7 @@
     "perUnit": "per unit",
     "onRequest": "Price on request",
     "minQty": "From {n} pcs",
+    "payNote": "Prices are in US dollars. Payment in Uzbek soums at the exchange rate on the day of payment.",
     "request": "Request a quote",
     "requestHint": "We will quote the price with logo branding and lead time within one business day.",
     "specs": "Specifications",

@@ -41,8 +41,8 @@ export default async function ProductPage({ params: { locale, cat, id } }: Param
       image: p.images.map((i) => `${siteUrl}${i}`),
       sku: p.codes[0] ?? p.id,
       brand: { "@type": "Brand", name: site.name },
-      ...(catalog.settings.showPrices && p.priceUzs
-        ? { offers: { "@type": "Offer", priceCurrency: "UZS", price: p.priceUzs, availability: "https://schema.org/InStock", url: url(`/catalog/${cat}/${id}`) } }
+      ...(catalog.settings.showPrices && p.price
+        ? { offers: { "@type": "Offer", priceCurrency: catalog.settings.currency.toUpperCase(), price: p.price, availability: "https://schema.org/InStock", url: url(`/catalog/${cat}/${id}`) } }
         : {}),
     },
     {

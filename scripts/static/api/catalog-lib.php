@@ -11,9 +11,22 @@ function catalog_load(): array {
     $file = is_file(CATALOG_FILE) ? CATALOG_FILE : CATALOG_SEED;
     $data = is_file($file) ? json_decode((string)file_get_contents($file), true) : null;
     if (!is_array($data)) $data = ['settings' => [], 'categories' => [], 'products' => []];
-    $data['settings'] += ['showPrices' => false, 'usdRate' => 12300, 'markupMode' => 'pct', 'markupValue' => 60, 'priceStep' => 1000, 'minQty' => 50];
+    $data['settings'] += ['showPrices' => true, 'currency' => 'usd', 'usdRate' => 12300, 'markupMode' => 'pct', 'markupValue' => 30, 'priceStep' => 0.5, 'minQty' => 50];
+    if ($data['settings']['currency'] !== 'uzs') $data['settings']['currency'] = 'usd';
     if (isset($data['settings']['markupPct']) && !isset($data['settings']['markupValue'])) $data['settings']['markupValue'] = $data['settings']['markupPct'];
+    // Старое поле priceUzs (цена в сумах) → price.
+    foreach ($data['products'] as &$p) {
+        if (!array_key_exists('price', $p)) $p['price'] = $p['priceUzs'] ?? null;
+        unset($p['priceUzs']);
+    }
+    unset($p);
     return $data;
+}
+
+function catalog_currency_label(array $s): string { return ($s['currency'] ?? 'usd') === 'uzs' ? 'сум' : '$'; }
+function catalog_format_price(array $s, ?float $n): string {
+    if (!$n) return '—';
+    return ($s['currency'] ?? 'usd') === 'uzs' ? number_format((int)$n, 0, '', ' ') . ' сум' : rtrim(rtrim(number_format($n, 2, ',', ' '), '0'), ',') . ' $';
 }
 
 // Сохранение с блокировкой и дневной резервной копией (api/data/backup/catalog-ГГГГ-ММ-ДД.json).
@@ -32,21 +45,27 @@ function catalog_public(array $data): array {
     usort($cats, fn($a, $b) => ($a['order'] ?? 0) <=> ($b['order'] ?? 0));
     $prods = array_values(array_filter($data['products'], fn($p) => !empty($p['published'])));
     usort($prods, fn($a, $b) => ($a['order'] ?? 0) <=> ($b['order'] ?? 0));
-    foreach ($prods as &$p) unset($p['costUsd'], $p['markup']);
+    // Цена, не введённая вручную, считается по формуле из себестоимости (как в lib/catalog.ts).
+    foreach ($prods as &$p) {
+        if (($p['price'] ?? null) === null) $p['price'] = catalog_price($s, isset($p['costUsd']) ? (float)$p['costUsd'] : null, $p['markup'] ?? null);
+        unset($p['costUsd'], $p['markup']);
+    }
+    unset($p);
     return [
-        'settings' => ['showPrices' => (bool)$s['showPrices'], 'priceStep' => (int)$s['priceStep'], 'minQty' => (int)$s['minQty']],
+        'settings' => ['showPrices' => (bool)$s['showPrices'], 'currency' => $s['currency'], 'priceStep' => (float)$s['priceStep'], 'minQty' => (int)$s['minQty']],
         'categories' => $cats,
         'products' => $prods,
     ];
 }
 
-// Цена из себестоимости: USD × курс, затем наценка товара (если задана) или общая — в % или в сумах; округление до шага.
-function catalog_price(array $s, ?float $costUsd, ?array $markup = null): ?int {
+// Цена из себестоимости: в долларах база = себестоимость, в сумах — себестоимость × курс; затем наценка товара
+// (если задана) или общая — в % или суммой в валюте цен; округление вверх до шага (0.5 $ или 1000 сум).
+function catalog_price(array $s, ?float $costUsd, ?array $markup = null): ?float {
     if (!$costUsd) return null;
     $mode = $markup['mode'] ?? $s['markupMode'] ?? 'pct';
     $value = (float)($markup['value'] ?? $s['markupValue'] ?? 0);
-    $base = $costUsd * (float)$s['usdRate'];
+    $base = ($s['currency'] ?? 'usd') === 'uzs' ? $costUsd * (float)$s['usdRate'] : $costUsd;
     $price = $mode === 'abs' ? $base + $value : $base * (1 + $value / 100);
-    $step = max(1, (int)$s['priceStep']);
-    return (int)(ceil($price / $step) * $step);
+    $step = (float)($s['priceStep'] ?? 0) > 0 ? (float)$s['priceStep'] : 1;
+    return round(ceil($price / $step - 1e-9) * $step, 2);
 }

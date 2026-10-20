@@ -155,14 +155,14 @@ const products = items.map((p, i) => {
     unit: "pcs",
     costUsd: p.usdFrom,
     markup: null,
-    priceUzs: null,
+    price: null,
     published: true,
     order: i + 1,
   };
 });
 
 const catalog = {
-  settings: { showPrices: false, usdRate: 12300, markupMode: "pct", markupValue: 60, priceStep: 1000, minQty: 50 },
+  settings: { showPrices: true, currency: "usd", usdRate: 12300, markupMode: "pct", markupValue: 30, priceStep: 0.5, minQty: 50 },
   categories,
   products,
 };

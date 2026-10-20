@@ -1072,6 +1072,7 @@
     "perUnit": "donasiga",
     "onRequest": "Narxi so‘rov bo‘yicha",
     "minQty": "{n} donadan",
+    "payNote": "Narxlar AQSH dollarida. To‘lov — to‘lov kunidagi kurs bo‘yicha so‘mda.",
     "request": "Narx so‘rash",
     "requestHint": "Logotip tushirish bilan narx va muddatni ish kuni davomida aytamiz.",
     "specs": "Xususiyatlari",

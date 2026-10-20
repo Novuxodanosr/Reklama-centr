@@ -4,7 +4,7 @@ import { useTranslations } from "next-intl";
 import { Link } from "@/lib/navigation";
 import type { CatalogSettings, Product } from "@/lib/catalog-shared";
 import { ArrowIcon } from "@/components/icons";
-import ProductCard from "./ProductCard";
+import ProductCard, { PayNote } from "./ProductCard";
 import { useLiveCatalog } from "./useLiveCatalog";
 
 // Сетка товаров категории: со сборки приходят только товары этой категории; правки из админки подтягиваются живьём.
@@ -23,7 +23,10 @@ export default function CategoryGrid({ category, products: initial, settings: in
   }
   return (
     <>
-      <p className="mt-6 text-sm text-dim">{t("items", { n: products.length })}</p>
+      <div className="mt-6 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
+        <p className="text-sm text-dim">{t("items", { n: products.length })}</p>
+        <PayNote settings={settings} />
+      </div>
       <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {products.map((p) => <ProductCard key={p.id} product={p} settings={settings} />)}
       </div>

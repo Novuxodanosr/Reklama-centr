@@ -4,10 +4,10 @@ import { useState } from "react";
 import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/lib/navigation";
-import { l10n, type CatalogSettings, type Category, type Product } from "@/lib/catalog-shared";
+import { defaultSettings, l10n, type Category, type CatalogSettings, type Product } from "@/lib/catalog-shared";
 import type { Locale } from "@/lib/site";
 import { ArrowIcon } from "@/components/icons";
-import ProductCard, { Price } from "./ProductCard";
+import ProductCard, { PayNote, Price } from "./ProductCard";
 import { useLiveCatalog } from "./useLiveCatalog";
 
 type Props = {
@@ -25,7 +25,7 @@ export default function ProductView(props: Props) {
   const locale = useLocale() as Locale;
   const live = useLiveCatalog();
   const product = live?.products.find((p) => p.id === props.id) ?? props.product;
-  const settings = live?.settings ?? props.settings ?? { showPrices: false, priceStep: 1000, minQty: 50 };
+  const settings = live?.settings ?? props.settings ?? defaultSettings;
   const category = live ? live.categories.find((c) => c.id === product?.category) : props.category;
   const similar = (live ? live.products.filter((p) => p.category === product?.category && p.id !== props.id) : props.similar ?? []).slice(0, 4);
   const [img, setImg] = useState(0);
@@ -66,6 +66,7 @@ export default function ProductView(props: Props) {
               <Price product={product} settings={settings} />
               {product.unit !== "m2" && <span className="text-sm text-dim">{t("minQty", { n: settings.minQty })}</span>}
             </div>
+            <PayNote settings={settings} className="mt-2" />
             <a href={lead} className="btn-primary mt-6">{t("request")} <ArrowIcon /></a>
             <p className="mt-3 max-w-md text-sm text-dim">{t("requestHint")}</p>
 

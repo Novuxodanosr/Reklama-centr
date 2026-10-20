@@ -3,17 +3,25 @@
 import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/lib/navigation";
-import { formatUzs, l10n, type CatalogSettings, type Product } from "@/lib/catalog-shared";
+import { formatPrice, l10n, type CatalogSettings, type Product } from "@/lib/catalog-shared";
 import type { Locale } from "@/lib/site";
 
 export function Price({ product, settings, className = "" }: { product: Product; settings: CatalogSettings; className?: string }) {
   const t = useTranslations("catalog");
-  if (!settings.showPrices || !product.priceUzs) return <span className={`text-sm text-mist ${className}`}>{t("onRequest")}</span>;
+  const locale = useLocale() as Locale;
+  if (!settings.showPrices || !product.price) return <span className={`text-sm text-mist ${className}`}>{t("onRequest")}</span>;
   return (
     <span className={`font-display text-2xl font-bold ${className}`}>
-      {t("from", { price: formatUzs(product.priceUzs) })} <span className="font-sans text-sm font-normal text-mist">{product.unit === "m2" ? t("perM2") : t("perUnit")}</span>
+      {t("from", { price: formatPrice(product.price, settings.currency, locale) })} <span className="font-sans text-sm font-normal text-mist">{product.unit === "m2" ? t("perM2") : t("perUnit")}</span>
     </span>
   );
+}
+
+// Подпись под ценами: цены в долларах, оплата в сумах по курсу на день оплаты (в сумах подпись не нужна).
+export function PayNote({ settings, className = "" }: { settings: CatalogSettings; className?: string }) {
+  const t = useTranslations("catalog");
+  if (!settings.showPrices || settings.currency !== "usd") return null;
+  return <p className={`text-sm text-dim ${className}`}>{t("payNote")}</p>;
 }
 
 // Карточка товара в сетке категории.
