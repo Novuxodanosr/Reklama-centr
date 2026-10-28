@@ -110,7 +110,7 @@ const T = (ru, en, uz) => ({ ru, en, uz });
 const categories = [
   { id: "outdoor", parent: null, title: T("Наружная реклама", "Outdoor advertising", "Tashqi reklama"), order: 1 },
   { id: "print", parent: null, title: T("Полиграфия", "Print", "Poligrafiya"), order: 2 },
-  { id: "souvenirs", parent: null, title: T("Сувенирная продукция", "Promotional products", "Suvenir mahsulotlari"), order: 3 },
+  { id: "souvenirs", parent: null, title: T("Гаджеты и аксессуары", "Gadgets & Accessories", "Gadjetlar va aksessuarlar"), order: 3 },
   { id: "wide-format-print", parent: "outdoor", title: T("Широкоформатная печать", "Large-format printing", "Keng formatli bosma"), order: 1 },
   { id: "volumetric-letters", parent: "outdoor", title: T("Объёмные буквы", "Channel letters", "Hajmli harflar"), order: 2 },
   { id: "lightboxes", parent: "outdoor", title: T("Световые короба", "Lightboxes", "Yorug‘lik qutilari"), order: 3 },

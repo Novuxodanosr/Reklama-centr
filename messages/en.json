@@ -14,7 +14,7 @@
     "close": "Close",
     "skip": "Skip to content",
     "call": "Call",
-    "catalog": "Catalogue"
+    "catalog": "Shop"
   },
   "hero": {
     "eyebrow": "Advertising production company · Tashkent",
@@ -1005,8 +1005,8 @@
         "description": "Manager phone numbers, address and map of Reklama Centr in Tashkent. Send sizes, quantity or a description of the task and we will price it."
       },
       "catalog": {
-        "title": "Catalogue: branded power banks and wireless chargers in Tashkent",
-        "description": "Corporate gifts with logo branding: magnetic power banks, wireless chargers, laptop power banks. Model selection, branding and batch delivery in Tashkent."
+        "title": "Gadgets & accessories shop in Tashkent: power banks, headphones, chargers",
+        "description": "Gadgets and accessories in stock and to order: power banks, headphones, chargers, cases, laptop bags. Logo branding for corporate gifts, delivery in Tashkent."
       }
     },
     "ui": {
@@ -1063,10 +1063,10 @@
     }
   },
   "catalog": {
-    "title": "Catalogue",
-    "eyebrow": "Product catalogue",
-    "intro": "Ready-made items for logo branding: pick a model, we apply your brand and deliver the batch.",
-    "all": "Full catalogue",
+    "title": "Shop",
+    "eyebrow": "Gadgets & Accessories",
+    "intro": "Items in stock and to order. We apply your logo to corporate gifts and deliver across Tashkent.",
+    "all": "Whole shop",
     "items": "{n} items",
     "from": "from {price}",
     "perUnit": "per unit",
@@ -1083,7 +1083,7 @@
     "branding": "Logo branding: UV printing, laser engraving or pad printing — matched to the case material.",
     "back": "Back to category",
     "leadMessage": "Interested in: {title} ({code}). Quantity: ___ pcs.",
-    "breadcrumbCatalog": "Catalogue",
+    "breadcrumbCatalog": "Shop",
     "perM2": "per m²",
     "empty": "Items in this section are coming soon. Contact us — we will pick and quote for your task.",
     "notFound": "Product not found.",

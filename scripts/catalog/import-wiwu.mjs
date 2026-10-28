@@ -15,7 +15,8 @@ const imgDir = "public/catalog";
 const MAX_IMAGES = 6;
 
 // Раздел «Гаджеты и аксессуары» и подразделы по типу товара из прайса.
-const root = { id: "gadgets", parent: null, title: { ru: "Гаджеты и аксессуары", en: "Gadgets & Accessories", uz: "Gadjetlar va aksessuarlar" } };
+// Общий раздел с сувенирной продукцией (id «souvenirs» исторический), переименован в «Гаджеты и аксессуары».
+const root = { id: "souvenirs", parent: null, title: { ru: "Гаджеты и аксессуары", en: "Gadgets & Accessories", uz: "Gadjetlar va aksessuarlar" } };
 const subs = [
   ["gadget-cases", "Чехлы и защитные стёкла", "Cases & Screen Protectors", "G‘iloflar va himoya oynalari", /^(CASE|GLASS)/],
   ["gadget-audio", "Наушники", "Headphones & Earbuds", "Quloqchinlar", /^(HEADPHONE|AIRBUDS|EARPHONE|EARBUDS)/],

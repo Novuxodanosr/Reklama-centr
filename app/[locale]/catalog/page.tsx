@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import { Link } from "@/lib/navigation";
-import { catalog, childCategories, l10n, productsIn, rootCategories } from "@/lib/catalog";
+import { catalog, filledCategories, l10n, productsIn, rootCategories } from "@/lib/catalog";
 import QuoteBand from "@/components/QuoteBand";
 import { pageMeta, type Locale } from "@/lib/site";
 
@@ -25,11 +25,11 @@ export default async function CatalogPage({ params: { locale } }: { params: { lo
         <p className="mt-6 max-w-2xl text-lg text-mist">{t("intro")}</p>
       </section>
 
-      {rootCategories.map((root) => (
+      {rootCategories.filter((root) => filledCategories(root.id).length > 0).map((root) => (
         <section key={root.id} className="container-x py-14 lg:py-20">
           <h2 className="text-4xl font-extrabold leading-[0.9] sm:text-5xl">{l10n(root.title, L)}</h2>
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {childCategories(root.id).map((c) => {
+            {filledCategories(root.id).map((c) => {
               const items = productsIn(c.id);
               const cover = items.find((p) => p.images[0])?.images[0];
               return (

@@ -14,7 +14,7 @@
     "close": "Yopish",
     "skip": "Asosiy qismga o‘tish",
     "call": "Qo‘ng‘iroq qilish",
-    "catalog": "Katalog"
+    "catalog": "Do‘kon"
   },
   "hero": {
     "eyebrow": "Reklama ishlab chiqarish kompaniyasi · Toshkent",
@@ -1005,8 +1005,8 @@
         "description": "Reklama Centr menejerlari telefonlari, manzil va xarita. O‘lcham, adad yoki vazifa tavsifini yuboring — narxini hisoblab beramiz."
       },
       "catalog": {
-        "title": "Katalog: Toshkentda logotipli pauerbank va simsiz zaryadlovchilar",
-        "description": "Logotip tushirilgan korporativ sovg‘alar: magnitli pauerbanklar, simsiz zaryadlovchilar, noutbuk uchun pauerbanklar. Model tanlash, brendlash va yetkazib berish."
+        "title": "Toshkentda gadjet va aksessuarlar do‘koni: pauerbanklar, quloqchinlar, zaryadlovchilar",
+        "description": "Mavjud va buyurtma asosidagi gadjet va aksessuarlar: pauerbanklar, quloqchinlar, zaryadlovchilar, g‘iloflar, noutbuk sumkalari. Korporativ sovg‘alarga logotip tushirish, Toshkent bo‘ylab yetkazib berish."
       }
     },
     "ui": {
@@ -1063,10 +1063,10 @@
     }
   },
   "catalog": {
-    "title": "Katalog",
-    "eyebrow": "Mahsulotlar katalogi",
-    "intro": "Logotip tushirish uchun tayyor buyumlar: modelni tanlang, brendingizni tushiramiz va partiyani yetkazib beramiz.",
-    "all": "Butun katalog",
+    "title": "Do‘kon",
+    "eyebrow": "Gadjetlar va aksessuarlar",
+    "intro": "Mavjud va buyurtma asosidagi mahsulotlar. Korporativ sovg‘alarga logotipingizni tushiramiz va Toshkent bo‘ylab yetkazamiz.",
+    "all": "Butun do‘kon",
     "items": "{n} ta mahsulot",
     "from": "{price} dan",
     "perUnit": "donasiga",
@@ -1083,7 +1083,7 @@
     "branding": "Logotip tushirish: UV-bosma, lazer gravirovka yoki tampobosma — korpus materialiga mos tanlaymiz.",
     "back": "Kategoriyaga qaytish",
     "leadMessage": "Qiziqtirdi: {title} ({code}). Adadi: ___ dona.",
-    "breadcrumbCatalog": "Katalog",
+    "breadcrumbCatalog": "Do‘kon",
     "perM2": "m² uchun",
     "empty": "Bu bo‘limda mahsulotlar tez orada paydo bo‘ladi. Bizga yozing — vazifangizga mos tanlab, narxini hisoblaymiz.",
     "notFound": "Mahsulot topilmadi.",

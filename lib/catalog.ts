@@ -43,4 +43,6 @@ export const rootCategories = catalog.categories.filter((c) => !c.parent);
 export const childCategories = (parent: string) => catalog.categories.filter((c) => c.parent === parent);
 export const categoryById = (id: string) => catalog.categories.find((c) => c.id === id);
 export const productsIn = (category: string) => catalog.products.filter((p) => p.category === category);
+// Подразделы с товарами: пустые в магазине не показываем, появятся сами, когда в них добавят товары.
+export const filledCategories = (parent: string) => childCategories(parent).filter((c) => productsIn(c.id).length > 0);
 export const productById = (id: string) => catalog.products.find((p) => p.id === id);

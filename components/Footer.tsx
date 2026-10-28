@@ -29,7 +29,7 @@ export default function Footer() {
           <div>
             <h3 className="eyebrow-muted font-sans normal-case tracking-[0.24em]">{t("footer.nav")}</h3>
             <ul className="mt-5 space-y-3 text-sm">
-              {(["services", "catalog", "works", "about", "contacts"] as const).filter((k) => catalogPublic || k !== "catalog").map((k) => (
+              {(["catalog", "services", "works", "about", "contacts"] as const).filter((k) => catalogPublic || k !== "catalog").map((k) => (
                 <li key={k}>
                   <Link href={`/${k}`} className="link-underline text-paper/80 hover:text-white">{t(`nav.${k}`)}</Link>
                 </li>

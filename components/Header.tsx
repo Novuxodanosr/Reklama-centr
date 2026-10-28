@@ -12,8 +12,8 @@ import LangSwitcher from "./LangSwitcher";
 import { CloseIcon, MenuIcon, PhoneIcon, TelegramIcon } from "./icons";
 
 const items = [
-  { href: "/services", key: "services" },
   { href: "/catalog", key: "catalog" },
+  { href: "/services", key: "services" },
   { href: "/works", key: "works" },
   { href: "/about", key: "about" },
   { href: "/contacts", key: "contacts" },

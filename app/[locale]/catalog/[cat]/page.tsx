@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import { Link } from "@/lib/navigation";
-import { catalog, categoryById, childCategories, l10n, productsIn } from "@/lib/catalog";
+import { catalog, categoryById, filledCategories, l10n, productsIn } from "@/lib/catalog";
 import CategoryGrid from "@/components/catalog/CategoryGrid";
 import QuoteBand from "@/components/QuoteBand";
 import { localePath, pageMeta, safeJsonLd, site, siteUrl, type Locale } from "@/lib/site";
@@ -32,7 +32,7 @@ export default async function CategoryPage({ params: { locale, cat } }: Params) 
   const t = await getTranslations({ locale, namespace: "catalog" });
   const L = locale as Locale;
   const parent = c.parent ? categoryById(c.parent) : null;
-  const siblings = c.parent ? childCategories(c.parent) : [];
+  const siblings = c.parent ? filledCategories(c.parent) : [];
   const url = (p: string) => `${siteUrl}${localePath(L, p)}`;
   const jsonLd = {
     "@context": "https://schema.org",
