@@ -1086,6 +1086,17 @@
     "breadcrumbCatalog": "Catalogue",
     "perM2": "per m²",
     "empty": "Items in this section are coming soon. Contact us — we will pick and quote for your task.",
-    "notFound": "Product not found."
+    "notFound": "Product not found.",
+    "availability": {
+      "stock": "In stock",
+      "order": "Made to order",
+      "none": "Out of stock"
+    },
+    "leadTime": "{days} days",
+    "badge": {
+      "new": "New",
+      "hit": "Bestseller",
+      "sale": "Sale"
+    }
   }
 }

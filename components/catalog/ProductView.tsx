@@ -7,7 +7,7 @@ import { Link } from "@/lib/navigation";
 import { defaultSettings, l10n, type Category, type CatalogSettings, type Product } from "@/lib/catalog-shared";
 import type { Locale } from "@/lib/site";
 import { ArrowIcon } from "@/components/icons";
-import ProductCard, { PayNote, Price } from "./ProductCard";
+import ProductCard, { Badges, PayNote, Price, Stock } from "./ProductCard";
 import { useLiveCatalog } from "./useLiveCatalog";
 
 type Props = {
@@ -46,6 +46,7 @@ export default function ProductView(props: Props) {
         <div className="mt-8 grid gap-10 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
           <div>
             <div className="relative aspect-square overflow-hidden rounded-2xl bg-white">
+              <Badges product={product} />
               {images[img] && <Image key={images[img]} src={images[img]} alt={title} fill priority sizes="(min-width: 1024px) 50vw, 100vw" className="object-contain p-6" />}
             </div>
             {images.length > 1 && (
@@ -66,6 +67,7 @@ export default function ProductView(props: Props) {
               <Price product={product} settings={settings} />
               {product.unit !== "m2" && <span className="text-sm text-dim">{t("minQty", { n: settings.minQty })}</span>}
             </div>
+            <Stock product={product} className="mt-3 flex" />
             <PayNote settings={settings} className="mt-2" />
             <a href={lead} className="btn-primary mt-6">{t("request")} <ArrowIcon /></a>
             <p className="mt-3 max-w-md text-sm text-dim">{t("requestHint")}</p>

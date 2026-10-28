@@ -1086,6 +1086,17 @@
     "breadcrumbCatalog": "Katalog",
     "perM2": "m² uchun",
     "empty": "Bu bo‘limda mahsulotlar tez orada paydo bo‘ladi. Bizga yozing — vazifangizga mos tanlab, narxini hisoblaymiz.",
-    "notFound": "Mahsulot topilmadi."
+    "notFound": "Mahsulot topilmadi.",
+    "availability": {
+      "stock": "Mavjud",
+      "order": "Buyurtma asosida",
+      "none": "Mavjud emas"
+    },
+    "leadTime": "muddati {days} kun",
+    "badge": {
+      "new": "Yangi",
+      "hit": "Xit",
+      "sale": "Aksiya"
+    }
   }
 }

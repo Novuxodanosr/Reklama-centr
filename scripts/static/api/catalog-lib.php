@@ -47,7 +47,7 @@ function catalog_public(array $data): array {
     usort($prods, fn($a, $b) => ($a['order'] ?? 0) <=> ($b['order'] ?? 0));
     // Цена, не введённая вручную, считается по формуле из себестоимости (как в lib/catalog.ts).
     foreach ($prods as &$p) {
-        if (($p['price'] ?? null) === null) $p['price'] = catalog_price($s, isset($p['costUsd']) ? (float)$p['costUsd'] : null, $p['markup'] ?? null);
+        if (($p['price'] ?? null) === null) { $p['price'] = catalog_price($s, isset($p['costUsd']) ? (float)$p['costUsd'] : null, $p['markup'] ?? null); $p['priceAuto'] = true; }
         unset($p['costUsd'], $p['markup']);
     }
     unset($p);

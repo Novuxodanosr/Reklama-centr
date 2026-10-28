@@ -96,6 +96,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $p['price'] = ($_POST['price'] ?? '') === '' ? null : (float)str_replace([',', ' ', ' '], ['.', '', ''], (string)$_POST['price']);
         $p['published'] = !empty($_POST['published']);
         $p['unit'] = ($_POST['unit'] ?? 'pcs') === 'm2' ? 'm2' : 'pcs';
+        $av = (string)($_POST['availability'] ?? '');
+        $p['availability'] = in_array($av, ['stock', 'order', 'none'], true) ? $av : null;
+        $p['leadTime'] = trim((string)($_POST['leadTime'] ?? '')) ?: null;
+        $p['badges'] = array_values(array_intersect(['new', 'hit', 'sale'], (array)($_POST['badges'] ?? [])));
         $p['markup'] = ($_POST['markupValue'] ?? '') === '' ? null : ['mode' => ($_POST['markupMode'] ?? 'pct') === 'abs' ? 'abs' : 'pct', 'value' => (float)str_replace(',', '.', (string)$_POST['markupValue'])];
         $p['order'] = (int)($_POST['order'] ?? $p['order']);
         // Фото: порядок и удаление
@@ -267,6 +271,13 @@ if ($action === 'edit' || $action === 'new') {
     echo '<label>Цена на сайте, ' . $cur . ' («от»; пусто — по формуле)<div style="display:flex;gap:6px"><input type="text" name="price" id="price" value="' . h(($p['price'] ?? null) === null ? '' : (string)$p['price']) . '" placeholder="' . ($suggest ? h((string)$suggest) : '') . '"><select name="unit" style="width:120px"><option value="pcs"' . (($p['unit'] ?? 'pcs') === 'pcs' ? ' selected' : '') . '>за шт.</option><option value="m2"' . (($p['unit'] ?? '') === 'm2' ? ' selected' : '') . '>за м²</option></select></div></label>';
     if ($suggest) echo '<p class="muted" style="margin:6px 0 0">По формуле (' . ($data['settings']['currency'] === 'uzs' ? 'курс ' . h((string)$data['settings']['usdRate']) . ', ' : '') . 'наценка ' . h((string)($mk['value'] ?? $data['settings']['markupValue'])) . (($mk['mode'] ?? $data['settings']['markupMode']) === 'abs' ? ' ' . $cur : '%') . '): ' . h(catalog_format_price($data['settings'], $suggest)) . ' — так и показывается на сайте, пока поле цены пустое.</p>';
     echo '</div><div><label style="display:flex;gap:8px;align-items:center;margin-top:28px"><input type="checkbox" name="published" ' . (!empty($p['published']) ? 'checked' : '') . '> Показывать на сайте</label>';
+    $av = $p['availability'] ?? '';
+    echo '<label>Наличие<select name="availability">';
+    foreach (['' => '— не показывать', 'stock' => 'В наличии', 'order' => 'Под заказ', 'none' => 'Нет в наличии'] as $k => $v) echo '<option value="' . $k . '"' . ($av === $k ? ' selected' : '') . '>' . $v . '</option>';
+    echo '</select></label><label>Срок под заказ, дней (например 10–15)<input type="text" name="leadTime" value="' . h((string)($p['leadTime'] ?? '')) . '"></label>';
+    echo '<div style="display:flex;gap:14px;margin:6px 0 10px">';
+    foreach (['new' => 'Новинка', 'hit' => 'Хит', 'sale' => 'Акция'] as $k => $v) echo '<label style="display:flex;gap:6px;align-items:center"><input type="checkbox" name="badges[]" value="' . $k . '"' . (in_array($k, $p['badges'] ?? [], true) ? ' checked' : '') . '> ' . $v . '</label>';
+    echo '</div>';
     echo '<p class="muted">Фото: до 1200 px, WebP/JPG/PNG. Первое — главное. Чтобы удалить — сотрите строку ниже.</p></div></div></div>';
 
     echo '<div class="card"><h2>Фото</h2><div class="imgs">';

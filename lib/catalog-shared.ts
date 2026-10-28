@@ -6,6 +6,9 @@ export type L10n = Record<Locale, string>;
 export type Category = { id: string; parent: string | null; title: L10n; order: number };
 export type Unit = "pcs" | "m2";
 export type Currency = "usd" | "uzs";
+// Наличие: stock — в наличии, order — под заказ (leadTime — срок, напр. «10–15»), none — нет; пусто — не показываем.
+export type Availability = "stock" | "order" | "none";
+export type Badge = "new" | "hit" | "sale";
 export type Markup = { mode: "pct" | "abs"; value: number } | null;
 export type Product = {
   id: string;
@@ -18,6 +21,9 @@ export type Product = {
   included: L10n[];
   images: string[];
   unit?: Unit;
+  availability?: Availability | null;
+  leadTime?: string | null;   // срок под заказ, дней
+  badges?: Badge[];
   price: number | null;        // цена «от» в валюте settings.currency
   published: boolean;
   order: number;
