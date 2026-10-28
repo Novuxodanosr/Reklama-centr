@@ -36204,7 +36204,7 @@
     "/catalog/c8-3.webp"
    ],
    "costUsd": 5.75,
-   "published": false,
+   "published": true,
    "order": 1,
    "unit": "pcs",
    "markup": {
