@@ -65,7 +65,7 @@ export default function ProductView(props: Props) {
             {l10n(product.short, locale) && <p className="mt-5 text-lg text-mist">{l10n(product.short, locale)}</p>}
             <div className="mt-6 flex flex-wrap items-baseline gap-x-4 gap-y-1">
               <Price product={product} settings={settings} />
-              {product.unit !== "m2" && <span className="text-sm text-dim">{t("minQty", { n: settings.minQty })}</span>}
+              {product.unit !== "m2" && (product.minQty ?? settings.minQty) > 1 && <span className="text-sm text-dim">{t("minQty", { n: product.minQty ?? settings.minQty })}</span>}
             </div>
             <Stock product={product} className="mt-3 flex" />
             <PayNote settings={settings} className="mt-2" />

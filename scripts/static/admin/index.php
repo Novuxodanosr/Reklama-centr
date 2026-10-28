@@ -99,6 +99,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $av = (string)($_POST['availability'] ?? '');
         $p['availability'] = in_array($av, ['stock', 'order', 'none'], true) ? $av : null;
         $p['leadTime'] = trim((string)($_POST['leadTime'] ?? '')) ?: null;
+        $p['minQty'] = ($_POST['minQty'] ?? '') === '' ? null : max(1, (int)$_POST['minQty']);
+        $p['brand'] = trim((string)($_POST['brand'] ?? '')) ?: null;
         $p['badges'] = array_values(array_intersect(['new', 'hit', 'sale'], (array)($_POST['badges'] ?? [])));
         $p['markup'] = ($_POST['markupValue'] ?? '') === '' ? null : ['mode' => ($_POST['markupMode'] ?? 'pct') === 'abs' ? 'abs' : 'pct', 'value' => (float)str_replace(',', '.', (string)$_POST['markupValue'])];
         $p['order'] = (int)($_POST['order'] ?? $p['order']);
@@ -275,6 +277,7 @@ if ($action === 'edit' || $action === 'new') {
     echo '<label>Наличие<select name="availability">';
     foreach (['' => '— не показывать', 'stock' => 'В наличии', 'order' => 'Под заказ', 'none' => 'Нет в наличии'] as $k => $v) echo '<option value="' . $k . '"' . ($av === $k ? ' selected' : '') . '>' . $v . '</option>';
     echo '</select></label><label>Срок под заказ, дней (например 10–15)<input type="text" name="leadTime" value="' . h((string)($p['leadTime'] ?? '')) . '"></label>';
+    echo '<label>Мин. тираж, шт. (пусто — общий ' . (int)$data['settings']['minQty'] . '; 1 — не показывать)<input type="number" name="minQty" min="1" value="' . h((string)($p['minQty'] ?? '')) . '"></label><label>Бренд<input type="text" name="brand" value="' . h((string)($p['brand'] ?? '')) . '"></label>';
     echo '<div style="display:flex;gap:14px;margin:6px 0 10px">';
     foreach (['new' => 'Новинка', 'hit' => 'Хит', 'sale' => 'Акция'] as $k => $v) echo '<label style="display:flex;gap:6px;align-items:center"><input type="checkbox" name="badges[]" value="' . $k . '"' . (in_array($k, $p['badges'] ?? [], true) ? ' checked' : '') . '> ' . $v . '</label>';
     echo '</div>';

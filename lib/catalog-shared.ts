@@ -24,6 +24,8 @@ export type Product = {
   availability?: Availability | null;
   leadTime?: string | null;   // срок под заказ, дней
   badges?: Badge[];
+  minQty?: number | null;     // свой минимальный тираж (пусто — общий из настроек; 1 — не показываем)
+  brand?: string | null;
   price: number | null;        // цена «от» в валюте settings.currency
   published: boolean;
   order: number;
