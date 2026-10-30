@@ -165,10 +165,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     if ($post === 'api-key') {
         $k = preg_replace('/\s+/', '', (string)($_POST['claude_key'] ?? ''));
-        if (!empty($_POST['remove'])) { secret_set('claude', null); secret_set('claude_auth', null); flash('Ключ Claude API удалён.'); }
+        $ws = preg_replace('/[^A-Za-z0-9_-]/', '', (string)($_POST['claude_ws'] ?? ''));
+        if (!empty($_POST['remove'])) { secret_set('claude', null); secret_set('claude_auth', null); secret_set('claude_ws', null); flash('Ключ Claude API удалён.'); }
         elseif ($k === '') flash('Поле ключа пустое — вставьте ключ (Ctrl+V) и нажмите «Сохранить и проверить».');
-        elseif (($chk = claude_check_key($k))[0] !== '') flash('Ключ не подошёл — ' . $chk[0]);
-        else { secret_set('claude', $k); secret_set('claude_auth', $chk[1]); flash('Ключ Claude API сохранён и проверен.'); }
+        elseif (($chk = claude_check_key($k, $ws))[0] !== '') flash('Ключ не подошёл — ' . $chk[0]);
+        else { secret_set('claude', $k); secret_set('claude_auth', $chk[1]); secret_set('claude_ws', $ws); flash('Ключ Claude API сохранён и проверен.'); }
         redirect('?a=settings');
     }
     if ($post === 'import-upload') {
@@ -481,7 +482,7 @@ if ($action === 'settings') {
     echo '<form method="post" action="?a=api-key"><input type="hidden" name="csrf" value="' . $C . '"><div class="card"><h2>Ключ Claude API (для «Импорта Excel»)</h2>';
     echo '<p class="muted">' . ($ck ? 'Сохранён: <b>' . h(mask_key($ck)) . '</b>. Чтобы заменить — вставьте новый.' : 'Ключ не задан. Получить: console.anthropic.com → API Keys → Create Key.') . ' Ключ хранится только на сервере и на сайт не попадает.</p>';
     if (!$ck) { $net = claude_reachable(); echo '<p class="' . ($net ? 'err' : 'muted') . '">' . h($net ?: 'Связь хостинга с Claude API есть.') . '</p>'; }
-    echo '<div class="toolbar"><input type="password" name="claude_key" placeholder="sk-ant-…" autocomplete="off" style="min-width:340px"><button class="btn ghost">Сохранить и проверить</button>' . ($ck ? '<button class="btn ghost sm" name="remove" value="1" onclick="return confirm(\'Удалить ключ?\')">Удалить ключ</button>' : '') . '</div></div></form>';
+    echo '<div class="toolbar"><input type="password" name="claude_key" placeholder="sk-ant-…" autocomplete="off" style="min-width:340px"><input type="text" name="claude_ws" placeholder="ID пространства wrkspc_… (если просит)" value="' . h(secrets()['claude_ws'] ?? '') . '" style="min-width:260px"><button class="btn ghost">Сохранить и проверить</button>' . ($ck ? '<button class="btn ghost sm" name="remove" value="1" onclick="return confirm(\'Удалить ключ?\')">Удалить ключ</button>' : '') . '</div></div></form>';
     echo '<form method="post" action="?a=change-password"><input type="hidden" name="csrf" value="' . $C . '"><div class="card"><h2>Пароль</h2><div class="grid3"><label>Старый<input type="password" name="old" required></label><label>Новый (от 8 знаков)<input type="password" name="new" required minlength="8"></label><div><br><button class="btn ghost">Сменить пароль</button></div></div></div></form>';
     echo '<div class="card"><h2>Данные</h2><p class="muted">Файл каталога: api/data/catalog.json · резервные копии: api/data/backup/ (по одной на день). <a href="?a=export">Скачать catalog.json</a></p></div>';
     page_end(); exit;

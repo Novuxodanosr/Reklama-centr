@@ -126,7 +126,7 @@ function claude_request(string $key, array $body): array {
     $ch = curl_init('https://api.anthropic.com/v1/messages');
     curl_setopt_array($ch, [
         CURLOPT_POST => true, CURLOPT_RETURNTRANSFER => true, CURLOPT_TIMEOUT => 280, CURLOPT_CONNECTTIMEOUT => 15,
-        CURLOPT_HTTPHEADER => array_merge(['content-type: application/json', 'anthropic-version: 2026-10-21', 'anthropic-beta: server-side-fallback-2026-07-01'], claude_auth($key, secrets()['claude_auth'] ?? 'x-api-key')),
+        CURLOPT_HTTPHEADER => array_merge(['content-type: application/json', 'anthropic-version: 2026-10-21', 'anthropic-beta: server-side-fallback-2026-07-01'], claude_auth($key, secrets()['claude_auth'] ?? 'x-api-key', secrets()['claude_ws'] ?? '')),
         CURLOPT_POSTFIELDS => json_encode($body, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES),
     ]);
     $res = curl_exec($ch); $code = (int)curl_getinfo($ch, CURLINFO_RESPONSE_CODE); $err = curl_error($ch); curl_close($ch);
@@ -144,22 +144,26 @@ function claude_request(string $key, array $body): array {
 
 // Способ передачи ключа: обычный ключ — заголовком x-api-key; если API его так не принял,
 // пробуем как Bearer-токен (ключи нового вида из Console). Рабочий способ запоминается в secrets.json.
-function claude_auth(string $key, string $mode): array {
-    return $mode === 'bearer' ? ['authorization: Bearer ' . $key] : ['x-api-key: ' . $key];
+// Ключ на всю организацию (не привязан к рабочему пространству) требует ID пространства в заголовке.
+function claude_auth(string $key, string $mode, string $ws = ''): array {
+    $h = $mode === 'bearer' ? ['authorization: Bearer ' . $key] : ['x-api-key: ' . $key];
+    if ($ws !== '') $h[] = 'anthropic-workspace-id: ' . $ws;
+    return $h;
 }
-function claude_models(string $key, string $mode): array {
+function claude_models(string $key, string $mode, string $ws = ''): array {
     $ch = curl_init('https://api.anthropic.com/v1/models?limit=1');
-    curl_setopt_array($ch, [CURLOPT_RETURNTRANSFER => true, CURLOPT_TIMEOUT => 20, CURLOPT_HTTPHEADER => array_merge(['anthropic-version: 2026-10-21'], claude_auth($key, $mode))]);
+    curl_setopt_array($ch, [CURLOPT_RETURNTRANSFER => true, CURLOPT_TIMEOUT => 20, CURLOPT_HTTPHEADER => array_merge(['anthropic-version: 2026-10-21'], claude_auth($key, $mode, $ws))]);
     $res = curl_exec($ch); $code = (int)curl_getinfo($ch, CURLINFO_RESPONSE_CODE); $err = curl_error($ch); curl_close($ch);
     return [$code, $res === false ? null : (json_decode((string)$res, true)['error']['message'] ?? substr((string)$res, 0, 200)), $err];
 }
 // Проверка ключа: список моделей — бесплатный запрос. Возвращает [причина или '', способ].
-function claude_check_key(string $key): array {
+function claude_check_key(string $key, string $ws = ''): array {
     $key = preg_replace('/\s+/', '', $key);
     if (strpos($key, '...') !== false || strpos($key, '…') !== false) return ['это сокращённый ключ из списка — полный показывается только при создании, создайте новый', ''];
     $why = [];
     foreach (['x-api-key', 'bearer'] as $mode) {
-        [$code, $msg, $err] = claude_models($key, $mode);
+        [$code, $msg, $err] = claude_models($key, $mode, $ws);
+        if ($code === 400 && stripos((string)$msg, 'workspace') !== false) return ['ключ рабочий, но он на всю организацию — впишите ниже ID рабочего пространства (Console → Workspaces → Default, начинается с wrkspc_) или создайте ключ внутри пространства Default', ''];
         if ($code === 200) return ['', $mode];
         if ($code === 0) return ['хостинг не может связаться с Claude API (' . $err . ')', ''];
         $why[] = "$code: $msg";
