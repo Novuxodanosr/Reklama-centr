@@ -40,8 +40,10 @@ lib/works.ts           портфолио (пока без фото — цвет
 
 ## Что подставить перед запуском
 
-1. **Домен** — `lib/site.ts`, поле `siteUrl` (сейчас заглушка `reklama-center.uz`).
-2. **Контакты** — там же: почта, Telegram, Instagram, адрес (телефоны менеджеров уже реальные).
+1. **Домен** — `lib/site.ts`, поле `siteUrl`. Уже настоящий: `https://reklama-centr.uz`
+   (с 02.10.2026; `reklama-center.uz` — переадресация на него).
+2. **Контакты** — там же. Телефоны менеджеров, адрес и Instagram реальные; почты и
+   Telegram пока нет (`null`) — кнопки с ними на сайте скрыты, появятся сами, когда вписать.
 3. **Telegram** — `.env.local`: `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID`.
 4. **Фото работ** — `lib/works.ts`: добавить поле `image`, в `components/WorkCard.tsx`
    заменить градиент на `<Image>`.

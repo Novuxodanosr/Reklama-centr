@@ -23,7 +23,7 @@ Next.js 14.2.35 (App Router), TypeScript, Tailwind, next-intl, framer-motion.
 | Все тексты сайта | `messages/ru.json`, `messages/en.json`, `messages/uz.json` |
 | Список направлений и их фото | `lib/services.ts` |
 | Портфолио (работы) | `lib/works.ts` + подписи в `messages/*.json` → `works.items` |
-| Телефоны менеджеров, домен, почта, соцсети | `lib/site.ts` (телефоны реальные; почта, соцсети и домен — заглушки). Имена и должности менеджеров — `messages/*.json` → `contacts.managers` |
+| Телефоны менеджеров, домен, почта, соцсети | `lib/site.ts` (телефоны, адрес, домен reklama-centr.uz и Instagram реальные; почты и Telegram пока нет — `null`, кнопки скрыты). Имена и должности менеджеров — `messages/*.json` → `contacts.managers` |
 | Логотипы клиентов | `lib/clients.ts` + файлы `public/clients/*.webp`; блок `components/Clients.tsx` стоит на главной и на «О компании» |
 | Логотип | `components/Logo.tsx` (SVG, встроен), знак для favicon — `app/icon.svg` |
 | Страницы | `app/[locale]/` — главная, `services`, `works`, `about`, `contacts` |
@@ -59,7 +59,8 @@ print, promo, textile, pos, exhibition, heraldry, outdoor, interior, custom
 - Телефоны менеджеров (11.09.2026): Жавохир Камалович +998 87 000 61 61 — основной,
   стоит в шапке, футере и блоке расчёта; Раксана Рамизовна +998 92 001 63 63; Шахина Кадыровна, дизайн-менеджер, +998 88 001 46 46;
   Татьяна Васильевна, генеральный менеджер, +998 88 001 34 34.
-- Домен — пока оставить заглушку `reklama-center.uz` (11.09.2026).
+- Домен — ~~пока оставить заглушку `reklama-center.uz` (11.09.2026)~~. Решено 02.10.2026:
+  основной `reklama-centr.uz`, `reklama-center.uz` — переадресация (см. «Домены .uz и заливка»).
 - Список оборудования в блоке «Всё делаем сами» заказчик подтвердил
   (11.09.2026) — не менять без него.
 - Наружная реклама — только производство и монтаж. Аренду рекламных мест
