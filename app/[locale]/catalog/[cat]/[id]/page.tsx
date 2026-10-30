@@ -5,6 +5,7 @@ import { catalog, categoryById, l10n, productById, productsIn } from "@/lib/cata
 import ProductView from "@/components/catalog/ProductView";
 import CatalogCta from "@/components/catalog/CatalogCta";
 import { localePath, pageMeta, safeJsonLd, site, siteUrl, type Locale } from "@/lib/site";
+import { productSeo, schemaAvailability } from "@/lib/catalog-seo";
 
 export const dynamicParams = false;
 
@@ -18,8 +19,8 @@ export async function generateMetadata({ params: { locale, cat, id } }: Params):
   const p = productById(id);
   if (!p || p.category !== cat) return {};
   const L = locale as Locale;
-  const tail = { ru: "с логотипом — Ташкент", en: "with logo branding — Tashkent", uz: "logotip bilan — Toshkent" }[L];
-  const meta = pageMeta(L, `/catalog/${cat}/${id}`, `${l10n(p.title, L)} ${tail}`, l10n(p.short, L) || l10n(p.title, L));
+  const { title, description } = productSeo(p, L);
+  const meta = pageMeta(L, `/catalog/${cat}/${id}`, title, description);
   if (p.images[0]) meta.openGraph = { ...meta.openGraph, images: [{ url: p.images[0], width: 1000, height: 1000 }] };
   return meta;
 }
@@ -40,9 +41,9 @@ export default async function ProductPage({ params: { locale, cat, id } }: Param
       description: l10n(p.short, L),
       image: p.images.map((i) => `${siteUrl}${i}`),
       sku: p.codes[0] ?? p.id,
-      brand: { "@type": "Brand", name: site.name },
+      brand: { "@type": "Brand", name: p.brand || site.name },
       ...(catalog.settings.showPrices && p.price
-        ? { offers: { "@type": "Offer", priceCurrency: catalog.settings.currency.toUpperCase(), price: p.price, availability: "https://schema.org/InStock", url: url(`/catalog/${cat}/${id}`) } }
+        ? { offers: { "@type": "Offer", priceCurrency: catalog.settings.currency.toUpperCase(), price: p.price, availability: schemaAvailability(p), url: url(`/catalog/${cat}/${id}`) } }
         : {}),
     },
     {

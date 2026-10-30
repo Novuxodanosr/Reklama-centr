@@ -6,7 +6,7 @@ import { catalogPublic, locales, localePath, siteUrl } from "@/lib/site";
 import { serviceIds } from "@/lib/services";
 import { catalog } from "@/lib/catalog";
 
-const pages = ["/", "/services", ...serviceIds.map((id) => `/services/${id}`), ...(catalogPublic ? ["/catalog", ...catalog.categories.filter((c) => c.parent).map((c) => `/catalog/${c.id}`), ...catalog.products.map((p) => `/catalog/${p.category}/${p.id}`)] : []), "/works", "/about", "/contacts"];
+const pages = ["/", "/services", ...serviceIds.map((id) => `/services/${id}`), ...(catalogPublic ? ["/catalog", ...catalog.categories.filter((c) => c.parent && catalog.products.some((p) => p.category === c.id)).map((c) => `/catalog/${c.id}`), ...catalog.products.map((p) => `/catalog/${p.category}/${p.id}`)] : []), "/works", "/about", "/contacts"];
 // На хостинге адреса страниц всегда со слешем на конце (.htaccess) — в карте сайта указываем их так же, без переадресаций.
 const slash = process.env.STATIC_EXPORT === "1";
 const abs = (locale: (typeof locales)[number], page: string) => {

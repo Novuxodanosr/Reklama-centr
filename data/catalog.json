@@ -130,22 +130,22 @@
    "order": 3
   },
   {
-   "id": "capsule-power-banks",
-   "parent": "souvenirs",
-   "title": {
-    "ru": "Компактные повербанки",
-    "en": "Compact power banks",
-    "uz": "Ixcham pauerbanklar"
-   },
-   "order": 4
-  },
-  {
    "id": "stickers",
    "parent": "print",
    "title": {
     "ru": "Наклейки",
     "en": "Stickers",
     "uz": "Stikerlar"
+   },
+   "order": 4
+  },
+  {
+   "id": "capsule-power-banks",
+   "parent": "souvenirs",
+   "title": {
+    "ru": "Компактные повербанки",
+    "en": "Compact power banks",
+    "uz": "Ixcham pauerbanklar"
    },
    "order": 4
   },

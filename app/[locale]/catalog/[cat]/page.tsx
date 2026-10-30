@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import { Link } from "@/lib/navigation";
 import { catalog, categoryById, filledCategories, l10n, productsIn } from "@/lib/catalog";
+import { categorySeo } from "@/lib/catalog-seo";
 import CategoryGrid from "@/components/catalog/CategoryGrid";
 import QuoteBand from "@/components/QuoteBand";
 import { localePath, pageMeta, safeJsonLd, site, siteUrl, type Locale } from "@/lib/site";
@@ -18,11 +19,11 @@ type Params = { params: { locale: string; cat: string } };
 export async function generateMetadata({ params: { locale, cat } }: Params): Promise<Metadata> {
   const c = categoryById(cat);
   if (!c) return {};
-  const t = await getTranslations({ locale, namespace: "seo.pages.catalog" });
   const L = locale as Locale;
-  const city = { ru: "в Ташкенте", en: "in Tashkent", uz: "Toshkentda" }[L];
-  const logo = { ru: "с логотипом", en: "with logo branding", uz: "logotip bilan" }[L];
-  return pageMeta(L, `/catalog/${cat}`, `${l10n(c.title, L)} ${logo} ${city}`, t("description"));
+  const { title, description } = categorySeo(c, L);
+  const meta = pageMeta(L, `/catalog/${cat}`, title, description);
+  // Пустой раздел (товары ещё не добавлены) — не индексируем.
+  return productsIn(cat).length ? meta : { ...meta, robots: { index: false, follow: true } };
 }
 
 export default async function CategoryPage({ params: { locale, cat } }: Params) {
@@ -34,15 +35,23 @@ export default async function CategoryPage({ params: { locale, cat } }: Params) 
   const parent = c.parent ? categoryById(c.parent) : null;
   const siblings = c.parent ? filledCategories(c.parent) : [];
   const url = (p: string) => `${siteUrl}${localePath(L, p)}`;
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: site.name, item: url("/") },
-      { "@type": "ListItem", position: 2, name: t("title"), item: url("/catalog") },
-      { "@type": "ListItem", position: 3, name: l10n(c.title, L), item: url(`/catalog/${cat}`) },
-    ],
-  };
+  const jsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: site.name, item: url("/") },
+        { "@type": "ListItem", position: 2, name: t("title"), item: url("/catalog") },
+        { "@type": "ListItem", position: 3, name: l10n(c.title, L), item: url(`/catalog/${cat}`) },
+      ],
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      name: l10n(c.title, L),
+      itemListElement: productsIn(cat).map((p, i) => ({ "@type": "ListItem", position: i + 1, name: l10n(p.title, L), url: url(`/catalog/${cat}/${p.id}`) })),
+    },
+  ];
 
   return (
     <>
