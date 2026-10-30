@@ -7,6 +7,7 @@ session_name('rc_admin');
 session_set_cookie_params(['httponly' => true, 'samesite' => 'Lax', 'secure' => !empty($_SERVER['HTTPS'])]);
 session_start();
 require dirname(__DIR__) . '/api/catalog-lib.php';
+require __DIR__ . '/import-lib.php';
 define('ADMIN_FILE', CATALOG_DIR . '/admin.json');
 define('LANGS', ['ru' => 'Русский', 'en' => 'English', 'uz' => 'O‘zbekcha']);
 
@@ -162,6 +163,64 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
         $data['categories'] = $cats; catalog_save($data); flash('Категории сохранены.'); redirect('?a=categories');
     }
+    if ($post === 'api-key') {
+        $k = trim((string)($_POST['claude_key'] ?? ''));
+        if (!empty($_POST['remove'])) { secret_set('claude', null); flash('Ключ Claude API удалён.'); }
+        elseif ($k === '') flash('Вставьте ключ.');
+        elseif (!claude_check_key($k)) flash('Ключ не подошёл: Claude API его не принял. Проверьте, что скопировали полностью.');
+        else { secret_set('claude', $k); flash('Ключ Claude API сохранён и проверен.'); }
+        redirect('?a=settings');
+    }
+    if ($post === 'import-upload') {
+        $f = $_FILES['xlsx'] ?? null;
+        if (!$f || $f['error'] !== UPLOAD_ERR_OK) { flash('Файл не загрузился.'); redirect('?a=import'); }
+        try { $rows = xlsx_rows($f['tmp_name']); } catch (Throwable $e) { flash($e->getMessage()); redirect('?a=import'); }
+        if (!$rows) { flash('В файле нет строк.'); redirect('?a=import'); }
+        $g = import_guess($rows);
+        $id = date('Ymd-His');
+        job_save(['id' => $id, 'created' => date('c'), 'file' => (string)$f['name'], 'raw' => array_slice($rows, 0, 2000), 'head' => $g['head'], 'map' => $g['map'], 'rows' => [], 'results' => [], 'spent' => 0,
+            'options' => ['brand' => '', 'availability' => 'stock', 'markup' => '', 'category' => '', 'publish' => false, 'skipExisting' => true]]);
+        redirect('?a=import-job&id=' . $id);
+    }
+    if ($post === 'import-setup') {
+        $job = job_load((string)($_POST['id'] ?? '')) ?? redirect('?a=import');
+        $job['head'] = (int)($_POST['head'] ?? -1);
+        foreach (array_keys($job['map']) as $k) $job['map'][$k] = ($_POST['map'][$k] ?? '') === '' ? null : (int)$_POST['map'][$k];
+        $av = (string)($_POST['availability'] ?? 'stock');
+        $job['options'] = [
+            'brand' => trim((string)($_POST['brand'] ?? '')), 'availability' => in_array($av, ['stock', 'order'], true) ? $av : 'stock',
+            'markup' => trim(str_replace(['%', ','], ['', '.'], (string)($_POST['markup'] ?? ''))), 'category' => (string)($_POST['category'] ?? ''),
+            'publish' => !empty($_POST['publish']), 'skipExisting' => !empty($_POST['skipExisting']),
+        ];
+        $job['rows'] = import_rows($job['raw'], $job['head'], $job['map']);
+        job_save($job); flash('Готово к обработке: ' . count($job['rows']) . ' строк.'); redirect('?a=import-job&id=' . $job['id']);
+    }
+    if ($post === 'import-row') {
+        // Одна строка за запрос — страница задания вызывает их по очереди и показывает прогресс.
+        header('Content-Type: application/json; charset=utf-8');
+        @set_time_limit(300);
+        $job = job_load((string)($_POST['id'] ?? ''));
+        $n = (int)($_POST['n'] ?? 0);
+        $row = $job ? (array_values(array_filter($job['rows'], fn($r) => $r['n'] === $n))[0] ?? null) : null;
+        $key = secrets()['claude'] ?? '';
+        if (!$row) { echo json_encode(['status' => 'error', 'msg' => 'строка не найдена']); exit; }
+        if ($key === '') { echo json_encode(['status' => 'error', 'msg' => 'нет ключа Claude API — добавьте в «Настройках»', 'stop' => true]); exit; }
+        try {
+            $data = catalog_load();
+            $res = import_process_row($data, $job, $row, $key);
+            if (in_array($res['status'], ['ok', 'draft'], true)) catalog_save($data);
+        } catch (Throwable $e) {
+            $res = ['status' => 'error', 'msg' => $e->getMessage(), 'stop' => str_contains($e->getMessage(), 'Ключ') || str_contains($e->getMessage(), 'баланс')];
+        }
+        $job = job_load($job['id']);
+        $job['results'][(string)$n] = $res;
+        $job['spent'] = round(($job['spent'] ?? 0) + ($res['cost'] ?? 0), 4);
+        job_save($job);
+        echo json_encode($res + ['spent' => $job['spent']], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES); exit;
+    }
+    if ($post === 'import-delete') {
+        @unlink(job_file((string)($_POST['id'] ?? ''))); flash('Задание удалено (товары в каталоге остались).'); redirect('?a=import');
+    }
     if ($post === 'change-password') {
         if (!password_verify((string)$_POST['old'], $conf['hash'])) flash('Старый пароль неверный.');
         elseif (mb_strlen((string)$_POST['new']) < 8) flash('Новый пароль не короче 8 знаков.');
@@ -217,7 +276,7 @@ table{width:100%;border-collapse:collapse}td,th{padding:8px 10px;border-bottom:1
 }
 function page_end(): void { echo '</body></html>'; }
 function nav(string $cur): void {
-    $items = ['list' => 'Товары', 'new' => '+ Новый товар', 'categories' => 'Категории', 'settings' => 'Настройки и цены'];
+    $items = ['list' => 'Товары', 'new' => '+ Новый товар', 'import' => 'Импорт Excel', 'categories' => 'Категории', 'settings' => 'Настройки и цены'];
     echo '<header class="top"><b>Reklama Centr · каталог</b><nav>';
     foreach ($items as $k => $v) echo '<a href="?a=' . $k . '" class="' . ($cur === $k ? 'on' : '') . '">' . $v . '</a>';
     echo '<a href="/catalog/" target="_blank">Открыть сайт ↗</a><a href="?a=logout">Выйти</a></nav></header><div class="wrap">';
@@ -302,6 +361,95 @@ if ($action === 'edit' || $action === 'new') {
     page_end(); exit;
 }
 
+if ($action === 'import') {
+    page_start('Импорт Excel'); nav('import');
+    $hasKey = !empty(secrets()['claude']);
+    echo '<div class="card"><h1>Импорт товаров из Excel</h1><p class="muted">Загрузите прайс (.xlsx). Для каждой строки Claude найдёт товар в интернете — по названию, артикулу и штрихкоду, — напишет описание на трёх языках, подберёт раздел и скачает фото. Товары появятся в списке; сразу на сайт — только уверенно найденные с фото (если включить), остальное — скрытые черновики для проверки.</p>';
+    if (!$hasKey) echo '<p class="err">Сначала добавьте ключ Claude API в <a href="?a=settings">«Настройках»</a>.</p>';
+    echo '<form method="post" action="?a=import-upload" enctype="multipart/form-data" class="toolbar"><input type="hidden" name="csrf" value="' . $C . '"><input type="file" name="xlsx" accept=".xlsx" required><button class="btn">Загрузить</button></form></div>';
+    $jobs = job_list();
+    if ($jobs) {
+        echo '<div class="card"><h2>Загрузки</h2><table><tr><th>Дата</th><th>Файл</th><th>Строк</th><th>Готово</th><th>Потрачено</th><th></th></tr>';
+        foreach ($jobs as $j) {
+            $done = count($j['results'] ?? []);
+            echo '<tr><td>' . h(date('d.m.Y H:i', strtotime($j['created']))) . '</td><td>' . h($j['file']) . '</td><td>' . count($j['rows'] ?: []) . '</td><td>' . $done . '</td><td>≈ $' . h(number_format((float)($j['spent'] ?? 0), 2)) . '</td><td><a class="btn ghost sm" href="?a=import-job&id=' . h($j['id']) . '">Открыть</a></td></tr>';
+        }
+        echo '</table></div>';
+    }
+    page_end(); exit;
+}
+
+if ($action === 'import-job') {
+    $job = job_load((string)($_GET['id'] ?? ''));
+    if (!$job) { flash('Загрузка не найдена.'); redirect('?a=import'); }
+    page_start('Импорт ' . $job['file']); nav('import');
+    $o = $job['options']; $cols = max(array_map('count', $job['raw']));
+    $letter = fn(int $i) => chr(65 + $i % 26);
+    echo '<form method="post" action="?a=import-setup"><input type="hidden" name="csrf" value="' . $C . '"><input type="hidden" name="id" value="' . h($job['id']) . '"><div class="card"><h1>' . h($job['file']) . '</h1>';
+    echo '<h2>Что в каком столбце</h2><p class="muted">Определено автоматически — проверьте по примеру ниже.</p><div class="grid3">';
+    $names = ['title' => 'Название товара', 'ean' => 'Штрихкод', 'code' => 'Артикул / модель', 'cost' => 'Себестоимость, USD', 'qty' => 'Количество', 'brand' => 'Бренд'];
+    foreach ($names as $k => $label) {
+        echo '<label>' . $label . '<select name="map[' . $k . ']"><option value="">— нет —</option>';
+        for ($c = 0; $c < $cols; $c++) echo '<option value="' . $c . '"' . ($job['map'][$k] === $c ? ' selected' : '') . '>Столбец ' . $letter($c) . ' · ' . h(mb_substr($job['raw'][max(0, $job['head'])][$c] ?? '', 0, 30)) . '</option>';
+        echo '</select></label>';
+    }
+    echo '<label>Первая строка — заголовки?<select name="head"><option value="-1"' . ($job['head'] < 0 ? ' selected' : '') . '>Нет, сразу товары</option><option value="0"' . ($job['head'] === 0 ? ' selected' : '') . '>Да, строка 1</option><option value="1"' . ($job['head'] === 1 ? ' selected' : '') . '>Строка 2</option></select></label></div>';
+    echo '<div style="overflow-x:auto;margin-top:12px"><table><tr>'; for ($c = 0; $c < $cols; $c++) echo '<th>' . $letter($c) . '</th>'; echo '</tr>';
+    foreach (array_slice($job['raw'], 0, 6) as $r) { echo '<tr>'; for ($c = 0; $c < $cols; $c++) echo '<td class="muted">' . h(mb_substr($r[$c] ?? '', 0, 60)) . '</td>'; echo '</tr>'; }
+    echo '</table></div>';
+    echo '<h2 style="margin-top:18px">Как добавлять</h2><div class="grid3">';
+    echo '<label>Бренд (если его нет в строке)<input type="text" name="brand" value="' . h($o['brand']) . '" placeholder="например WIWU"></label>';
+    echo '<label>Наличие<select name="availability"><option value="stock"' . ($o['availability'] === 'stock' ? ' selected' : '') . '>В наличии (витрина)</option><option value="order"' . ($o['availability'] === 'order' ? ' selected' : '') . '>Под заказ</option></select></label>';
+    echo '<label>Наценка, % (пусто — общая ' . h((string)$data['settings']['markupValue']) . '%)<input type="text" name="markup" value="' . h($o['markup']) . '"></label>';
+    echo '<label>Раздел<select name="category"><option value="">Подобрать автоматически</option>'; foreach ($data['categories'] as $c) if ($c['parent']) echo '<option value="' . h($c['id']) . '"' . ($o['category'] === $c['id'] ? ' selected' : '') . '>' . h($c['title']['ru']) . '</option>'; echo '</select></label>';
+    echo '<label style="display:flex;gap:8px;align-items:center;margin-top:28px"><input type="checkbox" name="publish"' . ($o['publish'] ? ' checked' : '') . '> Сразу на сайт, если товар найден точно и есть фото</label>';
+    echo '<label style="display:flex;gap:8px;align-items:center;margin-top:28px"><input type="checkbox" name="skipExisting"' . ($o['skipExisting'] ? ' checked' : '') . '> Пропускать товары, которые уже есть в каталоге</label></div>';
+    echo '<p><button class="btn ghost">' . ($job['rows'] ? 'Сохранить настройки' : 'Подготовить строки') . '</button></p></div></form>';
+    if ($job['rows']) {
+        $res = $job['results'] ?? [];
+        echo '<div class="card"><div class="toolbar"><button class="btn" id="run">Начать обработку</button><button class="btn ghost" id="stop" style="display:none">Пауза</button><span class="muted" id="prog"></span><span class="muted">Потрачено ≈ $<b id="spent">' . h(number_format((float)($job['spent'] ?? 0), 2)) . '</b></span></div>';
+        echo '<p class="muted">Одна строка — примерно 30–90 секунд и $0,1–0,3. Не закрывайте вкладку во время обработки; на паузе можно закрыть и продолжить позже — готовые строки повторно не обрабатываются. Строки с ошибкой можно запустить ещё раз.</p>';
+        echo '<table><tr><th>#</th><th>Строка прайса</th><th>Штрихкод</th><th>Себест.</th><th>Результат</th></tr>';
+        $label = ['ok' => 'на сайте', 'draft' => 'черновик', 'skip' => 'пропущен', 'error' => 'ошибка'];
+        foreach ($job['rows'] as $r) {
+            $x = $res[(string)$r['n']] ?? null;
+            $cell = $x ? '<span class="pill' . ($x['status'] === 'ok' ? ' on' : '') . '">' . $label[$x['status']] . '</span> ' . (!empty($x['id']) && $x['status'] !== 'error' ? '<a href="?a=edit&id=' . h($x['id']) . '">' . h($x['title'] ?? $x['id']) . '</a> ' : '') . '<span class="muted">' . h($x['msg'] ?? '') . '</span>' : '<span class="muted">—</span>';
+            echo '<tr data-n="' . $r['n'] . '" data-st="' . h($x['status'] ?? '') . '"><td class="muted">' . $r['n'] . '</td><td>' . h($r['title']) . '</td><td class="muted">' . h($r['ean']) . '</td><td class="muted">' . h($r['cost'] === null ? '' : (string)$r['cost']) . '</td><td class="res">' . $cell . '</td></tr>';
+        }
+        echo '</table></div>';
+        echo '<form method="post" action="?a=import-delete" onsubmit="return confirm(\'Удалить эту загрузку? Товары в каталоге останутся.\')"><input type="hidden" name="csrf" value="' . $C . '"><input type="hidden" name="id" value="' . h($job['id']) . '"><button class="btn ghost sm">Удалить загрузку</button></form>';
+        $js = json_encode(['csrf' => $C, 'id' => $job['id']]);
+        echo <<<JS
+<script>
+const J=$js, L={ok:"на сайте",draft:"черновик",skip:"пропущен",error:"ошибка"};
+let running=false;
+const rows=[...document.querySelectorAll("tr[data-n]")], todo=()=>rows.filter(r=>!["ok","draft","skip"].includes(r.dataset.st));
+const prog=()=>{document.getElementById("prog").textContent="Готово "+(rows.length-todo().length)+" из "+rows.length};
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+async function run(){
+  running=true; document.getElementById("run").style.display="none"; document.getElementById("stop").style.display="";
+  for(const tr of todo()){
+    if(!running) break;
+    tr.querySelector(".res").innerHTML='<span class="muted">ищу…</span>';
+    let r; try{ const fd=new FormData(); fd.append("csrf",J.csrf); fd.append("id",J.id); fd.append("n",tr.dataset.n);
+      r=await (await fetch("?a=import-row",{method:"POST",body:fd})).json(); }catch(e){ r={status:"error",msg:"сбой связи — нажмите «Начать» ещё раз"}; }
+    tr.dataset.st=r.status;
+    tr.querySelector(".res").innerHTML='<span class="pill'+(r.status==="ok"?" on":"")+'">'+L[r.status]+'</span> '+(r.id&&r.status!=="error"?'<a href="?a=edit&id='+esc(r.id)+'">'+esc(r.title||r.id)+'</a> ':"")+'<span class="muted">'+esc(r.msg)+'</span>';
+    if(r.spent!==undefined) document.getElementById("spent").textContent=Number(r.spent).toFixed(2);
+    prog(); if(r.stop){ alert(r.msg); break; }
+  }
+  running=false; document.getElementById("run").style.display=""; document.getElementById("run").textContent="Продолжить"; document.getElementById("stop").style.display="none";
+}
+document.getElementById("run").onclick=run;
+document.getElementById("stop").onclick=()=>{running=false; document.getElementById("stop").textContent="Остановлюсь после текущей строки…"};
+window.onbeforeunload=()=>running?"Идёт обработка":undefined;
+prog();
+</script>
+JS;
+    }
+    page_end(); exit;
+}
+
 if ($action === 'categories') {
     page_start('Категории'); nav('categories');
     echo '<form method="post" action="?a=categories"><input type="hidden" name="csrf" value="' . $C . '"><div class="card"><table><tr><th>ID (латиницей)</th><th>Родитель</th><th>Русский</th><th>English</th><th>O‘zbekcha</th><th>Порядок</th><th>Удалить</th></tr>';
@@ -329,6 +477,10 @@ if ($action === 'settings') {
     echo '<div><label>Округление цены вверх, ' . $cur . '<input type="text" name="priceStep" value="' . h((string)$s['priceStep']) . '"></label><label>Минимальный тираж, шт.<input type="number" name="minQty" value="' . (int)$s['minQty'] . '"></label></div></div>';
     echo '<p class="muted">Цена товара = себестоимость' . ($s['currency'] === 'uzs' ? ' × курс' : '') . ' + наценка (общая или своя у товара), округлённая вверх до шага. Считается автоматически у всех товаров, где поле «Цена на сайте» пустое. Себестоимость и наценки на сайт не уходят.</p>';
     echo '<p><label style="display:flex;gap:8px;align-items:center"><input type="checkbox" name="recalc"> Сбросить цены, введённые вручную, чтобы все товары считались по формуле.</label></p><button class="btn">Сохранить</button></div></form>';
+    $ck = secrets()['claude'] ?? '';
+    echo '<form method="post" action="?a=api-key"><input type="hidden" name="csrf" value="' . $C . '"><div class="card"><h2>Ключ Claude API (для «Импорта Excel»)</h2>';
+    echo '<p class="muted">' . ($ck ? 'Сохранён: <b>' . h(mask_key($ck)) . '</b>. Чтобы заменить — вставьте новый.' : 'Ключ не задан. Получить: console.anthropic.com → API Keys → Create Key.') . ' Ключ хранится только на сервере и на сайт не попадает.</p>';
+    echo '<div class="toolbar"><input type="password" name="claude_key" placeholder="sk-ant-…" autocomplete="off" style="min-width:340px"><button class="btn ghost">Сохранить и проверить</button>' . ($ck ? '<button class="btn ghost sm" name="remove" value="1" onclick="return confirm(\'Удалить ключ?\')">Удалить ключ</button>' : '') . '</div></div></form>';
     echo '<form method="post" action="?a=change-password"><input type="hidden" name="csrf" value="' . $C . '"><div class="card"><h2>Пароль</h2><div class="grid3"><label>Старый<input type="password" name="old" required></label><label>Новый (от 8 знаков)<input type="password" name="new" required minlength="8"></label><div><br><button class="btn ghost">Сменить пароль</button></div></div></div></form>';
     echo '<div class="card"><h2>Данные</h2><p class="muted">Файл каталога: api/data/catalog.json · резервные копии: api/data/backup/ (по одной на день). <a href="?a=export">Скачать catalog.json</a></p></div>';
     page_end(); exit;
