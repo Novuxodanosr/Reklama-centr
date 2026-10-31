@@ -409,7 +409,7 @@ if ($action === 'import-job') {
     if ($job['rows']) {
         $res = $job['results'] ?? [];
         echo '<div class="card"><div class="toolbar"><button class="btn" id="run">Начать обработку</button><button class="btn ghost" id="stop" style="display:none">Пауза</button><span class="muted" id="prog"></span><span class="muted">Потрачено ≈ $<b id="spent">' . h(number_format((float)($job['spent'] ?? 0), 2)) . '</b></span></div>';
-        echo '<p class="muted">Одна строка — примерно 30–90 секунд и $0,1–0,3. Не закрывайте вкладку во время обработки; на паузе можно закрыть и продолжить позже — готовые строки повторно не обрабатываются. Строки с ошибкой можно запустить ещё раз.</p>';
+        echo '<p class="muted">Одна строка — примерно 30–90 секунд и около $0,3–0,6. Не закрывайте вкладку во время обработки; на паузе можно закрыть и продолжить позже — готовые строки повторно не обрабатываются. Строки с ошибкой можно запустить ещё раз.</p>';
         echo '<table><tr><th>#</th><th>Строка прайса</th><th>Штрихкод</th><th>Себест.</th><th>Результат</th></tr>';
         $label = ['ok' => 'на сайте', 'draft' => 'черновик', 'skip' => 'пропущен', 'error' => 'ошибка'];
         foreach ($job['rows'] as $r) {

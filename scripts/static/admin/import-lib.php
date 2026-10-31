@@ -182,7 +182,7 @@ function claude_find_product(string $key, array $row, array $cats, string $brand
 You prepare product cards for the online catalog of a shop in Tashkent, Uzbekistan. You get one line from a price list. Find exactly this product on the internet - preferably on the manufacturer's official website, otherwise on a large retailer - and describe it.
 
 Rules:
-- Match the exact model and variant (model code, capacity, size, color). If the barcode or model code can be checked, check it. If you cannot confirm the exact model, still fill in what you found but set "confident" to false and say why in "note".
+- Match the exact model and variant (model code, capacity, size, color). If the barcode or model code can be checked, check it. If you cannot confirm the exact model, still fill in what you found but set "confident" to false and say why in "note" - in Russian, one or two short sentences for the shop owner (what exactly is unconfirmed).
 - Write only facts you saw on the product page. Do not invent specifications.
 - Never mention suppliers, price lists, purchase prices or other shops in the texts.
 - Texts in three languages: Russian (ru), English (en), Uzbek in Latin script (uz). The title is the brand + product name + model code, without color unless the line names one.
