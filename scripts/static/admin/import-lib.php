@@ -10,9 +10,15 @@ if (!function_exists('str_contains')) { function str_contains(string $h, string 
 if (!function_exists('str_starts_with')) { function str_starts_with(string $h, string $n): bool { return strncmp($h, $n, strlen($n)) === 0; } }
 define('IMPORT_DIR', CATALOG_DIR . '/imports');
 define('SECRETS_FILE', CATALOG_DIR . '/secrets.json');
-define('CLAUDE_MODEL', 'claude-opus-5-5');
-// Ориентир для подсчёта расходов в админке, $ за 1 млн токенов и за 1000 поисков.
-define('CLAUDE_PRICE', ['in' => 4.0, 'out' => 20.0, 'search' => 10.0]);
+// Модели на выбор в задании импорта. Цены — ориентир для счётчика расходов: $ за 1 млн токенов
+// (у Haiku дороже, если запрос длиннее 100 тыс. токенов) и за 1000 поисков.
+const CLAUDE_MODELS = [
+    'haiku' => ['id' => 'claude-haiku-5-5', 'name' => 'Эконом (Haiku) — в 10–20 раз дешевле', 'in' => 0.10, 'out' => 0.50, 'in_long' => 0.50, 'out_long' => 2.50],
+    'sonnet' => ['id' => 'claude-sonnet-5-5', 'name' => 'Средний (Sonnet)', 'in' => 2.0, 'out' => 10.0],
+    'opus' => ['id' => 'claude-opus-5-5', 'name' => 'Точный (Opus) — дорого', 'in' => 4.0, 'out' => 20.0],
+];
+const CLAUDE_SEARCH_PRICE = 10.0;
+function claude_model(string $k): array { return CLAUDE_MODELS[$k] ?? CLAUDE_MODELS['haiku']; }
 
 function secrets(): array { return is_file(SECRETS_FILE) ? (json_decode((string)file_get_contents(SECRETS_FILE), true) ?: []) : []; }
 function secret_set(string $k, ?string $v): void {
@@ -176,7 +182,8 @@ function claude_reachable(): string {
     return $code === 0 ? 'нет связи с Claude API: ' . $err : '';
 }
 
-function claude_find_product(string $key, array $row, array $cats, string $brand): array {
+function claude_find_product(string $key, array $row, array $cats, string $brand, string $model = 'haiku'): array {
+    $M = claude_model($model);
     $catList = implode("\n", array_map(fn($c) => "- {$c['id']}: {$c['title']}", $cats));
     $system = <<<TXT
 You prepare product cards for the online catalog of a shop in Tashkent, Uzbekistan. You get one line from a price list. Find exactly this product on the internet - preferably on the manufacturer's official website, otherwise on a large retailer - and describe it.
@@ -206,16 +213,26 @@ TXT;
     if ($b !== '') $line .= "\nBrand: $b";
     $messages = [['role' => 'user', 'content' => $line]];
     $body = [
-        'model' => CLAUDE_MODEL, 'max_tokens' => 16000, 'system' => $system,
-        'output_config' => ['effort' => 'medium'], 'fallbacks' => 'default',
-        'tools' => [['type' => 'web_search_20260209', 'name' => 'web_search', 'max_uses' => 5], ['type' => 'web_fetch_20260209', 'name' => 'web_fetch', 'max_uses' => 4]],
+        'model' => $M['id'], 'max_tokens' => 16000, 'system' => $system,
+        'output_config' => ['effort' => 'medium'],
+        'tools' => [['type' => 'web_search_20260209', 'name' => 'web_search', 'max_uses' => 4], ['type' => 'web_fetch_20260209', 'name' => 'web_fetch', 'max_uses' => 3]],
     ];
-    $usage = ['in' => 0, 'out' => 0, 'search' => 0];
+    // У Haiku нет запасной модели на стороне сервера — параметр fallbacks там даёт ошибку.
+    if ($model !== 'haiku') $body['fallbacks'] = 'default';
+    $usage = ['cost' => 0.0, 'search' => 0];
     for ($turn = 0; $turn < 5; $turn++) {
-        $res = claude_request($key, $body + ['messages' => $messages]);
+        try {
+            $res = claude_request($key, $body + ['messages' => $messages]);
+        } catch (RuntimeException $e) {
+            // Если модель не знает новые версии поиска — берём прежние.
+            if ($turn > 0 || strpos($e->getMessage(), '20260209') === false) throw $e;
+            $body['tools'] = [['type' => 'web_search_20250305', 'name' => 'web_search', 'max_uses' => 4], ['type' => 'web_fetch_20250910', 'name' => 'web_fetch', 'max_uses' => 3]];
+            $res = claude_request($key, $body + ['messages' => $messages]);
+        }
         $u = $res['usage'] ?? [];
-        $usage['in'] += (int)($u['input_tokens'] ?? 0) + (int)($u['cache_read_input_tokens'] ?? 0) + (int)($u['cache_creation_input_tokens'] ?? 0);
-        $usage['out'] += (int)($u['output_tokens'] ?? 0);
+        $in = (int)($u['input_tokens'] ?? 0) + (int)($u['cache_read_input_tokens'] ?? 0) + (int)($u['cache_creation_input_tokens'] ?? 0);
+        $long = isset($M['in_long']) && $in > 100000;
+        $usage['cost'] += $in / 1e6 * ($long ? $M['in_long'] : $M['in']) + (int)($u['output_tokens'] ?? 0) / 1e6 * ($long ? $M['out_long'] : $M['out']);
         $usage['search'] += (int)($u['server_tool_use']['web_search_requests'] ?? 0);
         if (($res['stop_reason'] ?? '') === 'refusal') throw new RuntimeException('Claude отказался обрабатывать эту строку.');
         if (($res['stop_reason'] ?? '') !== 'pause_turn') break;
@@ -231,7 +248,7 @@ TXT;
     return $j;
 }
 
-function usage_cost(array $u): float { $p = CLAUDE_PRICE; return $u['in'] / 1e6 * $p['in'] + $u['out'] / 1e6 * $p['out'] + $u['search'] / 1000 * $p['search']; }
+function usage_cost(array $u): float { return $u['cost'] + $u['search'] / 1000 * CLAUDE_SEARCH_PRICE; }
 
 // --- Фото: с найденной страницы и из ответа Claude, проверка размера, WebP ----------------------
 function http_get(string $url, int $max = 15_000_000): ?string {
@@ -295,8 +312,11 @@ function import_process_row(array &$data, array $job, array $row, string $key): 
     $old = null; foreach ($data['products'] as $p) if ($p['id'] === $id) $old = $p;
     if ($old && !empty($o['skipExisting'])) return ['status' => 'skip', 'id' => $id, 'msg' => 'уже есть в каталоге'];
     $cats = [];
-    foreach ($data['categories'] as $c) if ($c['parent']) $cats[] = ['id' => $c['id'], 'title' => $c['title']['ru'] ?? $c['id']];
-    $j = claude_find_product($key, $row, $cats, $brand);
+    // Только разделы магазина: «в наличии» — гаджеты (gadget-*), «под заказ» — сувенирные. Печать и вывески не предлагаем.
+    $shop = array_filter($data['categories'], fn($c) => ($c['parent'] ?? '') === 'souvenirs');
+    $fit = array_filter($shop, fn($c) => str_starts_with($c['id'], 'gadget-') === ($o['availability'] === 'stock'));
+    foreach ($fit ?: $shop as $c) $cats[] = ['id' => $c['id'], 'title' => $c['title']['ru'] ?? $c['id']];
+    $j = claude_find_product($key, $row, $cats, $brand, (string)($o['model'] ?? 'haiku'));
     $cost = usage_cost($j['_usage']);
     if (empty($j['found'])) return ['status' => 'error', 'id' => $id, 'msg' => 'не найден: ' . ($j['note'] ?? ''), 'cost' => $cost];
     // Сначала фото, которые Claude выбрал под этот вариант, затем остальные со страницы товара.

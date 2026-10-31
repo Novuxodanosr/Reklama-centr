@@ -180,7 +180,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $g = import_guess($rows);
         $id = date('Ymd-His');
         job_save(['id' => $id, 'created' => date('c'), 'file' => (string)$f['name'], 'raw' => array_slice($rows, 0, 2000), 'head' => $g['head'], 'map' => $g['map'], 'rows' => [], 'results' => [], 'spent' => 0,
-            'options' => ['brand' => '', 'availability' => 'stock', 'markup' => '', 'category' => '', 'publish' => false, 'skipExisting' => true]]);
+            'options' => ['brand' => '', 'availability' => 'stock', 'markup' => '', 'category' => '', 'publish' => false, 'skipExisting' => true, 'model' => 'haiku']]);
         redirect('?a=import-job&id=' . $id);
     }
     if ($post === 'import-setup') {
@@ -192,6 +192,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'brand' => trim((string)($_POST['brand'] ?? '')), 'availability' => in_array($av, ['stock', 'order'], true) ? $av : 'stock',
             'markup' => trim(str_replace(['%', ','], ['', '.'], (string)($_POST['markup'] ?? ''))), 'category' => (string)($_POST['category'] ?? ''),
             'publish' => !empty($_POST['publish']), 'skipExisting' => !empty($_POST['skipExisting']),
+            'model' => isset(CLAUDE_MODELS[$_POST['model'] ?? '']) ? (string)$_POST['model'] : 'haiku',
         ];
         $job['rows'] = import_rows($job['raw'], $job['head'], $job['map']);
         job_save($job); flash('Готово к обработке: ' . count($job['rows']) . ' строк.'); redirect('?a=import-job&id=' . $job['id']);
@@ -401,6 +402,7 @@ if ($action === 'import-job') {
     echo '<h2 style="margin-top:18px">Как добавлять</h2><div class="grid3">';
     echo '<label>Бренд (если его нет в строке)<input type="text" name="brand" value="' . h($o['brand']) . '" placeholder="например WIWU"></label>';
     echo '<label>Наличие<select name="availability"><option value="stock"' . ($o['availability'] === 'stock' ? ' selected' : '') . '>В наличии (витрина)</option><option value="order"' . ($o['availability'] === 'order' ? ' selected' : '') . '>Под заказ</option></select></label>';
+    echo '<label>Модель Claude<select name="model">'; foreach (CLAUDE_MODELS as $mk => $m) echo '<option value="' . $mk . '"' . (($o['model'] ?? 'haiku') === $mk ? ' selected' : '') . '>' . h($m['name']) . '</option>'; echo '</select></label>';
     echo '<label>Наценка, % (пусто — общая ' . h((string)$data['settings']['markupValue']) . '%)<input type="text" name="markup" value="' . h($o['markup']) . '"></label>';
     echo '<label>Раздел<select name="category"><option value="">Подобрать автоматически</option>'; foreach ($data['categories'] as $c) if ($c['parent']) echo '<option value="' . h($c['id']) . '"' . ($o['category'] === $c['id'] ? ' selected' : '') . '>' . h($c['title']['ru']) . '</option>'; echo '</select></label>';
     echo '<label style="display:flex;gap:8px;align-items:center;margin-top:28px"><input type="checkbox" name="publish"' . ($o['publish'] ? ' checked' : '') . '> Сразу на сайт, если товар найден точно и есть фото</label>';
@@ -409,7 +411,7 @@ if ($action === 'import-job') {
     if ($job['rows']) {
         $res = $job['results'] ?? [];
         echo '<div class="card"><div class="toolbar"><button class="btn" id="run">Начать обработку</button><button class="btn ghost" id="stop" style="display:none">Пауза</button><span class="muted" id="prog"></span><span class="muted">Потрачено ≈ $<b id="spent">' . h(number_format((float)($job['spent'] ?? 0), 2)) . '</b></span></div>';
-        echo '<p class="muted">Одна строка — примерно 30–90 секунд и около $0,3–0,6. Не закрывайте вкладку во время обработки; на паузе можно закрыть и продолжить позже — готовые строки повторно не обрабатываются. Строки с ошибкой можно запустить ещё раз.</p>';
+        echo '<p class="muted">Одна строка — примерно 30–90 секунд; «Эконом» — около $0,02–0,06 за строку, «Точный» — около $0,5. Не закрывайте вкладку во время обработки; на паузе можно закрыть и продолжить позже — готовые строки повторно не обрабатываются. Строки с ошибкой можно запустить ещё раз.</p>';
         echo '<table><tr><th>#</th><th>Строка прайса</th><th>Штрихкод</th><th>Себест.</th><th>Результат</th></tr>';
         $label = ['ok' => 'на сайте', 'draft' => 'черновик', 'skip' => 'пропущен', 'error' => 'ошибка'];
         foreach ($job['rows'] as $r) {
