@@ -307,12 +307,21 @@ function save_remote_images(array $urls, string $id, int $limit = 6): array {
 function slug(string $s): string { return trim(preg_replace('/[^a-z0-9]+/', '-', strtolower(iconv('UTF-8', 'ASCII//TRANSLIT//IGNORE', $s) ?: $s)), '-'); }
 
 // Одна строка прайса → товар в каталоге. Возвращает результат для таблицы задания.
+// Чехол/бампер именно для телефона (чехлы для планшетов и ноутбуков не трогаем).
+function is_phone_case(string $s): bool {
+    return (bool)preg_match('/(чех[оа]л|бампер|\bcase\b|\bcover\b)/iu', $s)
+        && (bool)preg_match('/(iphone|samsung|galaxy|xiaomi|redmi|pixel|huawei|honor|телефон|смартфон|phone)/iu', $s)
+        && !preg_match('/(ipad|планшет|tablet|ноутбук|laptop|macbook|airpods|наушник)/iu', $s);
+}
+
 function import_process_row(array &$data, array $job, array $row, string $key): array {
     $o = $job['options'];
     $brand = $row['brand'] !== '' ? $row['brand'] : (string)$o['brand'];
     $id = substr(slug($brand ?: 'item') ?: 'item', 0, 20) . '-' . ($row['ean'] !== '' ? $row['ean'] : substr(md5(mb_strtolower($row['title'])), 0, 10));
     $old = null; foreach ($data['products'] as $p) if ($p['id'] === $id) $old = $p;
     if ($old && !empty($o['skipExisting'])) return ['status' => 'skip', 'id' => $id, 'msg' => 'уже есть в каталоге'];
+    // Чехлы для телефонов в магазин не берём (решение заказчика 01.11.2026) — даже не спрашиваем Claude.
+    if (is_phone_case($row['title'])) return ['status' => 'skip', 'id' => $id, 'msg' => 'чехол для телефона — не берём'];
     $cats = [];
     // Только разделы магазина: «в наличии» — гаджеты (gadget-*), «под заказ» — сувенирные. Печать и вывески не предлагаем.
     $shop = array_filter($data['categories'], fn($c) => ($c['parent'] ?? '') === 'souvenirs');
@@ -321,6 +330,7 @@ function import_process_row(array &$data, array $job, array $row, string $key): 
     $j = claude_find_product($key, $row, $cats, $brand, (string)($o['model'] ?? 'haiku'));
     $cost = usage_cost($j['_usage']);
     if (empty($j['found'])) return ['status' => 'error', 'id' => $id, 'msg' => 'не найден: ' . ($j['note'] ?? ''), 'cost' => $cost];
+    if (is_phone_case((string)($j['title']['ru'] ?? '') . ' ' . (string)($j['title']['en'] ?? ''))) return ['status' => 'skip', 'id' => $id, 'msg' => 'чехол для телефона — не берём', 'cost' => $cost];
     // Сначала фото, которые Claude выбрал под этот вариант, затем остальные со страницы товара.
     $urls = array_merge((array)($j['image_urls'] ?? []), !empty($j['source_url']) ? page_images((string)$j['source_url']) : []);
     $images = save_remote_images($urls, $id);
@@ -329,7 +339,7 @@ function import_process_row(array &$data, array $job, array $row, string $key): 
     $category = $o['category'] !== '' ? $o['category'] : (in_array($j['category_id'] ?? '', $catIds, true) ? $j['category_id'] : ($old['category'] ?? ($catIds[0] ?? '')));
     $L = fn($v) => ['ru' => trim((string)($v['ru'] ?? '')), 'en' => trim((string)($v['en'] ?? '')), 'uz' => trim((string)($v['uz'] ?? ''))];
     $specs = [['k' => ['ru' => 'Бренд', 'en' => 'Brand', 'uz' => 'Brend'], 'v' => $j['brand'] ?: $brand]];
-    foreach ((array)($j['specs'] ?? []) as $s) if (!empty($s['k']['ru'])) $specs[] = ['k' => $L($s['k']), 'v' => (string)($s['v'] ?? '')];
+    foreach ((array)($j['specs'] ?? []) as $s) if (!empty($s['k']['ru']) && !preg_match('/^(бренд|штрихкод)/iu', trim($s['k']['ru']))) $specs[] =['k' => $L($s['k']), 'v' => (string)($s['v'] ?? '')];
     if ($row['ean'] !== '') $specs[] = ['k' => ['ru' => 'Штрихкод', 'en' => 'Barcode (EAN)', 'uz' => 'Shtrixkod'], 'v' => $row['ean']];
     $confident = !empty($j['confident']);
     $p = [
