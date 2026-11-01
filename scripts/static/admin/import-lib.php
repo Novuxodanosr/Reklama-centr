@@ -212,10 +212,12 @@ TXT;
     $b = $row['brand'] !== '' ? $row['brand'] : $brand;
     if ($b !== '') $line .= "\nBrand: $b";
     $messages = [['role' => 'user', 'content' => $line]];
+    // Поиск с фильтрацией (20260209) есть только у Opus и Sonnet; Haiku работает с прежними версиями.
+    $v = $model === 'haiku' ? ['20250305', '20250910'] : ['20260209', '20260209'];
     $body = [
         'model' => $M['id'], 'max_tokens' => 16000, 'system' => $system,
         'output_config' => ['effort' => 'medium'],
-        'tools' => [['type' => 'web_search_20260209', 'name' => 'web_search', 'max_uses' => 4], ['type' => 'web_fetch_20260209', 'name' => 'web_fetch', 'max_uses' => 3]],
+        'tools' => [['type' => 'web_search_' . $v[0], 'name' => 'web_search', 'max_uses' => 4], ['type' => 'web_fetch_' . $v[1], 'name' => 'web_fetch', 'max_uses' => 3]],
     ];
     // У Haiku нет запасной модели на стороне сервера — параметр fallbacks там даёт ошибку.
     if ($model !== 'haiku') $body['fallbacks'] = 'default';
