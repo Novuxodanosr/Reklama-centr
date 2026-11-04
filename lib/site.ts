@@ -43,6 +43,8 @@ export const site = {
   hours: { days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"], opens: "09:00", closes: "19:00" },
   // Коды подтверждения прав на сайт: Google Search Console и Яндекс Вебмастер выдают их при добавлении сайта
   // (способ «метатег»). Вписать сюда значение content="…" — тег появится на всех страницах после сборки.
+  // Номера счётчиков: Яндекс.Метрика — цифры, Google Analytics — вида G-XXXXXXXXXX. null — счётчик не подключён.
+  analytics: { yandexMetrika: "114059886" as string | null, googleAnalytics: null as string | null },
   verification: { google: "d-ThJjkk0YuCGHhBd0Nm-rVDAvROiz5fVe7aL24lA9E" as string | null, yandex: "319be5a9cadee2e0" as string | null },
 };
 

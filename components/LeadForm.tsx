@@ -5,6 +5,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { AnimatePresence, motion } from "framer-motion";
 import { serviceIcons, serviceIds, type ServiceId } from "@/lib/services";
 import { site, telegramLink } from "@/lib/site";
+import { track } from "@/lib/analytics";
 import { ArrowIcon, CheckIcon, PaperclipIcon, TelegramIcon } from "./icons";
 import { ease } from "./motion/Reveal";
 
@@ -90,6 +91,7 @@ export default function LeadForm() {
         return;
       }
       if (!res.ok) throw new Error(String(res.status));
+      track("lead_sent", site.analytics.yandexMetrika);
       setStatus("success");
     } catch {
       setStatus("error");

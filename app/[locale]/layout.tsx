@@ -7,6 +7,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import MobileBar from "@/components/MobileBar";
 import Effects from "@/components/fx/Effects";
+import Analytics from "@/components/Analytics";
 import { alternatesFor, localePath, locales, managers, ogLocale, safeJsonLd, siteUrl, site, type Locale } from "@/lib/site";
 import { serviceIds } from "@/lib/services";
 import { coreMessages } from "@/lib/client-messages";
@@ -81,6 +82,7 @@ export default async function LocaleLayout({
           <Footer />
           <MobileBar />
           <Effects />
+          <Analytics />
         </NextIntlClientProvider>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: safeJsonLd(jsonLd) }} />
       </body>

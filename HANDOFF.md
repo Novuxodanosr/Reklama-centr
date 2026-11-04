@@ -530,3 +530,10 @@ params потребовали бы Suspense).
 - Claude API через curl, без SDK: на хостинге нет composer.
 - ВАЖНО: PHP для reklama-centr.uz на хостинге — 7.4 (не 8.2). В import-lib.php полифилы str_contains/str_starts_with; новый PHP-код проверять `php -l` под 7.4.
 - ВАЖНО: товары, добавленные импортом, есть только на сервере, их себестоимость/наценка — только в серверном catalog.json. Перед любой заливкой локального data/catalog.json на сервер сначала скачать актуальный (Админка → Настройки → «Скачать catalog.json») и положить в data/, иначе себестоимости импортированных товаров потеряются.
+
+## 2026-11-04 — Аналитика
+- Яндекс.Метрика: счётчик 114059886; вебвизор выключен намеренно (пишет ввод в форме заявки). Цели (JS-события): `lead_sent`, `phone_click`, `telegram_click`, `email_click`.
+- Код: `components/Analytics.tsx` (счётчики, клики по контактам, просмотры при переходах внутри сайта), `lib/analytics.ts`, номера — `site.analytics` в `lib/site.ts`. Работает только в собранном сайте, не в `npm run dev`. Имена и телефоны в счётчики не передавать.
+- Google Analytics: код готов, номера нет — аккаунт должен создать заказчик; затем вписать `G-...` в `site.analytics.googleAnalytics` и выложить сайт.
+- Заливка: перед `pack-parts.ps1` удалять `deploy/api/config.php`, чтобы архивы не содержали настроек бота и не перезаписывали серверные. Распаковка: `POST /api/filemanager-actions/extract-archive` `{destinationDir, source, mergeAndOverwrite:true, members:[]}`; удаление в корзину: `POST /api/filemanager-actions/remove` `{paths, trash:true}`.
+- Решение заказчика: скрыты чехлы и стёкла только для телефонов; чехол и стекло для iPad оставлены на сайте.
